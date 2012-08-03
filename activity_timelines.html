@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+    <title>Habitele, Data Visualization - Activity Timelines</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="libraries/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="libraries/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<body>
+
+	<div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Habitele, Data Visualization</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="index.html">Home</a></li>
+              <li class="active"><a href="#">Activity Timelines</a></li>
+              <li><a href="journal_of_calls.html">Journal of Calls</a></li>
+              <li><a href="activities_peaks_analysis.html">Activities Peaks Analysis</a></li>
+              <li><a href="#">General Logs</a></li>
+              <li><a href="#">Phone Books</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+    	
+    	<div id="json_result">
+        <!-- <span class="label label-success"><i class="icon-ok"></i> Data succesfully loaded</span> -->
+      </div>
+
+      <div class="accordion" id="accordion2">
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+              SMS in a typical day of work
+            </a>
+          </div>
+          <div id="collapseOne" class="accordion-body in collapse" style="height: auto; ">
+            <div class="accordion-inner">
+              
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
+              Calls in a typical day of work
+            </a>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse" style="height: 0px; ">
+            <div class="accordion-inner">
+              
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
+              SMS in a typical day of weekend
+            </a>
+          </div>
+          <div id="collapseThree" class="accordion-body collapse" style="height: 0px; ">
+            <div class="accordion-inner">
+              
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseFour">
+              Calls in a typical day of weekend
+            </a>
+          </div>
+          <div id="collapseFour" class="accordion-body collapse" style="height: 0px; ">
+            <div class="accordion-inner">
+              
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseFive">
+              SMS in a typical week
+            </a>
+          </div>
+          <div id="collapseFive" class="accordion-body collapse" style="height: 0px; ">
+            <div class="accordion-inner">
+              
+            </div>
+          </div>
+        </div>
+        <div class="accordion-group">
+          <div class="accordion-heading">
+            <a class="accordion-toggle" data-toggle="collapse" href="#collapseSix">
+              Calls in a typical week
+            </a>
+          </div>
+          <div id="collapseSix" class="accordion-body collapse" style="height: 0px; ">
+            <div class="accordion-inner">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+<!-- JavaScripts -->
+
+<script src="libraries/jquery-1.7.2.js"></script>
+<script src="libraries/bootstrap/js/bootstrap.js"></script>
+<script src="libraries/d3.v2.js"></script>
+<script src="libraries/loadData.js"></script>
+
+<script>
+
+function initViz() {
+  visOne();
+  visTwo();
+  visThree();
+  visFour();
+  visFive();
+  visSix();
+}
+
+
+
+function visOne() {
+
+  var actTimData = vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour;
+
+  var data = d3.range(24).map(function(i) {
+    return {x: i, y: actTimData[i]};
+  });
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
+  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
+
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
+
+  var svg = d3.select("#collapseOne div.accordion-inner").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
+};
+
+
+
+function visTwo() {
+
+  var actTimData = vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour;
+
+  var data = d3.range(24).map(function(i) {
+    return {x: i, y: actTimData[i]};
+  });
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
+  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
+
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
+
+  var svg = d3.select("#collapseTwo div.accordion-inner").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
+};
+
+
+
+function visThree() {
+
+  var actTimData = vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour;
+
+  var data = d3.range(24).map(function(i) {
+    return {x: i, y: actTimData[i]};
+  });
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
+  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
+
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
+
+  var svg = d3.select("#collapseThree div.accordion-inner").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
+};
+
+
+
+function visFour() {
+
+  var actTimData = vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour;
+
+  var data = d3.range(24).map(function(i) {
+    return {x: i, y: actTimData[i]};
+  });
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
+  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
+
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
+
+  var svg = d3.select("#collapseFour div.accordion-inner").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
+};
+
+
+
+function visFive() {
+
+  var actTimData = vizData.visualizations.activity_timelines.SMS_monday_to_sunday;
+
+  var data = d3.range(7).map(function(i) {
+    return {x: i, y: actTimData[i]};
+  });
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear().domain([0, 6]).range([0, width]);
+  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
+
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
+
+  var svg = d3.select("#collapseFive div.accordion-inner").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
+};
+
+
+
+function visSix() {
+
+  var actTimData = vizData.visualizations.activity_timelines.calls_monday_to_sunday;
+
+  var data = d3.range(7).map(function(i) {
+    return {x: i, y: actTimData[i]};
+  });
+
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
+
+  var x = d3.scale.linear().domain([0, 6]).range([0, width]);
+  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
+
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
+
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
+
+  var svg = d3.select("#collapseSix div.accordion-inner").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
+
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
+};
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
