@@ -196,23 +196,27 @@ function dataDisplay(i) {
   // Contacts
   // 
 
-  // dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+i);
-  // console.log(dataPeak)
-
-
   var contacts = [];
 
   console.log("")
   for(key in dataPeak.events) {
-    console.log(dataPeak.events[key].contact)
+    // console.log(dataPeak.events[key].contact)
     contacts.push(dataPeak.events[key].contact)
   }
 
   contacts = eliminateDuplicates(contacts);
+  // console.log(contacts)
 
-  console.log(contacts)
+  items = d3.select("#tab"+i+" .contacts")
+    .append("table")
+    .attr("class", "table table-condensed table-bordered table-striped")
+    .append("tbody")
 
-
+  for(var i in contacts) {
+    if(contacts.hasOwnProperty(i)) {
+      items.append("tr").append("td").text(contacts[i]);
+    }
+  }
 
   // 
   // Directions
