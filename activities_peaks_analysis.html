@@ -101,6 +101,8 @@ function initViz() {
   }
 }
 
+
+
 var dataPeak;
 
 function dataDisplay(i) {
@@ -196,6 +198,21 @@ function dataDisplay(i) {
 
   // dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+i);
   // console.log(dataPeak)
+
+
+  var contacts = [];
+
+  console.log("")
+  for(key in dataPeak.events) {
+    console.log(dataPeak.events[key].contact)
+    contacts.push(dataPeak.events[key].contact)
+  }
+
+  contacts = eliminateDuplicates(contacts);
+
+  console.log(contacts)
+
+
 
   // 
   // Directions
