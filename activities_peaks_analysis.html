@@ -43,8 +43,20 @@
     </div>
 
     <div class="container">
+      
+
+      <div class="tabbable"> <!-- Only required for left/right tabs -->
+
+        <ul class="nav nav-tabs">
+        </ul>
+
+        <div class="tab-content">
+        </div>
+
+      </div>
+
     	
-    	<div class="row">
+    	<!-- <div class="row">
         <div class="span12">
           Timeline
         </div>
@@ -59,7 +71,8 @@
         </br>
           - Frequency table for SMS
         </div>
-      </div>
+      </div> -->
+
 
     </div>
 
@@ -72,104 +85,120 @@
 <script src="libraries/jquery-1.7.2.js"></script>
 <script src="libraries/bootstrap/js/bootstrap.js"></script>
 <script src="libraries/d3.v2.js"></script>
+<script src="libraries/loadData.js"></script>
 
 <script>
 
-var visData, hash; // globals
+function initViz() {
 
-d3.json("data/model_francois_2.json", function(json) {
-
-  visData = json;
-  hash = getHash();
-  // visOne(hash);
-
-});
-
-
-
-function getHash() {
-
-  hash = window.location.hash;
-  return hash.substring(6); // remove #peak_
-
+  var obj = vizData.visualizations.activities_peaks_analysis.peaks_timeline;
+  
+  for(var i in obj) {
+    if(obj.hasOwnProperty(i)) {
+      dataDisplay(i.substr(5));
+    }
+  }
 }
 
+var dataPeak;
+
+function dataDisplay(i) {
+
+  liItem = d3.select("ul.nav-tabs")
+    .append("li");
+
+  if (i == 1) {
+    liItem.attr("class", "active");
+  }
+
+  aItem = liItem
+    .append("a")
+    .attr("href", "#tab"+i)
+    .attr("data-toggle", "tab")
+    .text("Peak "+i);
+
+  divItem = d3.select(".tab-content")
+    .append("div").
+    attr("id", "tab"+i)
+    .text("Tab"+i);
+
+  if (i == 1) {
+    divItem.attr("class", "row tab-pane active");
+  } else {
+    divItem.attr("class", "row tab-pane");
+  }
+
+  divItem.append("div").attr("class", "span12 timeline")
+    .text("Timeline");
+  divItem.append("div").attr("class", "span4 contacts");
+  divItem.append("div").attr("class", "span4 directions");
+  divItem.append("div").attr("class", "span4 table");
 
 
-function visOne(tempHash) {
 
-  console.log(hash)
 
-  var dataViz = eval("visData.visualizations.activities_peaks_analysis."+hash+".agregated_data");
+  dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+i);
+  console.log(dataPeak)
 
-  
+  var format = d3.time.format("%Y-%m-%d %H:%M");
 
-  // var margin = {top: 30, right: 10, bottom: 10, left: 30},
-  //   width = 960 - margin.right - margin.left,
-  //   height = 930 - margin.top - margin.bottom;
+  var data = d3.range(4).map(function(d) {
+    // console.log(format.parse(dataPeak.events[d+1].time))
+    return {x: format.parse(dataPeak.events[d+1].time), y: 10};
+  });
 
-  // var format = d3.format(",.0f");
+  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+      width = 960 - margin.left - margin.right,
+      height = 200 - margin.top - margin.bottom;
 
-  // var x = d3.scale.linear()
-  //     .range([0, width]);
+  var x = d3.time.scale()
+    .domain([format.parse(dataPeak.start), format.parse(dataPeak.stop)])
+    .range([0, width]);
 
-  // var y = d3.scale.ordinal()
-  //     .rangeRoundBands([0, height], .1);
+  var y = d3.scale.linear()
+    .domain([0, 20])
+    .range([height, 0]);
 
-  // var xAxis = d3.svg.axis()
-  //     .scale(x)
-  //     .orient("top")
-  //     .tickSize(-height);
+  var xAxis = d3.svg.axis().scale(x).orient("bottom");
+  var yAxis = d3.svg.axis().scale(y).orient("left");
 
-  // var yAxis = d3.svg.axis()
-  //     .scale(y)
-  //     .orient("left")
-  //     .tickSize(0);
+  var line = d3.svg.line()
+      .x(function(d) { return x(d.x); })
+      .y(function(d) { return y(d.y); });
 
-  // var svg = d3.select("body").append("svg")
-  //     .attr("width", width + margin.right + margin.left)
-  //     .attr("height", height + margin.top + margin.bottom)
-  //   .append("g")
-  //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  var area = d3.svg.area()
+      .x(line.x())
+      .y1(line.y())
+      .y0(y(0));
 
-  // d3.csv("sample-data.csv", function(data) {
+  var svg = d3.select("#tab"+i+" .timeline").append("svg")
+      .datum(data)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  //   // Parse numbers, and sort by value.
-  //   data.forEach(function(d) { d.value = +d.value; });
-  //   data.sort(function(a, b) { return b.value - a.value; });
+  svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
 
-  //   // Set the scale domain.
-  //   x.domain([0, d3.max(data, function(d) { return d.value; })]);
-  //   y.domain(data.map(function(d) { return d.name; }));
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
 
-  //   var bar = svg.selectAll("g.bar")
-  //       .data(data)
-  //     .enter().append("g")
-  //       .attr("class", "bar")
-  //       .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
+  svg.append("path")
+      .attr("class", "line")
+      .attr("d", line);
 
-  //   bar.append("rect")
-  //       .attr("width", function(d) { return x(d.value); })
-  //       .attr("height", y.rangeBand());
+  svg.selectAll(".dot")
+      .data(data.filter(function(d) { return d.y; }))
+    .enter().append("circle")
+      .attr("class", "dot")
+      .attr("cx", line.x())
+      .attr("cy", line.y())
+      .attr("r", 3);
 
-  //   bar.append("text")
-  //       .attr("class", "value")
-  //       .attr("x", function(d) { return x(d.value); })
-  //       .attr("y", y.rangeBand() / 2)
-  //       .attr("dx", -3)
-  //       .attr("dy", ".35em")
-  //       .attr("text-anchor", "end")
-  //       .text(function(d) { return format(d.value); });
-
-  //   svg.append("g")
-  //       .attr("class", "x axis")
-  //       .call(xAxis);
-
-  //   svg.append("g")
-  //       .attr("class", "y axis")
-  //       .call(yAxis);
-  // });
-  
 };
 
 
