@@ -103,8 +103,8 @@
     "activities_peaks_analysis": {
         "peaks_timeline": {
             "peak_1": {
-                "start": "1936-01-17 11:34",
-                "stop": "1936-01-17 11:42",
+                "start": "1936-01-17 11:35",
+                "stop": "1936-01-17 11:41",
                 "agregated_data":
                 {
                     "total_callandsms_in": 154,
@@ -145,8 +145,8 @@
                 }
             },
             "peak_2": {
-                "start": "1936-01-19 11:32",
-                "stop": "1936-01-19 11:37",
+                "start": "1936-01-19 11:33",
+                "stop": "1936-01-19 11:35",
                 "agregated_data":
                 {
                     "total_smsandcall_in": 89,
@@ -176,13 +176,6 @@
                         "channel": "call",
                         "duration": 11,
                         "direction": "out"
-                    },
-                    "4":{
-                        "contact": "33698587641",
-                        "time": "1936-01-19 11:36",
-                        "channel": "sms",
-                        "duration": null,
-                        "direction": "in"
                     }
                 }
             }
