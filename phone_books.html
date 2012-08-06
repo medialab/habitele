@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-    <title>Habitele, Data Visualization - Activity Timelines</title>
+    <title>Habitele, Data Visualization - Phone Books</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -18,8 +18,9 @@
 
 <body>
 
-	<div class="navbar navbar-fixed-top">
+  <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
+
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
@@ -41,86 +42,7 @@
       </div>
     </div>
 
-    <div class="container">
-    	
-    	<div id="json_result">
-        <!-- <span class="label label-success"><i class="icon-ok"></i> Data succesfully loaded</span> -->
-      </div>
-
-      <div class="accordion" id="accordion2">
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-              SMS in a typical day of work
-            </a>
-          </div>
-          <div id="collapseOne" class="accordion-body in collapse" style="height: auto; ">
-            <div class="accordion-inner">
-              
-            </div>
-          </div>
-        </div>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" href="#collapseTwo">
-              Calls in a typical day of work
-            </a>
-          </div>
-          <div id="collapseTwo" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
-          </div>
-        </div>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" href="#collapseThree">
-              SMS in a typical day of weekend
-            </a>
-          </div>
-          <div id="collapseThree" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
-          </div>
-        </div>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" href="#collapseFour">
-              Calls in a typical day of weekend
-            </a>
-          </div>
-          <div id="collapseFour" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
-          </div>
-        </div>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" href="#collapseFive">
-              SMS in a typical week
-            </a>
-          </div>
-          <div id="collapseFive" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
-          </div>
-        </div>
-        <div class="accordion-group">
-          <div class="accordion-heading">
-            <a class="accordion-toggle" data-toggle="collapse" href="#collapseSix">
-              Calls in a typical week
-            </a>
-          </div>
-          <div id="collapseSix" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
-          </div>
-        </div>
-      </div>
+    <div id="container" class="container">
 
     </div>
 
@@ -138,385 +60,100 @@
 
 <script>
 
+
+
 function initViz() {
-  visOne();
-  visTwo();
-  visThree();
-  visFour();
-  visFive();
-  visSix();
+
+  var obj = vizData.visualizations.phone_books;
+  
+  dataDisplay(obj);
+
 }
 
 
 
-function visOne() {
+function dataDisplay(data) {
 
-  var actTimData = vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour;
+  // data = dataPeak.aggregated_data;
+  console.log(data)
 
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
+  var names = ["contacts", "emails", "mobile_phones", "private_phones"];
+  var values = [data.contacts, data.email, data.mobile_phone, data.private_phone];
 
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
+  console.log(names)
+  console.log(values)
 
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+  var aggregatedDataJSON = []; //declare array
 
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
+  for (var i in names) {
+      aggregatedDataJSON.push({name: names[i], value: values[i]});
+  }
 
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
+  console.log(aggregatedDataJSON)
 
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
+  var margin = {top: 30, right: 10, bottom: 10, left: 100},
+    width = 900 - margin.right - margin.left,
+    height = 300 - margin.top - margin.bottom;
 
-  var svg = d3.select("#collapseOne div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
+  var format = d3.format(",.0f");
+
+  var x = d3.scale.linear()
+      .range([0, width]);
+
+  var y = d3.scale.ordinal()
+      .rangeRoundBands([0, height], .1);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("top")
+      .tickSize(-height);
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickSize(0);
+
+  var svg = d3.select("div#container").append("svg")
+      .attr("width", width + margin.right + margin.left)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
+  // Parse numbers, and sort by value.
+  // aggregatedDataJSON.forEach(function(d) { d.value = +d.value; });
+  // aggregatedDataJSON.sort(function(a, b) { return b.value - a.value; });
+
+  // Set the scale domain.
+  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
+  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
+
+  var bar = svg.selectAll("g.bar")
+      .data(aggregatedDataJSON)
+    .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
+
+  bar.append("rect")
+      .attr("width", function(d) { return x(d.value); })
+      .attr("height", y.rangeBand());
+
+  bar.append("text")
+      .attr("class", "value")
+      .attr("x", function(d) { return x(d.value); })
+      .attr("y", y.rangeBand() / 2)
+      .attr("dx", -3)
+      .attr("dy", ".35em")
+      .attr("text-anchor", "end")
+      .text(function(d) { return format(d.value); });
 
   svg.append("g")
       .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis);
 
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visTwo() {
-
-  var actTimData = vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour;
-
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseTwo div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visThree() {
-
-  var actTimData = vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour;
-
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseThree div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visFour() {
-
-  var actTimData = vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour;
-
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseFour div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visFive() {
-
-  var actTimData = vizData.visualizations.activity_timelines.SMS_monday_to_sunday;
-
-  var data = d3.range(7).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 6]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseFive div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visSix() {
-
-  var actTimData = vizData.visualizations.activity_timelines.calls_monday_to_sunday;
-
-  var data = d3.range(7).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 6]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseSix div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
 };
 
 
