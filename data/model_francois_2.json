@@ -183,27 +183,27 @@
     },
    "general_logs": {
         "total_phone_book_entries": 724,
-        "communication_smsandcall_density": 0.6,
+        "communication_smsandcall_density": 6,
         "calls": {
-            "total": 1114.0,
-            "in": 46.0,
-            "out": 51.0,
-            "duration_total": 11542,
-            "duration_in": 7335,
-            "duration_out": 4207,
-            "density" : 4.2
+            "total": 140,
+            "in": 74,
+            "out": 94,
+            "duration_total": 49,
+            "duration_in": 53,
+            "duration_out": 21,
+            "density" : 78
         },
         "SMS": {
-            "total": 1114,
-            "in": 836,
-            "out": 129,
-            "density" : 0.5
+            "total": 56,
+            "in": 16,
+            "out": 40,
+            "density" : 10
         },
         "MMS": {
-            "total": 0,
-            "in": 0,
-            "out": 0,
-            "density" : 0
+            "total": 56,
+            "in": 36,
+            "out": 20,
+            "density" : 5
         }
     },
     "phone_books": {

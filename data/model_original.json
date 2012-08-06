@@ -179,25 +179,25 @@
             "total_phone_book_entries": 0,
             "communication_smsandcall_density": 0,
             "calls": {
-                "total": 0,
-                "in": 0,
-                "out": 0,
-                "duration_total": 0,
-                "duration_in": 0,
-                "duration_out": 0,
-                "density" : 0
+                "total": 140,
+                "in": 74,
+                "out": 94,
+                "duration_total": 49,
+                "duration_in": 53,
+                "duration_out": 21,
+                "density" : 78
             },
             "SMS": {
-                "total": 0,
-                "in": 0,
-                "out": 0,
-                "density" : 0
+                "total": 56,
+                "in": 16,
+                "out": 40,
+                "density" : 10
             },
             "MMS": {
-                "total": 0,
-                "in": 0,
-                "out": 0,
-                "density" : 0
+                "total": 56,
+                "in": 36,
+                "out": 20,
+                "density" : 5
             }
         },
         "phone_books": {
