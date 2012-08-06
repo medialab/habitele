@@ -105,27 +105,27 @@ function initViz() {
 
 var dataPeak;
 
-function dataDisplay(i) {
+function dataDisplay(peak) {
 
   liItem = d3.select("ul.nav-tabs")
     .append("li");
 
-  if (i == 1) {
+  if (peak == 1) {
     liItem.attr("class", "active");
   }
 
   aItem = liItem
     .append("a")
-    .attr("href", "#tab"+i)
+    .attr("href", "#tab"+peak)
     .attr("data-toggle", "tab")
-    .text("Peak "+i);
+    .text("Peak "+peak);
 
   divItem = d3.select(".tab-content")
     .append("div").
-    attr("id", "tab"+i)
-    .text("Tab"+i);
+    attr("id", "tab"+peak)
+    .text("Tab"+peak);
 
-  if (i == 1) {
+  if (peak == 1) {
     divItem.attr("class", "row tab-pane active");
   } else {
     divItem.attr("class", "row tab-pane");
@@ -136,7 +136,7 @@ function dataDisplay(i) {
   divItem.append("div").attr("class", "span4 directions");
   divItem.append("div").attr("class", "span4 table"); 
 
-  dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+i);
+  dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+peak);
   // console.log(dataPeak)
 
   dataPeakCount = 0;
@@ -168,7 +168,7 @@ function dataDisplay(i) {
 
   var line = d3.svg.line().x(function(d) { return x(d.x); }).y(function(d) { return y(d.y); });
 
-  var svg = d3.select("#tab"+i+" .timeline").append("svg")
+  var svg = d3.select("#tab"+peak+" .timeline").append("svg")
       .datum(data)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -198,7 +198,6 @@ function dataDisplay(i) {
 
   var contacts = [];
 
-  console.log("")
   for(key in dataPeak.events) {
     // console.log(dataPeak.events[key].contact)
     contacts.push(dataPeak.events[key].contact)
@@ -207,7 +206,7 @@ function dataDisplay(i) {
   contacts = eliminateDuplicates(contacts);
   // console.log(contacts)
 
-  items = d3.select("#tab"+i+" .contacts")
+  items = d3.select("#tab"+peak+" .contacts")
     .append("table")
     .attr("class", "table table-condensed table-bordered table-striped")
     .append("tbody")
@@ -222,11 +221,90 @@ function dataDisplay(i) {
   // Directions
   //
 
-  // 
-  // Tables
-  // 
+  data = dataPeak.aggregated_data;
+  // console.log(data)
 
-};
+  var directionsNames = ["total_callandsms_in", "total_callandsms_out", "total_SMS", "total_call"];
+  var directionsValues = [data.total_callandsms_in, data.total_callandsms_out, data.total_SMS, data.total_call];
+
+  var aggregatedDataJSON = []; //declare array
+
+  for (var i in directionsNames) {
+      aggregatedDataJSON.push({name: directionsNames[i], value: directionsValues[i]});
+  }
+
+  // console.log(aggregatedDataJSON)
+
+  var margin = {top: 30, right: 10, bottom: 10, left: 100},
+    width = 300 - margin.right - margin.left,
+    height = 120 - margin.top - margin.bottom;
+
+  var format = d3.format(",.0f");
+
+  var x = d3.scale.linear()
+      .range([0, width]);
+
+  var y = d3.scale.ordinal()
+      .rangeRoundBands([0, height], .1);
+
+  var xAxis = d3.svg.axis()
+      .scale(x)
+      .orient("top")
+      .tickSize(-height);
+
+  var yAxis = d3.svg.axis()
+      .scale(y)
+      .orient("left")
+      .tickSize(0);
+
+  var svg = d3.select("div#tab" + peak + " .directions").append("svg")
+      .attr("width", width + margin.right + margin.left)
+      .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  // Parse numbers, and sort by value.
+  // aggregatedDataJSON.forEach(function(d) { d.value = +d.value; });
+  // aggregatedDataJSON.sort(function(a, b) { return b.value - a.value; });
+
+  // Set the scale domain.
+  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
+  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
+
+  var bar = svg.selectAll("g.bar")
+      .data(aggregatedDataJSON)
+    .enter().append("g")
+      .attr("class", "bar")
+      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
+
+  bar.append("rect")
+      .attr("width", function(d) { return x(d.value); })
+      .attr("height", y.rangeBand());
+
+  bar.append("text")
+      .attr("class", "value")
+      .attr("x", function(d) { return x(d.value); })
+      .attr("y", y.rangeBand() / 2)
+      .attr("dx", -3)
+      .attr("dy", ".35em")
+      .attr("text-anchor", "end")
+      .text(function(d) { return format(d.value); });
+
+  svg.append("g")
+      .attr("class", "x axis")
+      .call(xAxis);
+
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+    // 
+    // Tables
+    // 
+
+    // TO DO
+
+  };
 
 
 

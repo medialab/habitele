@@ -105,7 +105,7 @@
             "peak_1": {
                 "start": "1936-01-17 11:35",
                 "stop": "1936-01-17 11:41",
-                "agregated_data":
+                "aggregated_data":
                 {
                     "total_callandsms_in": 154,
                     "total_callandsms_out": 34,
@@ -147,10 +147,10 @@
             "peak_2": {
                 "start": "1936-01-19 11:33",
                 "stop": "1936-01-19 11:35",
-                "agregated_data":
+                "aggregated_data":
                 {
-                    "total_smsandcall_in": 89,
-                    "total_smsandcall_out": 1,
+                    "total_callandsms_in": 89,
+                    "total_callandsms_out": 1,
                     "total_call":50,
                     "total_SMS":40
                 },
@@ -207,10 +207,10 @@
         }
     },
     "phone_books": {
-        "contacts": 0,
-        "mobile_phone": 0,
-        "private_phone": 0,
-        "email": 0
+        "contacts": 200,
+        "mobile_phone": 120,
+        "private_phone": 80,
+        "email": 140
     }
 }
 }
