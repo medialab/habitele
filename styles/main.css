@@ -52,10 +52,10 @@ rect {
   fill: #eeeeee;
 }
 
-path.area {
+/*path.area {
   fill: #000;
   fill-opacity: .75;
-}
+}*/
 
 .axis line, .grid line {
   stroke-width: .5px;
