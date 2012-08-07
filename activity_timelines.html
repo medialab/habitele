@@ -139,21 +139,21 @@
 <script>
 
 function initViz() {
-  visOne();
-  visTwo();
-  visThree();
-  visFour();
-  visFive();
-  visSix();
+  vizDisplay(24, "collapseOne");
+  vizDisplay(24, "collapseTwo");
+  vizDisplay(24, "collapseThree");
+  vizDisplay(24, "collapseFour");
+  vizDisplay(7, "collapseFive");
+  vizDisplay(7, "collapseSix");
 }
 
 
 
-function visOne() {
+function vizDisplay(vizRange, vizCollapse) {
 
   var actTimData = vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour;
 
-  var data = d3.range(24).map(function(i) {
+  var data = d3.range(vizRange).map(function(i) {
     return {x: i, y: actTimData[i]};
   });
 
@@ -161,7 +161,7 @@ function visOne() {
       width = 960 - margin.left - margin.right,
       height = 200 - margin.top - margin.bottom;
 
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
+  var x = d3.scale.linear().domain([0, vizRange-1]).range([0, width]);
   var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
 
   var xAxis = d3.svg.axis().scale(x).orient("bottom");
@@ -176,317 +176,7 @@ function visOne() {
       .y1(line.y())
       .y0(y(0));
 
-  var svg = d3.select("#collapseOne div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visTwo() {
-
-  var actTimData = vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour;
-
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseTwo div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visThree() {
-
-  var actTimData = vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour;
-
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseThree div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visFour() {
-
-  var actTimData = vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour;
-
-  var data = d3.range(24).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 23]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseFour div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visFive() {
-
-  var actTimData = vizData.visualizations.activity_timelines.SMS_monday_to_sunday;
-
-  var data = d3.range(7).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 6]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseFive div.accordion-inner").append("svg")
-      .datum(data)
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
-
-  svg.append("g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
-
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line);
-
-  svg.selectAll(".dot")
-      .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3);
-};
-
-
-
-function visSix() {
-
-  var actTimData = vizData.visualizations.activity_timelines.calls_monday_to_sunday;
-
-  var data = d3.range(7).map(function(i) {
-    return {x: i, y: actTimData[i]};
-  });
-
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
-
-  var x = d3.scale.linear().domain([0, 6]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
-
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
-
-  var line = d3.svg.line()
-      .x(function(d) { return x(d.x); })
-      .y(function(d) { return y(d.y); });
-
-  var area = d3.svg.area()
-      .x(line.x())
-      .y1(line.y())
-      .y0(y(0));
-
-  var svg = d3.select("#collapseSix div.accordion-inner").append("svg")
+  var svg = d3.select("#" + vizCollapse + " div.accordion-inner").append("svg")
       .datum(data)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
