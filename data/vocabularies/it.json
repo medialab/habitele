@@ -2,7 +2,7 @@
 	"data" : [
 	{
 		"class" : "lang-title",
-		"value" : "Habitele, Data Visualization"
+		"value" : "Habitele, Visualizzazione Dati"
 	},
 	{
 		"class" : "lang-home",
@@ -10,26 +10,26 @@
 	},
 	{
 		"class" : "lang-activity-timelines",
-		"value" : "Activity Timelines"
+		"value" : "Linee temporali"
 	},
 	{
 		"class" : "lang-journal-of-calls",
-		"value" : "Journal of Calls"
+		"value" : "Chiamate"
 	},
 	{
 		"class" : "lang-activities-peaks-analysis",
-		"value" : "Activities Peaks Analysis"
+		"value" : "Picchi d'Attività"
 	},
 	{
 		"class" : "lang-general-logs",
-		"value" : "General Logs"
+		"value" : "Record Generali"
 	},
 	{
 		"class" : "lang-phone-books",
-		"value" : "Phone Books"
+		"value" : "Rubrica"
 	},
 	{
 		"class" : "lang-lang",
-		"value" : "Langue"
+		"value" : "Lingua"
 	}
 ]}
