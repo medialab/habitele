@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-    <title>Habitele, Data Visualization - Activity Timelines</title>
+    <title class="lang-title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -20,22 +20,21 @@
 
 	<div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Habitele, Data Visualization</a>
+          <a class="brand" href="#"><span class="lang-title"></span></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="activity_timelines.html">Activity Timelines</a></li>
-              <li><a href="journal_of_calls.html">Journal of Calls</a></li>
-              <li class="active"><a href="#">Activities Peaks Analysis</a></li>
-              <li><a href="general_logs.html">General Logs</a></li>
-              <li><a href="phone_books.html">Phone Books</a></li>
+              <li><a href="index.html" class="lang-home"></a></li>
+              <li><a href="activity_timelines.html" class="lang-activity-timelines"></a></li>
+              <li><a href="journal_of_calls.html" class="lang-journal-of-calls"></a></li>
+              <li class="active"><a href="#" class="lang-activities-peaks-analysis"></a></li>
+              <li><a href="general_logs.html" class="lang-general-logs"></a></li>
+              <li><a href="phone_books.html" class="lang-phone-books"></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -67,6 +66,7 @@
 <script src="libraries/d3.v2.js"></script>
 <script src="libraries/loadData.js"></script>
 <script src="libraries/common.js"></script>
+<script src="libraries/vocabularies.js"></script>
 
 <script>
 
@@ -114,7 +114,68 @@ function dataDisplay(peak) {
   divItem.append("div").attr("class", "span12 timeline");
   divItem.append("div").attr("class", "span4 contacts");
   divItem.append("div").attr("class", "span4 directions");
-  divItem.append("div").attr("class", "span4 table"); 
+  table = divItem.append("div")
+    .attr("class", "span4 table")
+    .append("table")
+    .attr("class", "table table-bordered table-condensed")
+    .append("tbody");
+
+  tr = table.append("tr");
+  tr.append("td");
+  tr.append("th").attr("colspan", "4").text("FREQUENCY OF CALLS");
+
+  tr = table.append("tr");
+  tr.append("th").attr("rowspan", "4").text("FREQUENCY OF CALLS");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+
+  tr = table.append("tr");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+
+  tr = table.append("tr");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+
+  tr = table.append("tr");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+
+  table = divItem.append("div")
+    .attr("class", "span4 table")
+    .append("table")
+    .attr("class", "table table-bordered table-condensed")
+    .append("tbody");
+
+  tr = table.append("tr");
+  tr.append("th").attr("colspan", "4").text("FREQUENCY OF CALLS");
+
+  tr = table.append("tr");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+  tr.append("td").attr("width", "20").attr("height", "20");
+
+
+
+
+
+  // <tbody>
+  //             <tr>
+  //               <th></th>
+  //               <th>SMS</th>
+  //               <th>MMS</th>
+  //               <th>FREQUENCY</th>
+  //               <th>DURATION</th>
+  //             </tr>
 
   dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+peak);
   // console.log(dataPeak)
@@ -280,7 +341,9 @@ function dataDisplay(peak) {
 
     // 
     // Tables
-    // 
+    //
+
+
 
     // TO DO
 

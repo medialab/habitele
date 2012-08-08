@@ -1,0 +1,31 @@
+{ 
+	"data" : [
+	{
+		"class" : "lang-title",
+		"value" : "Habitele, Data Visualization"
+	},
+	{
+		"class" : "lang-home",
+		"value" : "Home"
+	},
+	{
+		"class" : "lang-activity-timelines",
+		"value" : "Activity Timelines"
+	},
+	{
+		"class" : "lang-journal-of-calls",
+		"value" : "Journal of Calls"
+	},
+	{
+		"class" : "lang-activities-peaks-analysis",
+		"value" : "Activities Peaks Analysis"
+	},
+	{
+		"class" : "lang-general-logs",
+		"value" : "General Logs"
+	},
+	{
+		"class" : "lang-phone-books",
+		"value" : "Phone Books"
+	}
+]}
