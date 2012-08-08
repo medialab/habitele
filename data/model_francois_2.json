@@ -124,8 +124,8 @@
                     "2":{
                         "contact": "33698587641",
                         "time": "1936-01-17 11:37",
-                        "channel": "sms",
-                        "duration": null,
+                        "channel": "call",
+                        "duration": 70,
                         "direction": "out"
                     },
                     "3":{
