@@ -29,12 +29,12 @@
           <a class="brand" href="#"><span class="lang-title"></span></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#" class="lang-home"></a></li>
-              <li><a href="activity_timelines.html" class="lang-activity-timelines"></a></li>
-              <li><a href="journal_of_calls.html" class="lang-journal-of-calls"></a></li>
-              <li><a href="activities_peaks_analysis.html" class="lang-activities-peaks-analysis"></a></li>
-              <li><a href="general_logs.html" class="lang-general-logs"></a></li>
-              <li><a href="phone_books.html" class="lang-phone-books"></a></li>
+              <li class="active"><a href="#" class="lang-home after_loaded"></a></li>
+              <li><a href="activity_timelines.html" class="lang-activity-timelines after_loaded"></a></li>
+              <li><a href="journal_of_calls.html" class="lang-journal-of-calls after_loaded"></a></li>
+              <li><a href="activities_peaks_analysis.html" class="lang-activities-peaks-analysis after_loaded"></a></li>
+              <li><a href="general_logs.html" class="lang-general-logs after_loaded"></a></li>
+              <li><a href="phone_books.html" class="lang-phone-books after_loaded"></a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   <span class="lang-lang"></span>
@@ -52,11 +52,14 @@
     </div>
 
     <div class="container">
-    	
-    	<div class="well">
-    		<div id="json_result"></div>
-    	</div>
-
+        <div class="before_loaded">
+          <h3>
+            Please open a file
+            </h3>
+          <input type="file" id="files" name="files[]" multiple />
+            <output id="list"></output>
+        </div>
+        <div class="after_loaded label label-success">Success ! You can now see the visualisations by clicking on the links at the top.</div>
     </div>
 
 

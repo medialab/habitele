@@ -1,3 +1,6 @@
+vizData = JSON.parse(localStorage["data"]);
+initViz();
+
 function initViz() {
   dataDisplay("top10_sms_in");
   dataDisplay("top10_sms_out");
@@ -15,7 +18,7 @@ function initViz() {
 
 function dataDisplay(list) {
 
-  var top10_sms_in = eval("vizData.visualizations.journal_of_calls."+list);
+  var top10_sms_in = vizData.visualizations.journal_of_calls[list];
 
   items = d3.select("#"+list)
     .append("tbody")

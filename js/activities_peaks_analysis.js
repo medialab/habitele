@@ -1,3 +1,6 @@
+vizData = JSON.parse(localStorage["data"]);
+initViz();
+
 $(window).resize(function() {
 $("ul.nav-tabs").html("");
 $("div.tab-content").html("");
@@ -18,6 +21,8 @@ for(var i in obj) {
 var dataPeak;
 
 function dataDisplay(peak) {
+
+peak = peak.toString();
 
 liItems = d3.select("ul.nav-tabs").append("li");
 
@@ -90,7 +95,7 @@ divItem.append("div").attr("class", "span4 distribution");
 // tr.append("td").attr("width", "20").attr("height", "20");
 // tr.append("td").attr("width", "20").attr("height", "20");
 
-dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_" + peak);
+dataPeak = vizData.visualizations.activities_peaks_analysis.peaks_timeline['peak_' + peak];
 
 dataPeakCount = 0;
 for (key in dataPeak.events) dataPeakCount++;

@@ -1,3 +1,6 @@
+vizData = JSON.parse(localStorage["data"]);
+initViz();
+
 $(window).resize(function() {
   initViz();
 });
@@ -80,3 +83,4 @@ function vizDisplay(vizRange, vizCollapse) {
       .attr("cy", line.y())
       .attr("r", 3);
 };
+

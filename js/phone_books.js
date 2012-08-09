@@ -1,3 +1,6 @@
+vizData = JSON.parse(localStorage["data"]);
+initViz();
+
 function initViz() {
 
   var obj = vizData.visualizations.phone_books;
