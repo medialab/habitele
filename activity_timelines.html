@@ -143,13 +143,25 @@
 <script src="libraries/jquery-1.7.2.js"></script>
 <script src="libraries/bootstrap/js/bootstrap.js"></script>
 <script src="libraries/d3.v2.js"></script>
-<script src="libraries/loadData.js"></script>
 <script src="libraries/common.js"></script>
 <script src="libraries/vocabularies.js"></script>
+<script src="libraries/loadData.js"></script>
 
 <script>
 
+
+$(window).resize(function() {
+  initViz();
+});
+
+
 function initViz() {
+  $("#collapseOne .accordion-inner").html("");
+  $("#collapseTwo .accordion-inner").html("");
+  $("#collapseThree .accordion-inner").html("");
+  $("#collapseFour .accordion-inner").html("");
+  $("#collapseFive .accordion-inner").html("");
+  $("#collapseSix .accordion-inner").html("");
   vizDisplay(24, "collapseOne");
   vizDisplay(24, "collapseTwo");
   vizDisplay(24, "collapseThree");
