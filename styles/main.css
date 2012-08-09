@@ -101,8 +101,8 @@ rect {
 }
 
 .x.axis line {
-  stroke: #fff;
-  stroke-opacity: .8;
+  /*stroke: #fff;*/
+  stroke-opacity: 0;
 }
 
 .y.axis path {

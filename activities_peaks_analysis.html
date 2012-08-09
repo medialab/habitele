@@ -52,17 +52,10 @@
     </div>
 
     <div class="container">
-      
-      <div class="tabbable"> <!-- Only required for left/right tabs -->
-
-        <ul class="nav nav-tabs">
-        </ul>
-
-        <div class="tab-content">
-        </div>
-
+      <div class="tabbable">
+        <ul class="nav nav-tabs"></ul>
+        <div class="tab-content"></div>
       </div>
-
     </div>
 
 
@@ -80,6 +73,12 @@
 
 <script>
 
+$(window).resize(function() {
+  $("ul.nav-tabs").html("");
+  $("div.tab-content").html("");
+  initViz();
+});
+
 function initViz() {
 
   var obj = vizData.visualizations.activities_peaks_analysis.peaks_timeline;
@@ -91,35 +90,25 @@ function initViz() {
   }
 }
 
-
-
 var dataPeak;
 
 function dataDisplay(peak) {
 
-  liItem = d3.select("ul.nav-tabs")
-    .append("li");
+  liItems = d3.select("ul.nav-tabs").append("li");
 
-  if (peak == 1) {
-    liItem.attr("class", "active");
-  }
+  if (peak == 1) liItems.attr("class", "active");
 
-  aItem = liItem
-    .append("a")
-    .attr("href", "#tab"+peak)
+  liItems.append("a")
+    .attr("href", "#tab" + peak)
     .attr("data-toggle", "tab")
-    .text("Peak "+peak);
+    .text("Peak " + peak);
 
-  divItem = d3.select(".tab-content")
-    .append("div").
-    attr("id", "tab"+peak)
-    .text("Tab"+peak);
+  divItem = d3.select(".tab-content").append("div")
+    .attr("id", "tab" + peak)
+    .text("Tab" + peak);
 
-  if (peak == 1) {
-    divItem.attr("class", "row tab-pane active");
-  } else {
-    divItem.attr("class", "row tab-pane");
-  }
+  tempValue = ( peak == 1 ) ? "row tab-pane active" : "row tab-pane";
+  divItem.attr("class", tempValue);
 
   divItem.append("div").attr("class", "span12 timeline");
   divItem.append("div").attr("class", "span4 contacts");
@@ -176,12 +165,10 @@ function dataDisplay(peak) {
   // tr.append("td").attr("width", "20").attr("height", "20");
   // tr.append("td").attr("width", "20").attr("height", "20");
 
-  dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_"+peak);
+  dataPeak = eval("vizData.visualizations.activities_peaks_analysis.peaks_timeline.peak_" + peak);
 
   dataPeakCount = 0;
-  for(key in dataPeak.events) {
-    dataPeakCount++;
-  }
+  for (key in dataPeak.events) dataPeakCount++;
 
   // 
   // Timeline
@@ -194,7 +181,7 @@ function dataDisplay(peak) {
   });
 
   var margin = {top: 10, right: 20, bottom: 20, left: 20},
-      width = 960 - margin.left - margin.right,
+      width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
       height = 60 - margin.top - margin.bottom;
 
   var x = d3.time.scale().domain([format.parse(dataPeak.start), format.parse(dataPeak.stop)]).range([0, width]);
@@ -206,7 +193,7 @@ function dataDisplay(peak) {
 
   var line = d3.svg.line().x(function(d) { return x(d.x); }).y(function(d) { return y(d.y); });
 
-  var svg = d3.select("#tab"+peak+" .timeline").append("svg")
+  var svg = d3.select("#tab" + peak + " .timeline").append("svg")
       .datum(data)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
@@ -235,24 +222,15 @@ function dataDisplay(peak) {
   // 
 
   var contacts = [];
-
-  for(key in dataPeak.events) {
-    // console.log(dataPeak.events[key].contact)
-    contacts.push(dataPeak.events[key].contact)
-  }
-
+  for (key in dataPeak.events) contacts.push(dataPeak.events[key].contact);
   contacts = eliminateDuplicates(contacts);
-  // console.log(contacts)
 
-  items = d3.select("#tab"+peak+" .contacts")
-    .append("table")
+  tbody = d3.select("#tab" + peak + " .contacts").append("table")
     .attr("class", "table table-condensed table-bordered table-striped")
-    .append("tbody")
+    .append("tbody");
 
-  for(var i in contacts) {
-    if(contacts.hasOwnProperty(i)) {
-      items.append("tr").append("td").text(contacts[i]);
-    }
+  for (var i in contacts) {
+    if (contacts.hasOwnProperty(i)) tbody.append("tr").append("td").text(contacts[i]);
   }
 
   // 
@@ -260,21 +238,17 @@ function dataDisplay(peak) {
   //
 
   data = dataPeak.aggregated_data;
-  // console.log(data)
 
   var directionsNames = ["total_callandsms_in", "total_callandsms_out", "total_SMS", "total_call"];
   var directionsValues = [data.total_callandsms_in, data.total_callandsms_out, data.total_SMS, data.total_call];
 
-  var aggregatedDataJSON = []; //declare array
+  var aggregatedDataJSON = [];
+  for (var i in directionsNames) aggregatedDataJSON.push({name: directionsNames[i], value: directionsValues[i]});
 
-  for (var i in directionsNames) {
-      aggregatedDataJSON.push({name: directionsNames[i], value: directionsValues[i]});
-  }
-
-  // console.log(aggregatedDataJSON)
+  // 
 
   var margin = {top: 30, right: 10, bottom: 10, left: 100},
-    width = 300 - margin.right - margin.left,
+    width = $("div#tab" + peak + " .directions").width() - margin.right - margin.left,
     height = 120 - margin.top - margin.bottom;
 
   var format = d3.format(",.0f");
@@ -305,7 +279,6 @@ function dataDisplay(peak) {
   // aggregatedDataJSON.forEach(function(d) { d.value = +d.value; });
   // aggregatedDataJSON.sort(function(a, b) { return b.value - a.value; });
 
-  // Set the scale domain.
   x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
   y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
 
