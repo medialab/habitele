@@ -65,9 +65,7 @@
             </a>
           </div>
           <div id="collapseOne" class="accordion-body in collapse" style="height: auto; ">
-            <div class="accordion-inner">
-              
-            </div>
+            <div class="accordion-inner"></div>
           </div>
         </div>
         <div class="accordion-group">
@@ -77,9 +75,7 @@
             </a>
           </div>
           <div id="collapseTwo" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
+            <div class="accordion-inner"></div>
           </div>
         </div>
         <div class="accordion-group">
@@ -89,9 +85,7 @@
             </a>
           </div>
           <div id="collapseThree" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
+            <div class="accordion-inner"></div>
           </div>
         </div>
         <div class="accordion-group">
@@ -101,9 +95,7 @@
             </a>
           </div>
           <div id="collapseFour" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
+            <div class="accordion-inner"></div>
           </div>
         </div>
         <div class="accordion-group">
@@ -113,9 +105,7 @@
             </a>
           </div>
           <div id="collapseFive" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
+            <div class="accordion-inner"></div>
           </div>
         </div>
         <div class="accordion-group">
@@ -125,9 +115,7 @@
             </a>
           </div>
           <div id="collapseSix" class="accordion-body collapse" style="height: 0px; ">
-            <div class="accordion-inner">
-              
-            </div>
+            <div class="accordion-inner"></div>
           </div>
         </div>
       </div>
@@ -172,6 +160,7 @@ function initViz() {
 
 
 
+
 function vizDisplay(vizRange, vizCollapse) {
 
   var actTimData = vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour;
@@ -181,7 +170,7 @@ function vizDisplay(vizRange, vizCollapse) {
   });
 
   var margin = {top: 10, right: 10, bottom: 20, left: 40},
-      width = 960 - margin.left - margin.right,
+      width = $("#collapseOne .accordion-inner").width() - margin.left - margin.right,
       height = 200 - margin.top - margin.bottom;
 
   var x = d3.scale.linear().domain([0, vizRange-1]).range([0, width]);
@@ -231,6 +220,8 @@ function vizDisplay(vizRange, vizCollapse) {
       .attr("cy", line.y())
       .attr("r", 3);
 };
+
+
 
 
 
