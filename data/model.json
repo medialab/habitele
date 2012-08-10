@@ -211,6 +211,21 @@
         "mobile_phone": 120,
         "private_phone": 80,
         "email": 140
+    },
+    "basic_figures": {
+        "log_sms_size": 200,
+        "log_calls_size": 120,
+        "ratio_inout_global": 80,
+        "ration_inout_calls": 140,
+        "ratio_inout_sms" : 10
+    },
+    "phone_books_data": {
+        "number_of_contacts": 10,
+        "avg_number_of_fileds_used": 3,
+        "groups": 2,
+        "favorites": 10,
+        "rings": 4,
+        "fileds_available": ["mobile", "fax", "pager", "email", "www", "note", "birthday", "first_name", "last_name", "name_prefix", "name_suffix", "nickname", "company", "job_title_used", "extended_address", "address_street", "address_postal_code", "address_city", "address_region", "address_country", "picture", "last_modified_date", "storage", "md5_hash"]
     }
 }
 }
