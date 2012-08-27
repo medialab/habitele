@@ -1,7 +1,10 @@
 body {
-	padding-top: 60px;
-	padding-bottom: 40px;
-	/*font: 10px sans-serif;*/
+  padding-top: 60px;
+}
+@media (max-width: 979px) {
+  body {
+    padding-top: 0px;
+  }
 }
 
 /* Activity timelines */
@@ -11,6 +14,8 @@ body {
   stroke: #000;
   shape-rendering: crispEdges;
 }*/
+
+
 
 .area {
   fill: lightsteelblue;
