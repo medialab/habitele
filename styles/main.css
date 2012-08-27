@@ -7,15 +7,19 @@ body {
   }
 }
 
+.axis path,
+.axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    /*font-family: sans-serif;
+    font-size: 11px;*/
+}
+
 /* Activity timelines */
-
-/*.axis path, .axis line {
-  fill: none;
-  stroke: #000;
-  shape-rendering: crispEdges;
-}*/
-
-
 
 .area {
   fill: lightsteelblue;
@@ -35,7 +39,7 @@ body {
 
 /* Journal of calls */
 
-.table th {
+/*.table th {
   text-align: center;
   vertical-align: middle;
 }
@@ -45,26 +49,12 @@ body {
   -moz-transform: rotate(-90deg);
   width: 14px;
   padding-top: 5px;
-}
+}*/
 
 /* Activities peaks analysis */
 
-svg {
-  font-size: 10px;
-}
-
-rect {
+/*rect {
   fill: #eeeeee;
-}
-
-/*path.area {
-  fill: #000;
-  fill-opacity: .75;
-}*/
-
-.axis line, .grid line {
-  stroke-width: 1px;
-  shape-rendering: crispEdges;
 }
 
 .grid line {
@@ -79,37 +69,16 @@ rect {
   display: none;
 }
 
-.axis line {
-  stroke: #000;
-}
-
 .grid path, .axis path {
   display: none;
-}
+}*/
 
 /* Directions */
 
-.bar rect {
+/*.bar rect {
   fill: steelblue;
 }
 
 .bar text.value {
   fill: white;
-}
-
-.axis {
-  shape-rendering: crispEdges;
-}
-
-.axis path {
-  fill: none;
-}
-
-.x.axis line {
-  /*stroke: #fff;*/
-  stroke-opacity: 0;
-}
-
-.y.axis path {
-  stroke: black;
-}
+}*/
