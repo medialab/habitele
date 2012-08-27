@@ -7,26 +7,43 @@ $(window).resize(function() {
 
 
 function initViz() {
+  
+  // Reset
+  
   $("#collapseOne .accordion-inner").html("");
   $("#collapseTwo .accordion-inner").html("");
   $("#collapseThree .accordion-inner").html("");
   $("#collapseFour .accordion-inner").html("");
   $("#collapseFive .accordion-inner").html("");
   $("#collapseSix .accordion-inner").html("");
-  vizDisplay(24, "collapseOne");
-  vizDisplay(24, "collapseTwo");
-  vizDisplay(24, "collapseThree");
-  vizDisplay(24, "collapseFour");
-  vizDisplay(7, "collapseFive");
-  vizDisplay(7, "collapseSix");
+
+  // Computing max for y axis
+
+  max1 = d3.max(vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour);
+  max2 = d3.max(vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour);
+  max3 = d3.max(vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour);
+  max4 = d3.max(vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour);
+  max5 = d3.max(vizData.visualizations.activity_timelines.SMS_monday_to_sunday);
+  max6 = d3.max(vizData.visualizations.activity_timelines.calls_monday_to_sunday);
+
+  max = d3.max([max1, max2, max3, max4, max5, max6]);
+
+  // Display
+  
+  vizDisplay(24, max, "collapseOne", "SMS_working_typical_day_by_24hour");
+  vizDisplay(24, max, "collapseTwo", "calls_working_typical_day_by_24hour");
+  vizDisplay(24, max, "collapseThree", "SMS_weekend_typical_day_by_24hour");
+  vizDisplay(24, max, "collapseFour", "calls_weekend_typical_day_by_24hour");
+  vizDisplay(7, max, "collapseFive", "SMS_monday_to_sunday");
+  vizDisplay(7, max, "collapseSix", "calls_monday_to_sunday");
 }
 
 
 
 
-function vizDisplay(vizRange, vizCollapse) {
+function vizDisplay(vizRange, vizMax, vizCollapse, dataStructure) {
 
-  var actTimData = vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour;
+  var actTimData = vizData.visualizations.activity_timelines[dataStructure];
 
   var data = d3.range(vizRange).map(function(i) {
     return {x: i, y: actTimData[i]};
@@ -37,7 +54,7 @@ function vizDisplay(vizRange, vizCollapse) {
       height = 200 - margin.top - margin.bottom;
 
   var x = d3.scale.linear().domain([0, vizRange-1]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 20]).range([height, 0]);
+  var y = d3.scale.linear().domain([0, vizMax]).range([height, 0]);
 
   var xAxis = d3.svg.axis().scale(x).orient("bottom");
   var yAxis = d3.svg.axis().scale(y).orient("left");
@@ -58,9 +75,6 @@ function vizDisplay(vizRange, vizCollapse) {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  svg.append("path")
-      .attr("class", "area")
-      .attr("d", area);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -71,9 +85,15 @@ function vizDisplay(vizRange, vizCollapse) {
       .attr("class", "y axis")
       .call(yAxis);
 
+
+  svg.append("path")
+      .attr("class", "area")
+      .attr("d", area);
+
   svg.append("path")
       .attr("class", "line")
       .attr("d", line);
+  
 
   svg.selectAll(".dot")
       .data(data.filter(function(d) { return d.y; }))

@@ -6,11 +6,11 @@ body {
 
 /* Activity timelines */
 
-.axis path, .axis line {
+/*.axis path, .axis line {
   fill: none;
   stroke: #000;
   shape-rendering: crispEdges;
-}
+}*/
 
 .area {
   fill: lightsteelblue;
@@ -58,7 +58,7 @@ rect {
 }*/
 
 .axis line, .grid line {
-  stroke-width: .5px;
+  stroke-width: 1px;
   shape-rendering: crispEdges;
 }
 
