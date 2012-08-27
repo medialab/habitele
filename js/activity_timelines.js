@@ -26,16 +26,17 @@ function initViz() {
   max5 = d3.max(vizData.visualizations.activity_timelines.SMS_monday_to_sunday);
   max6 = d3.max(vizData.visualizations.activity_timelines.calls_monday_to_sunday);
 
-  max = d3.max([max1, max2, max3, max4, max5, max6]);
+  maxForHour = d3.max([max1, max2, max3, max4]);
+  maxForDay = d3.max([max5, max6]);
 
   // Display
   
-  vizDisplay(24, max, "collapseOne", "SMS_working_typical_day_by_24hour");
-  vizDisplay(24, max, "collapseTwo", "calls_working_typical_day_by_24hour");
-  vizDisplay(24, max, "collapseThree", "SMS_weekend_typical_day_by_24hour");
-  vizDisplay(24, max, "collapseFour", "calls_weekend_typical_day_by_24hour");
-  vizDisplay(7, max, "collapseFive", "SMS_monday_to_sunday");
-  vizDisplay(7, max, "collapseSix", "calls_monday_to_sunday");
+  vizDisplay(24, maxForHour, "collapseOne", "SMS_working_typical_day_by_24hour");
+  vizDisplay(24, maxForHour, "collapseTwo", "calls_working_typical_day_by_24hour");
+  vizDisplay(24, maxForHour, "collapseThree", "SMS_weekend_typical_day_by_24hour");
+  vizDisplay(24, maxForHour, "collapseFour", "calls_weekend_typical_day_by_24hour");
+  vizDisplay(7, maxForDay, "collapseFive", "SMS_monday_to_sunday");
+  vizDisplay(7, maxForDay, "collapseSix", "calls_monday_to_sunday");
 }
 
 
