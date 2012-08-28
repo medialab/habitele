@@ -45,56 +45,6 @@ divItem.append("div").attr("class", "span4 contacts");
 divItem.append("div").attr("class", "span4 directions");
 divItem.append("div").attr("class", "span4 distribution");
 
-// table = divItem.append("div")
-//   .attr("class", "span4 table")
-//   .append("table")
-//   .attr("class", "table table-bordered table-condensed")
-//   .append("tbody");
-
-// tr = table.append("tr");
-// tr.append("td");
-// tr.append("th").attr("colspan", "4").text("FREQUENCY OF CALLS");
-
-// tr = table.append("tr");
-// tr.append("th").attr("rowspan", "4").text("FREQUENCY OF CALLS");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-
-// tr = table.append("tr");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-
-// tr = table.append("tr");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-
-// tr = table.append("tr");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-
-// table = divItem.append("div")
-//   .attr("class", "span4 table")
-//   .append("table")
-//   .attr("class", "table table-bordered table-condensed")
-//   .append("tbody");
-
-// tr = table.append("tr");
-// tr.append("th").attr("colspan", "4").text("FREQUENCY OF CALLS");
-
-// tr = table.append("tr");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-// tr.append("td").attr("width", "20").attr("height", "20");
-
 dataPeak = vizData.visualizations.activities_peaks_analysis.peaks_timeline['peak_' + peak];
 
 dataPeakCount = 0;
@@ -104,7 +54,7 @@ for (key in dataPeak.events) dataPeakCount++;
 // Timeline
 //
 
-var format = d3.time.format("%Y-%m-%d %H:%M");
+var format = d3.time.format("%Y-%m-%d %H:%M:%S");
 
 var data = d3.range(dataPeakCount).map(function(d) {
   return {x: format.parse(dataPeak.events[d+1].time), y: 1};
@@ -238,98 +188,5 @@ svg.append("g")
 svg.append("g")
     .attr("class", "y axis")
     .call(yAxis);
-
-  // 
-  // Tables
-  //
-
-  console.log(" ")
-  console.log('peak #' + peak)
-  console.log("-------")
-
-  var calls = [];
-  var durations = [];
-  var durationsAverage = [];
-  var sms = [];
-
-  for(i in contacts) {
-    if(contacts.hasOwnProperty(i)) {
-      calls.push(0);
-      durations.push(0);
-      sms.push(0);
-    }
-  }
-
-  for(key in dataPeak.events) {
-      for( i in contacts ) {
-        if( contacts[i] == dataPeak.events[key].contact ) {
-          if ( dataPeak.events[key].channel == "call" ) {
-            calls[i]++;
-            durations[i] += dataPeak.events[key].duration;
-            durationsAverage[i] = durations[i] / calls[i];
-          } else if ( dataPeak.events[key].channel == "sms" ) {
-            sms[i]++;
-          }
-        }
-      }
-  }
-
-  // averageDuration = totalDuration/totalCalls;
-
-
-
-  console.log("contacts-------- " + contacts)
-  console.log("calls----------- " + calls)
-  console.log("duration-------- " + durations)
-  console.log("durationAverage- " + durationsAverage)
-  console.log("sms------------- " + sms)
-  
-
-
-//   dataPeakCount = 0;
-// for(key in dataPeak.events) {
-//   dataPeakCount++;
-// }
-
-// var data = d3.range(dataPeakCount).map(function(d) {
-//   return {x: format.parse(dataPeak.events[d+1].time), y: 1};
-// });
-
-
-
-
-  // var random = d3.random.normal(.5, .12),
-  //     data = d3.range(4000).map(function() { return [random(), random()]; });
-
-  // var margin = {top: 10, right: 10, bottom: 20, left: 40},
-  //     width = 400 - margin.right - margin.left,
-  //     height = 200 - margin.top - margin.bottom;
-
-  // var x = d3.scale.linear()
-  //     .range([0, width]);
-
-  // var y = d3.scale.linear()
-  //     .range([height, 0]);
-
-  // var svg = d3.select("#tab" + peak + " .distribution").append("svg")
-  //     .attr("width", width + margin.right + margin.left)
-  //     .attr("height", height + margin.top + margin.bottom)
-  //   .append("g")
-  //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  // svg.append("g")
-  //     .attr("class", "x axis")
-  //     .attr("transform", "translate(0," + height + ")")
-  //     .call(d3.svg.axis().scale(x).orient("bottom"));
-
-  // svg.append("g")
-  //     .attr("class", "y axis")
-  //     .call(d3.svg.axis().scale(y).orient("left"));
-
-  // var circle = svg.append("g").selectAll("circle")
-  //     .data(data)
-  //   .enter().append("circle")
-  //     .attr("transform", function(d) { return "translate(" + x(d[0]) + "," + y(d[1]) + ")"; })
-  //     .attr("r", 0.5);
 
 };
