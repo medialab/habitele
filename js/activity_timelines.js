@@ -53,7 +53,7 @@ function vizDisplay(vizRange, vizMax, vizCollapse, dataStructure, vizScale) {
     return {x: i, y: actTimData[i]};
   });
 
-  var margin = {top: 10, right: 10, bottom: 20, left: 40},
+  var margin = {top: 10, right: 30, bottom: 30, left: 40},
       width = $("#collapseOne .accordion-inner").width() - margin.left - margin.right,
       height = 200 - margin.top - margin.bottom;
 
