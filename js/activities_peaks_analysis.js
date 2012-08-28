@@ -67,8 +67,12 @@ var margin = {top: 10, right: 20, bottom: 20, left: 20},
     width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
     height = 60 - margin.top - margin.bottom;
 
+// var x = d3.time.scale()
+//   .domain([format.parse(dataPeak.start.substr(0, 19)), format.parse(dataPeak.stop.substr(0, 19))])
+//   .range([0, width]);
+
 var x = d3.time.scale()
-  .domain([format.parse(dataPeak.start.substr(0, 19)), format.parse(dataPeak.stop.substr(0, 19))])
+  .domain([d3.min(data, function(d) { return d.x; }), d3.max(data, function(d) { return d.x; })])
   .range([0, width]);
 
 var y = d3.scale.linear().domain([0, 1]).range([height, 0]);
