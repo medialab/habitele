@@ -57,14 +57,19 @@ for (key in dataPeak.events) dataPeakCount++;
 var format = d3.time.format("%Y-%m-%d %H:%M:%S");
 
 var data = d3.range(dataPeakCount).map(function(d) {
-  return {x: format.parse(dataPeak.events[d+1].time), y: 1};
+  console.log(dataPeak.events[d+1].time.substr(0, 19))
+  console.log(format.parse(dataPeak.events[d+1].time.substr(0, 19)))
+
+  return {x: format.parse(dataPeak.events[d+1].time.substr(0, 19)), y: 1};
 });
 
 var margin = {top: 10, right: 20, bottom: 20, left: 20},
     width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
     height = 60 - margin.top - margin.bottom;
 
-var x = d3.time.scale().domain([format.parse(dataPeak.start), format.parse(dataPeak.stop)]).range([0, width]);
+var x = d3.time.scale()
+  .domain([format.parse(dataPeak.start.substr(0, 19)), format.parse(dataPeak.stop.substr(0, 19))])
+  .range([0, width]);
 
 var y = d3.scale.linear().domain([0, 1]).range([height, 0]);
 
@@ -95,7 +100,7 @@ svg.selectAll(".dot")
     .attr("class", "dot")
     .attr("cx", line.x())
     .attr("cy", line.y())
-    .attr("r", 3);
+    .attr("r", 1);
 
 // 
 // Contacts
