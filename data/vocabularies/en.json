@@ -6,27 +6,27 @@
 	},
 	{
 		"class" : "lang-home",
-		"value" : "Home"
+		"value" : "Load json file"
 	},
 	{
 		"class" : "lang-activity-timelines",
-		"value" : "Timelines"
+		"value" : "2. Timeline"
 	},
 	{
 		"class" : "lang-journal-of-calls",
-		"value" : "Journal of Calls"
+		"value" : "3. Calls and SMS"
 	},
 	{
 		"class" : "lang-activities-peaks-analysis",
-		"value" : "Peaks Analysis"
+		"value" : "4. Peaks Analysis"
 	},
 	{
 		"class" : "lang-general-logs",
-		"value" : "General Logs"
+		"value" : "1. General Logs"
 	},
 	{
 		"class" : "lang-phone-books",
-		"value" : "Phone Books"
+		"value" : "5. Phone Books"
 	},
 	{
 		"class" : "lang-lang",
