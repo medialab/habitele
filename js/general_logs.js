@@ -13,6 +13,8 @@ function initViz() {
 
 function dataDisplay(data) {
 
+  // List data
+
   items = d3.select("div#container")
     .append("table")
     .attr("class", "table table-condensed table-bordered table-striped")
@@ -26,50 +28,36 @@ function dataDisplay(data) {
   tr.append("td").text("communication_smsandcall_density");
   tr.append("td").text(data.communication_smsandcall_density);
     
-  
+  // Bar Chart 0
 
-
-
-  // "total_phone_book_entries": 724,
-  // "communication_smsandcall_density": 6,
+  var names, values, aggregatedDataJSON = [];
+  names = ["total", "in", "out"];
+  values = [data.calls.total, data.calls.in, data.calls.out];
+  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
+  displayTable(aggregatedDataJSON);
 
   // Bar Chart 1
 
   var names, values, aggregatedDataJSON = [];
-  
-  names = ["total", "in", "out", "duration_total", "duration_in", "duration_out"];
-  values = [data.calls.total, data.calls.in, data.calls.out, data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
-
-  for (i in names) {
-      aggregatedDataJSON.push({name: names[i], value: values[i]});
-  }
-
+  names = ["duration_total", "duration_in", "duration_out"];
+  values = [data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
+  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
   displayTable(aggregatedDataJSON);
 
   // Bar Chart 2
 
   var names, values, aggregatedDataJSON = [];
-  
   names = ["total", "in", "out"];
   values = [data.SMS.total, data.SMS.in, data.SMS.out];
-
-  for (i in names) {
-      aggregatedDataJSON.push({name: names[i], value: values[i]});
-  }
-
+  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
   displayTable(aggregatedDataJSON);
 
   // Bar Chart 3
 
   var names, values, aggregatedDataJSON = [];
-  
   names = ["total", "in", "out"];
   values = [data.MMS.total, data.MMS.in, data.MMS.out];
-
-  for (i in names) {
-      aggregatedDataJSON.push({name: names[i], value: values[i]});
-  }
-
+  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
   displayTable(aggregatedDataJSON);
 
 };
