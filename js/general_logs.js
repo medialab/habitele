@@ -22,18 +22,7 @@ function dataDisplay(data) {
 
   // List data
 
-  items = d3.select("div#loggraph_1")
-    .append("table")
-    .attr("class", "table table-condensed table-bordered table-striped")
-    .append("tbody")
-
-  tr = items.append("tr");
-  tr.append("td").text("total_phone_book_entries");
-  tr.append("td").text(data.total_phone_book_entries);
-
-  tr = items.append("tr");
-  tr.append("td").text("communication_smsandcall_density");
-  tr.append("td").text(data.communication_smsandcall_density);
+  $('#total_phone_book_entries').text(data.total_phone_book_entries);
     
   // Bar Chart 0
 
