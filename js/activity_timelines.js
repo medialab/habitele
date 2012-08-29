@@ -6,64 +6,56 @@ $(window).resize(function() {
 });
 
 
+
 function initViz() {
   
-  // Reset
+  // Reset & scales
   
-  $("#collapseOne .accordion-inner").html("");
-  $("#collapseTwo .accordion-inner").html("");
-  $("#collapseThree .accordion-inner").html("");
-  $("#collapseFour .accordion-inner").html("");
-  $("#collapseFive .accordion-inner").html("");
-  $("#collapseSix .accordion-inner").html("");
-
-  // Computing max for y axis
-
-  max1 = d3.max(vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour);
-  max2 = d3.max(vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour);
-  max3 = d3.max(vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour);
-  max4 = d3.max(vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour);
-  max5 = d3.max(vizData.visualizations.activity_timelines.SMS_monday_to_sunday);
-  max6 = d3.max(vizData.visualizations.activity_timelines.calls_monday_to_sunday);
-
-  maxForHour = d3.max([max1, max2, max3, max4]);
-  maxForDay = d3.max([max5, max6]);
-
+  $('[id^="graph_"]').html("");
   weekScale = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   dayScale = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" ];
 
+  // Computing max for y axis
+
+  max1 = d3.max(vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour);
+  max2 = d3.max(vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour);
+  max3 = d3.max(vizData.visualizations.activity_timelines.calls_monday_to_sunday);
+  max4 = d3.max(vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour);
+  max5 = d3.max(vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour);
+  max6 = d3.max(vizData.visualizations.activity_timelines.SMS_monday_to_sunday);
+
   // Display
   
-  vizDisplay(24, maxForHour, "collapseOne", "SMS_working_typical_day_by_24hour", dayScale);
-  vizDisplay(24, maxForHour, "collapseTwo", "calls_working_typical_day_by_24hour", dayScale);
-  vizDisplay(24, maxForHour, "collapseThree", "SMS_weekend_typical_day_by_24hour", dayScale);
-  vizDisplay(24, maxForHour, "collapseFour", "calls_weekend_typical_day_by_24hour", dayScale);
-  vizDisplay(7, maxForDay, "collapseFive", "SMS_monday_to_sunday", weekScale);
-  vizDisplay(7, maxForDay, "collapseSix", "calls_monday_to_sunday", weekScale);
+  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale);
+  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale);
+  vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale);
+  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale);
+  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale);
+  vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale);
+  
 }
 
 
 
-
-function vizDisplay(vizRange, vizMax, vizCollapse, dataStructure, vizScale) {
+function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale) {
 
   var actTimData = vizData.visualizations.activity_timelines[dataStructure];
 
-  var data = d3.range(vizRange).map(function(i) {
+  var data = d3.range(vizScale.length).map(function(i) {
     return {x: i, y: actTimData[i]};
   });
 
   var margin = {top: 10, right: 30, bottom: 30, left: 40},
       width = $("#collapseOne .accordion-inner").width() - margin.left - margin.right,
-      height = 200 - margin.top - margin.bottom;
+      height = 140 - margin.top - margin.bottom;
 
-  var x = d3.scale.linear().domain([0, vizRange-1]).range([0, width]);
+  var x = d3.scale.linear().domain([0, vizScale.length-1]).range([0, width]);
   var y = d3.scale.linear().domain([0, vizMax]).range([height, 0]);
 
   var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
-    .ticks(vizRange)
+    .ticks(vizScale.length)
     .tickFormat(function(d) { return vizScale[d]; });
   var yAxis = d3.svg.axis()
     .scale(y)
@@ -79,9 +71,10 @@ function vizDisplay(vizRange, vizMax, vizCollapse, dataStructure, vizScale) {
       .y1(line.y())
       .y0(y(0));
 
+
   // Svg
 
-  var svg = d3.select("#" + vizCollapse + " div.accordion-inner").append("svg")
+  var svg = d3.select("#" + vizCollapse).append("svg")
       .datum(data)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
