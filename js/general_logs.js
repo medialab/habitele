@@ -37,8 +37,8 @@ function dataDisplay(data) {
 
   var names, values, aggregatedDataJSON = [];
   
-  names = ["total", "in", "out", "duration_total", "duration_in", "duration_out", "density"];
-  values = [data.calls.total, data.calls.in, data.calls.out, data.calls.duration_total, data.calls.duration_in, data.calls.duration_out, data.calls.density];
+  names = ["total", "in", "out", "duration_total", "duration_in", "duration_out"];
+  values = [data.calls.total, data.calls.in, data.calls.out, data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
 
   for (i in names) {
       aggregatedDataJSON.push({name: names[i], value: values[i]});
@@ -50,8 +50,8 @@ function dataDisplay(data) {
 
   var names, values, aggregatedDataJSON = [];
   
-  names = ["total", "in", "out", "density"];
-  values = [data.SMS.total, data.SMS.in, data.SMS.out, data.SMS.density];
+  names = ["total", "in", "out"];
+  values = [data.SMS.total, data.SMS.in, data.SMS.out];
 
   for (i in names) {
       aggregatedDataJSON.push({name: names[i], value: values[i]});
@@ -63,8 +63,8 @@ function dataDisplay(data) {
 
   var names, values, aggregatedDataJSON = [];
   
-  names = ["total", "in", "out", "density"];
-  values = [data.MMS.total, data.MMS.in, data.MMS.out, data.MMS.density];
+  names = ["total", "in", "out"];
+  values = [data.MMS.total, data.MMS.in, data.MMS.out];
 
   for (i in names) {
       aggregatedDataJSON.push({name: names[i], value: values[i]});
