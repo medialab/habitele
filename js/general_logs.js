@@ -55,17 +55,9 @@ function dataDisplay(data) {
 
   var names, values, aggregatedDataJSON = [];
   names = ["total", "in", "out"];
-  values = [data.SMS.total, data.SMS.in, data.SMS.out];
+  values = [data.SMS.total + data.MMS.total, data.SMS.in + data.MMS.in, data.SMS.out + data.MMS.out];
   for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
   displayTable(aggregatedDataJSON, "loggraph_4");
-
-  // Bar Chart 3
-
-  var names, values, aggregatedDataJSON = [];
-  names = ["total", "in", "out"];
-  values = [data.MMS.total, data.MMS.in, data.MMS.out];
-  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_5");
 
 };
 
