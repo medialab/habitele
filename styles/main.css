@@ -15,12 +15,13 @@ body img {
   width: 60px;
 }
 
-/* Common */
+/* Axis */
 
 .axis path,
 .axis line {
     fill: none;
     stroke: black;
+    stroke-width: 1;
     shape-rendering: crispEdges;
 }
 
@@ -28,6 +29,8 @@ body img {
     /*font-family: sans-serif;
     font-size: 11px;*/
 }
+
+/* Graph */
 
 .area {
   fill: lightsteelblue;
@@ -43,6 +46,28 @@ body img {
   fill: white;
   stroke: steelblue;
   stroke-width: 1.5px;
+}
+
+/* Bars */
+
+.bar rect {
+  fill: steelblue;
+}
+
+.bar text.value {
+  fill: white;
+}
+
+.x.bar.axis text {
+  fill: none;
+}
+
+.x.bar.axis line {
+  stroke: none;
+}
+
+.x.bar.axis path, .y.bar.axis path {
+  stroke: none;
 }
 
 /* Timelines */
@@ -94,12 +119,4 @@ div[id^="graph_"] {
   display: none;
 }*/
 
-/* Directions */
 
-/*.bar rect {
-  fill: steelblue;
-}
-
-.bar text.value {
-  fill: white;
-}*/
