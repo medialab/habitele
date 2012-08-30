@@ -133,6 +133,8 @@ function initViz() {
         else if (d == 25) $(this).attr("max", maxNumbers[1]);
         else if (d == 50) $(this).attr("max", maxNumbers[2]);
         else if (d == 75) $(this).attr("max", maxNumbers[3]);
+      } else {
+        $(this).prev().html('&nbsp;');
       }
 
       // Second 10
@@ -159,6 +161,8 @@ function initViz() {
         if (d == 25) $(this).attr("max", maxNumbers[5]);
         if (d == 50) $(this).attr("max", maxNumbers[6]);
         if (d == 75) $(this).attr("max", maxNumbers[7]);
+      } else {
+        $(this).prev().html('&nbsp;');
       }
     }
 
@@ -204,6 +208,8 @@ function initViz() {
           "number": data[n].number,
         });
         if (d == 00) $(this).attr("max", maxNumbers[8]);
+      } else {
+        $(this).prev().html('&nbsp;');
       }
 
       // Second 10
@@ -221,6 +227,8 @@ function initViz() {
           "number": data[n-10].number
         });
         if (d == 00) $(this).attr("max", maxNumbers[9]);
+      } else {
+        $(this).prev().html('&nbsp;');
       }
     }
 
