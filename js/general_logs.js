@@ -9,7 +9,6 @@ $(window).resize(function() {
 
 function initViz() {
 
-  // $("div#container").html("");
   $('[id^="loggraph_"]').html("");
 
   dataDisplay(vizData.visualizations.general_logs);
@@ -30,7 +29,7 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.calls.total, data.calls.in, data.calls.out];
   for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_3");
+  displayTable(aggregatedDataJSON, "loggraph_1");
 
   // Bar Chart 1
 
@@ -46,11 +45,13 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.SMS.total + data.MMS.total, data.SMS.in + data.MMS.in, data.SMS.out + data.MMS.out];
   for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_4");
+  displayTable(aggregatedDataJSON, "loggraph_3");
 
 };
 
 function displayTable(aggregatedDataJSON, vizGraph) {
+
+  // Data
 
   var margin = {top: 10, right: 10, bottom: 10, left: 100},
     width = $("div.span8").width() - margin.right - margin.left,
@@ -58,35 +59,22 @@ function displayTable(aggregatedDataJSON, vizGraph) {
 
   var format = d3.format(",.0f");
 
-  var x = d3.scale.linear()
-      .range([0, width]);
+  var x = d3.scale.linear().range([0, width]);
+  var y = d3.scale.ordinal().rangeRoundBands([0, height], .1);
 
-  var y = d3.scale.ordinal()
-      .rangeRoundBands([0, height], .1);
+  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
+  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
 
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("top")
-      .tickSize(-height);
+  var xAxis = d3.svg.axis().scale(x).orient("top").tickSize(-height);
+  var yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
 
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .tickSize(0);
+  // Graphics
 
   var svg = d3.select("div#" + vizGraph).append("svg")
       .attr("width", width + margin.right + margin.left)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  // Parse numbers, and sort by value.
-  // aggregatedDataJSON.forEach(function(d) { d.value = +d.value; });
-  // aggregatedDataJSON.sort(function(a, b) { return b.value - a.value; });
-
-  // Set the scale domain.
-  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
-  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
 
   var bar = svg.selectAll("g.bar")
       .data(aggregatedDataJSON)
