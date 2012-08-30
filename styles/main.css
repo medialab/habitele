@@ -90,6 +90,10 @@ div[id^="graph_"] {
   vertical-align: middle;
 }
 
+.table div {
+  /*white-space: nowrap;*/
+}
+
 .rotated {
   -webkit-transform: rotate(-90deg); 
   -moz-transform: rotate(-90deg);

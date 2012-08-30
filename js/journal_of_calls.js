@@ -1,7 +1,15 @@
 vizData = JSON.parse(localStorage["data"]);
 initViz();
 
+$(window).resize(function() {
+  tdBehavior();
+});
+
 $(function() {
+  tdBehavior();  
+});
+
+function tdBehavior() {
 
   // Function to resize bars
 
@@ -10,16 +18,17 @@ $(function() {
     barChart = $($(this).children(0)[0]);
 
     barChart.css({
-      "background-color": "#bbb",
+      "background-color": "steelblue",
       "position": "absolute",
-      "height": "20px",
-      "width": $(this).width() * $(this).attr('number') / $(this).attr('max'),
+      "height": $(this).height() + 8,
+      "margin": "-4px 0 0 -5px",
+      "opacity": ".2",
+      "width": ($(this).width() + 10) * $(this).attr('number') / $(this).attr('max'),
       "z-index": "-1"
     });
 
   });
-
-});
+}
 
 function initViz() {
 
