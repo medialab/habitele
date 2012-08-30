@@ -53,7 +53,7 @@ function dataDisplay(data) {
 function displayTable(aggregatedDataJSON, vizGraph) {
 
   var margin = {top: 10, right: 10, bottom: 10, left: 100},
-    width = $("div#container").width() - margin.right - margin.left,
+    width = $("div.span8").width() - margin.right - margin.left,
     height = 120 - margin.top - margin.bottom;
 
   var format = d3.format(",.0f");
