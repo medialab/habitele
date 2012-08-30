@@ -54,14 +54,22 @@ body img {
 
 /* Timelines */
 
-div.graph_title {
+div[class^="graph_title_"] {
   position: absolute;
   margin-top: 20px;
   right: 30px;
 }
 
+div.graph_title_1, div.graph_title_4 {
+  margin-top: 0px;
+}
+
 div[id^="graph_"] {
   margin-top: 40px;
+}
+
+div#graph_1, div#graph_4 {
+margin-top: 20px;
 }
 
 

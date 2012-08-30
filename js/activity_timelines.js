@@ -57,6 +57,7 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, a
     .orient("bottom")
     .ticks(vizScale.length)
     .tickFormat(function(d) { return vizScale[d]; });
+    
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
