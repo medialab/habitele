@@ -90,10 +90,6 @@ div[id^="graph_"] {
   vertical-align: middle;
 }
 
-.table div {
-  /*white-space: nowrap;*/
-}
-
 .table a {text-decoration: none; color: black; cursor: default;}
 
 .rotated {
