@@ -32,6 +32,18 @@ function initViz() {
   vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
   vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
   vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#90b446', '#cadeb0');
+
+  // Behaviours
+
+  $('.dot').each(function() {
+    $(this).attr({
+      'rel': 'tooltip',
+      'title': $(this).attr('value')
+    });
+  });
+
+  $("[rel=tooltip]").tooltip();
+
   
 }
 
@@ -57,7 +69,7 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, a
     .orient("bottom")
     .ticks(vizScale.length)
     .tickFormat(function(d) { return vizScale[d]; });
-    
+
   var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
@@ -117,6 +129,7 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, a
       .attr("cx", line.x())
       .attr("cy", line.y())
       .attr("r", 3)
+      .attr("value", function(d) { return d.y; })
       .style('fill', 'white')
       .style('stroke', borderColor)
       .style('stroke-width', '1.5px');
