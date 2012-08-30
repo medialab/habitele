@@ -11,9 +11,9 @@ $(function() {
 
 function tdBehavior() {
 
-  // Function to resize bars
-
   $('#table_1 td, #table_2 td').filter(':odd').each(function(index) {
+
+    // Function to resize bars
 
     barChart = $($(this).children(0)[0]);
 
@@ -24,7 +24,43 @@ function tdBehavior() {
       "margin": "-4px 0 0 -5px",
       "opacity": ".2",
       "width": ($(this).width() + 10) * $(this).attr('number') / $(this).attr('max'),
-      "z-index": "-1"
+      "z-index": "1"
+    });
+
+    textChart = $($(this).children(0)[1]);
+
+    textChart.css({
+      'position': 'absolute',
+      'z-index': '2'
+    });
+
+    // Over effect
+
+    active = function(obj) {
+      $(obj.children(0)[0]).css('opacity', '1');
+      $(obj.children(0)[1]).css('color', 'white');
+      obj.css('background-color', '#7d7d7d');
+    }
+
+    inactive = function(obj) {
+      $(obj.children(0)[0]).css('opacity', '.15');
+      $(obj.children(0)[1]).css('color', 'black');
+      obj.css('background-color', 'transparent');
+    }
+
+    $(this).mouseenter(function() {
+      if ($($(this).children(0)[1]).text())
+      active($(this));
+      $('[name="' + $(this).attr('name') + '"]').each(function() {
+        active($(this));
+      });
+    });
+
+    $(this).mouseleave(function() {
+      inactive($(this));
+      $('[name="' + $(this).attr('name') + '"]').each(function() {
+        inactive($(this));
+      });
     });
 
   });
