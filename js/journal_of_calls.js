@@ -11,49 +11,64 @@ $(function() {
 
 function tdBehavior() {
 
+  // Tooltip
+
+  $("[rel=tooltip]").tooltip({
+    'placement': 'left'
+  });
+
   $('#table_1 td, #table_2 td').filter(':odd').each(function(index) {
 
-    // Function to resize bars
+    // BackgroundChart resize
 
-    barChart = $($(this).children(0)[0]);
+    $($(this).children(0)[0]).css({
+      "position": "absolute",
+      "height": $(this).height() + 8,
+      "margin": "-4px 0 0 -5px",
+      "width": ($(this).width() + 10),
+      "z-index": "-2"
+    });
 
-    barChart.css({
+    // BarChart resize
+
+    $($(this).children(0)[1]).css({
       "background-color": "steelblue",
       "position": "absolute",
       "height": $(this).height() + 8,
       "margin": "-4px 0 0 -5px",
-      "opacity": ".2",
+      "opacity": ".15",
       "width": ($(this).width() + 10) * $(this).attr('number') / $(this).attr('max'),
-      "z-index": "1"
+      "z-index": "-1"
     });
 
-    textChart = $($(this).children(0)[1]);
-
-    textChart.css({
-      'position': 'absolute',
-      'z-index': '2'
-    });
-
-    // Over effect
+    // Mouseover effect
 
     active = function(obj) {
-      $(obj.children(0)[0]).css('opacity', '1');
-      $(obj.children(0)[1]).css('color', 'white');
-      obj.css('background-color', '#7d7d7d');
+      // $(obj.children(0)[0]).css('background-color', '#7d7d7d');
+      $(obj.children(0)[0]).css({
+        'background-color': 'steelblue',
+        'opacity': '.85'
+      });
+      $(obj.children(0)[1]).css('opacity', '1');
+      $(obj.children(0)[2]).children().css('color', 'white');
     }
 
     inactive = function(obj) {
-      $(obj.children(0)[0]).css('opacity', '.15');
-      $(obj.children(0)[1]).css('color', 'black');
-      obj.css('background-color', 'transparent');
+      $(obj.children(0)[0]).css({
+        'background-color': 'transparent',
+        'opacity': '1'
+      });
+      $(obj.children(0)[1]).css('opacity', '.15');
+      $(obj.children(0)[2]).children().css('color', 'black');
     }
 
     $(this).mouseenter(function() {
-      if ($($(this).children(0)[1]).text())
-      active($(this));
-      $('[name="' + $(this).attr('name') + '"]').each(function() {
+      if ($($(this).children(0)[2]).text()) {
         active($(this));
-      });
+        $('[name="' + $(this).attr('name') + '"]').each(function() {
+          active($(this));
+        });
+      }
     });
 
     $(this).mouseleave(function() {
@@ -64,6 +79,7 @@ function tdBehavior() {
     });
 
   });
+
 }
 
 function initViz() {
@@ -77,19 +93,21 @@ function initViz() {
   $('#table_1 td').filter(':even').each(function(index) {
     n = parseInt((index/4).toString().split(".")[0]) + 1;
     value = n <= 10 ? n : n - 10;
-    $(this).text(value);
+    $(this).html(value);
     $(this).css({
       "text-align": "right",
-      "width": "10px"
+      "width": "10px",
+      'font-size': '11px'
     });
 
   });
 
   $('#table_1 td').filter(':odd').each(function(index) {
 
+    $(this).append('<div class="background"></div>');
     $(this).append('<div class="barchart"></div>');
     $(this).append('<div class="text"></div>');
-    textChart = $($(this).children(0)[1]);
+    textChart = $($(this).children(0)[2]);
     n = parseInt((index/4).toString().split(".")[0]);
 
     // First 10
@@ -107,7 +125,7 @@ function initViz() {
           else if (d == 50) maxNumbers[2] = data[n].number;
           else if (d == 75) maxNumbers[3] = data[n].number;
         }
-        textChart.text(data[n].contact);
+        textChart.html('<a href="#" rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
         $(this).attr({
           "name": data[n].contact,
           "number": data[n].number,
@@ -133,7 +151,7 @@ function initViz() {
           else if (d == 50) maxNumbers[6] = data[n-10].number;
           else if (d == 75) maxNumbers[7] = data[n-10].number;
         }
-        textChart.text(data[n-10].contact);
+        textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
         $(this).attr({
           "name": data[n-10].contact,
           "number": data[n-10].number
@@ -159,15 +177,17 @@ function initViz() {
     $(this).text(value);
     $(this).css({
       "text-align": "right",
-      "width": "10px"
+      "width": "10px",
+      'font-size': '11px'
     });
   });
 
   $('#table_2 td').filter(':odd').each(function(index) {
 
+    $(this).append('<div class="background"></div>');
     $(this).append('<div class="barchart"></div>');
     $(this).append('<div class="text"></div>');
-    textChart = $($(this).children(0)[1]);
+    textChart = $($(this).children(0)[2]);
     n = parseInt((index).toString().split(".")[0]);
 
     // First 10
@@ -179,7 +199,7 @@ function initViz() {
         if (n == 00) {
           if (d == 00) maxNumbers[8] = data[n].number;
         }
-        textChart.text(data[n].contact);
+        textChart.html('<a href="#" rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
         $(this).attr({
           "name": data[n].contact,
           "number": data[n].number,
@@ -196,7 +216,7 @@ function initViz() {
         if (n == 10) {
           if (d == 00) maxNumbers[9] = data[n-10].number;
         }
-        textChart.text(data[n-10].contact);
+        textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
         $(this).attr({
           "name": data[n-10].contact,
           "number": data[n-10].number
