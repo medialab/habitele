@@ -94,10 +94,7 @@ div[id^="graph_"] {
   /*white-space: nowrap;*/
 }
 
-.table a:link {text-decoration: none; color: black;}
-.table a:visited {text-decoration: none; color: black;}
-.table a:active {text-decoration: none; color: black;}
-.table a:hover {text-decoration: none; color: black;}
+.table a {text-decoration: none; color: black; cursor: default;}
 
 .rotated {
   -webkit-transform: rotate(-90deg); 

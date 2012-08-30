@@ -44,7 +44,6 @@ function tdBehavior() {
     // Mouseover effect
 
     active = function(obj) {
-      // $(obj.children(0)[0]).css('background-color', '#7d7d7d');
       $(obj.children(0)[0]).css({
         'background-color': 'steelblue',
         'opacity': '.85'
@@ -68,14 +67,14 @@ function tdBehavior() {
         $('[name="' + $(this).attr('name') + '"]').each(function() {
           active($(this));
         });
+        $($(this).children(0)[2]).children().tooltip('show');
       }
-    });
-
-    $(this).mouseleave(function() {
+    }).mouseleave(function() {
       inactive($(this));
       $('[name="' + $(this).attr('name') + '"]').each(function() {
         inactive($(this));
       });
+      $($(this).children(0)[2]).children().tooltip('hide');
     });
 
   });
@@ -125,7 +124,7 @@ function initViz() {
           else if (d == 50) maxNumbers[2] = data[n].number;
           else if (d == 75) maxNumbers[3] = data[n].number;
         }
-        textChart.html('<a href="#" rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
+        textChart.html('<a rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
         $(this).attr({
           "name": data[n].contact,
           "number": data[n].number,
