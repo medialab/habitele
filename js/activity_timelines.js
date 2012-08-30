@@ -26,12 +26,12 @@ function initViz() {
 
   // Display
   
-  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
-  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
-  vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale, '#90b446', '#cadeb0 ');
-  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
-  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
-  vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#90b446', '#cadeb0');
+  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale, '#8d3233');
+  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale, '#8d3233');
+  vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale, '#03717e');
+  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, '#8d3233');
+  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, '#8d3233');
+  vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#03717e');
 
   // Behaviours
 
@@ -49,7 +49,7 @@ function initViz() {
 
 
 
-function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, areaColor) {
+function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, color) {
 
   var actTimData = vizData.visualizations.activity_timelines[dataStructure];
 
@@ -100,13 +100,14 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, a
   svg.append("path")
       .attr("class", "area")
       .attr("d", area)
-      .style('fill', areaColor);
+      .style('fill', color)
+      .style('opacity', '.4');
 
   svg.append("path")
       .attr("class", "line")
       .attr("d", line)
       .style('fill', 'none')
-      .style('stroke', borderColor)
+      .style('stroke', color)
       .style('stroke-width', '1.5px');
   
   // Axes
@@ -131,7 +132,7 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, a
       .attr("r", 3)
       .attr("value", function(d) { return d.y; })
       .style('fill', 'white')
-      .style('stroke', borderColor)
+      .style('stroke', color)
       .style('stroke-width', '1.5px');
 };
 

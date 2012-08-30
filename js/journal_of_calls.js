@@ -19,9 +19,20 @@ function tdBehavior() {
 
   $('#table_1 td, #table_2 td').filter(':odd').each(function(index) {
 
+    direction = $(this).attr('direction');
+
+    if (direction == 'in') color = '#d9aa59'
+    else if (direction == 'out') color = '#79a0c1'
+    else if (direction == 'none') color = '#8d3233'
+
+    console.log(direction)
+    console.log(color)
+
     // BackgroundChart resize
 
     $($(this).children(0)[0]).css({
+      'background-color': color,
+      'opacity': '0',
       "position": "absolute",
       "height": $(this).height() + 8,
       "margin": "-4px 0 0 -5px",
@@ -32,7 +43,7 @@ function tdBehavior() {
     // BarChart resize
 
     $($(this).children(0)[1]).css({
-      "background-color": "steelblue",
+      "background-color": color,
       "position": "absolute",
       "height": $(this).height() + 8,
       "margin": "-4px 0 0 -5px",
@@ -45,17 +56,15 @@ function tdBehavior() {
 
     active = function(obj) {
       $(obj.children(0)[0]).css({
-        'background-color': 'steelblue',
-        'opacity': '.85'
+        'opacity': '.82'
       });
-      $(obj.children(0)[1]).css('opacity', '1');
+      $(obj.children(0)[1]).css('opacity', '.8');
       $(obj.children(0)[2]).children().css('color', 'white');
     }
 
     inactive = function(obj) {
       $(obj.children(0)[0]).css({
-        'background-color': 'transparent',
-        'opacity': '1'
+        'opacity': '0'
       });
       $(obj.children(0)[1]).css('opacity', '.15');
       $(obj.children(0)[2]).children().css('color', 'black');
@@ -128,6 +137,7 @@ function initViz() {
         $(this).attr({
           "name": data[n].contact,
           "number": data[n].number,
+          'direction': 'in'
         });
         if (d == 00) $(this).attr("max", maxNumbers[0]);
         else if (d == 25) $(this).attr("max", maxNumbers[1]);
@@ -155,7 +165,8 @@ function initViz() {
         textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
         $(this).attr({
           "name": data[n-10].contact,
-          "number": data[n-10].number
+          "number": data[n-10].number,
+          'direction': 'out'
         });
         if (d == 00) $(this).attr("max", maxNumbers[4]);
         if (d == 25) $(this).attr("max", maxNumbers[5]);
@@ -206,6 +217,7 @@ function initViz() {
         $(this).attr({
           "name": data[n].contact,
           "number": data[n].number,
+          'direction': 'none'
         });
         if (d == 00) $(this).attr("max", maxNumbers[8]);
       } else {
@@ -224,7 +236,8 @@ function initViz() {
         textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
         $(this).attr({
           "name": data[n-10].contact,
-          "number": data[n-10].number
+          "number": data[n-10].number,
+          'direction': 'none'
         });
         if (d == 00) $(this).attr("max", maxNumbers[9]);
       } else {

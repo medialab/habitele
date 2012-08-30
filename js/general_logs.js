@@ -29,7 +29,7 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.calls.total, data.calls.in, data.calls.out];
   for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_1");
+  displayTable(aggregatedDataJSON, "loggraph_1", '#d9aa59');
 
   // Bar Chart 1
 
@@ -37,7 +37,7 @@ function dataDisplay(data) {
   names = ["duration_total", "duration_in", "duration_out"];
   values = [data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
   for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_2");
+  displayTable(aggregatedDataJSON, "loggraph_2", '#79a0c1');
 
   // Bar Chart 2
 
@@ -45,11 +45,11 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.SMS.total + data.MMS.total, data.SMS.in + data.MMS.in, data.SMS.out + data.MMS.out];
   for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_3");
+  displayTable(aggregatedDataJSON, "loggraph_3", '#79a0c1');
 
 };
 
-function displayTable(aggregatedDataJSON, vizGraph) {
+function displayTable(aggregatedDataJSON, vizGraph, fillColor) {
 
   // Data
 
@@ -80,7 +80,8 @@ function displayTable(aggregatedDataJSON, vizGraph) {
       .data(aggregatedDataJSON)
     .enter().append("g")
       .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
+      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; })
+      .attr('fill', fillColor);
 
   bar.append("rect")
       .attr("width", function(d) { return x(d.value); })

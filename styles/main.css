@@ -32,9 +32,9 @@ body img {
 
 /* Bars */
 
-.bar rect {
-  fill: steelblue;
-}
+/*.bar rect {
+  fill: #79a0c1;
+}*/
 
 .bar text.value {
   fill: white;
