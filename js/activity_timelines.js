@@ -26,18 +26,18 @@ function initViz() {
 
   // Display
   
-  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale);
-  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale);
-  vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale);
-  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale);
-  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale);
-  vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale);
+  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
+  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
+  vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale, '#90b446', '#cadeb0 ');
+  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
+  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, 'steelblue', 'lightsteelblue');
+  vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#90b446', '#cadeb0');
   
 }
 
 
 
-function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale) {
+function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, borderColor, areaColor) {
 
   var actTimData = vizData.visualizations.activity_timelines[dataStructure];
 
@@ -86,11 +86,15 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale) {
 
   svg.append("path")
       .attr("class", "area")
-      .attr("d", area);
+      .attr("d", area)
+      .style('fill', areaColor);
 
   svg.append("path")
       .attr("class", "line")
-      .attr("d", line);
+      .attr("d", line)
+      .style('fill', 'none')
+      .style('stroke', borderColor)
+      .style('stroke-width', '1.5px');
   
   // Axes
 
@@ -111,6 +115,9 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale) {
       .attr("class", "dot")
       .attr("cx", line.x())
       .attr("cy", line.y())
-      .attr("r", 3);
+      .attr("r", 3)
+      .style('fill', 'white')
+      .style('stroke', borderColor)
+      .style('stroke-width', '1.5px');
 };
 

@@ -30,24 +30,6 @@ body img {
     font-size: 11px;*/
 }
 
-/* Graph */
-
-.area {
-  fill: lightsteelblue;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-.dot {
-  fill: white;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
 /* Bars */
 
 .bar rect {
