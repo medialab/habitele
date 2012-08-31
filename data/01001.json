@@ -1,0 +1,1913 @@
+{ 
+"title": "Habitele visualization",
+"version": "0.3",
+"creation date": "19/07/2012",
+"last modification date": "20/07/2012",
+"user_id": "id",
+"visualizations": {
+    "activity_timelines": {
+    "SMS_working_typical_day_by_24hour": [2.0,1.0,0.0,0.0,1.0,1.0,1.43,1.79,1.77,1.75,2.52,2.33,1.8,1.78,2.27,2.93,2.18,2.96,2.65,2.91,3.59,2.05,2.35,2.63],
+        "calls_working_typical_day_by_24hour": [0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,1.0,3.0,2.25,1.75,1.0,0.0,1.0,4.0,6.0,4.33,0.0,0.0,1.0,0.0,0.0],
+        "SMS_weekend_typical_day_by_24hour": [2.5,1.8900000000000001,1.71,1.5,0.0,1.0,1.0,1.0,1.42,1.1,3.41,5.05,2.42,1.96,3.09,2.35,3.3000000000000003,2.79,3.11,1.83,2.92,2.0,4.33,4.3],
+        "calls_weekend_typical_day_by_24hour": [0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0],
+        "SMS_monday_to_sunday": [6.96,10.96,9.85,8.14,10.63,10.98,10.26], 
+        "calls_monday_to_sunday": [14.0,16.0,9.0,2.0,17.0,3.0,0.0]
+    },
+    "journal_of_calls": {
+        "top10_sms_in": [
+            { "contact" : "Juliette Dernencourt ", "number": 338},
+            { "contact" : "Maxime Crepel", "number": 208},
+            { "contact" : "Amelie Gendron", "number": 176},
+            { "contact" : "+33661481135", "number": 121},
+            { "contact" : "+33618417696", "number": 72},
+            { "contact" : "+33617327738", "number": 65},
+            { "contact" : "+33616180202", "number": 54},
+            { "contact" : "+33620422504", "number": 50},
+            { "contact" : "+33686965379", "number": 30},
+            { "contact" : "+33680005234", "number": 29}], 
+        "top10_sms_out": [
+            { "contact" : "Juliette Dernencourt ", "number": 317},
+            { "contact" : "Maxime Crepel", "number": 181},
+            { "contact" : "Amelie Gendron", "number": 142},
+            { "contact" : "+33661481135", "number": 97},
+            { "contact" : "+33618417696", "number": 42},
+            { "contact" : "+33617327738", "number": 35},
+            { "contact" : "+33620422504", "number": 34},
+            { "contact" : "+33616180202", "number": 33},
+            { "contact" : "+33680005234", "number": 29},
+            { "contact" : "Amelie Garcia Henejaert", "number": 27}], 
+        "top10_mms_in": [
+            { "contact" : "Maxime Crepel", "number": 58},
+            { "contact" : "Juliette Dernencourt ", "number": 44},
+            { "contact" : "+33616180202", "number": 12},
+            { "contact" : "Amelie Gendron", "number": 7},
+            { "contact" : "Vincent Belhassen", "number": 4},
+            { "contact" : "+33618417696", "number": 3},
+            { "contact" : "+33686965379", "number": 2},
+            { "contact" : "+33620422504", "number": 1},
+            { "contact" : "+33603971387", "number": 1},
+            { "contact" : "+33630920461", "number": 1}], 
+        "top10_mms_out": [            { "contact" : "Maxime Crepel", "number": 69},
+            { "contact" : "Juliette Dernencourt ", "number": 51},
+            { "contact" : "Amelie Gendron", "number": 21},
+            { "contact" : "Amelie Garcia Henejaert", "number": 15},
+            { "contact" : "Xavier Gendron", "number": 11},
+            { "contact" : "Helene Hamadi Dumont", "number": 7},
+            { "contact" : "Mireille Crepel", "number": 5},
+            { "contact" : "Alex Peau", "number": 5},
+            { "contact" : "Hakim Hamidi", "number": 5},
+            { "contact" : "Lea ", "number": 4}],
+        "top10_frequency_in": [            { "contact" : "0616180202", "number": 3.0},
+            { "contact" : "0618417696", "number": 2.3333333},
+            { "contact" : "0620903430", "number": 2.25},
+            { "contact" : "Jerome Narcy", "number": 2.0},
+            { "contact" : "Juliette Dernencourt ", "number": 1.5},
+            { "contact" : "0617327738", "number": 1.0},
+            { "contact" : "0633283838", "number": 1.0},
+            { "contact" : "0686965379", "number": 1.0},
+            { "contact" : "Paulette Facon", "number": 1.0}],
+        "top10_frequency_out": [            { "contact" : "0616180202", "number": 4.0},
+            { "contact" : "0620903430", "number": 3.25},
+            { "contact" : "+33629886050", "number": 3.0},
+            { "contact" : "+33665362906", "number": 3.0},
+            { "contact" : "Juliette Dernencourt ", "number": 2.6834533},
+            { "contact" : "Amelie Gendron", "number": 2.546875},
+            { "contact" : "Benja ", "number": 2.3333333},
+            { "contact" : "+33620422504", "number": 2.2666667},
+            { "contact" : "+33608984491", "number": 2.25},
+            { "contact" : "+33678493843", "number": 2.125}],
+        "top10_duration_in": [            { "contact" : "0633283838", "number": 1950.0},
+            { "contact" : "0618417696", "number": 1515.0},
+            { "contact" : "0620903430", "number": 750.0},
+            { "contact" : "0617327738", "number": 594.0},
+            { "contact" : "0686965379", "number": 430.0},
+            { "contact" : "0320149336", "number": 381.0},
+            { "contact" : "0603971387", "number": 225.0},
+            { "contact" : "0616180202", "number": 84.0},
+            { "contact" : "0621456925", "number": 36.0},
+            { "contact" : "0618799858", "number": 30.0}],
+        "top10_duration_out": [            { "contact" : "Jasmine Maman Renee", "number": 1216.0},
+            { "contact" : "Paulette Facon", "number": 800.0},
+            { "contact" : "Juliette Dernencourt ", "number": 663.0},
+            { "contact" : "0620903430", "number": 525.0},
+            { "contact" : "0033621456925", "number": 375.0},
+            { "contact" : "0633283838", "number": 314.0},
+            { "contact" : "0618417696", "number": 268.0},
+            { "contact" : "0686965379", "number": 225.0},
+            { "contact" : "0616180202", "number": 195.0},
+            { "contact" : "0689446556", "number": 176.0}],
+        "top10_frequency_missed_calls": [            { "contact" : "0620903430", "number": 2.6},
+            { "contact" : "Jasmine Maman Renee", "number": 1.3333334},
+            { "contact" : "0680005234", "number": 1.0},
+            { "contact" : "0688283965", "number": 1.0},
+            { "contact" : "0621456925", "number": 1.0},
+            { "contact" : "0616180202", "number": 1.0}],
+        "top10_frequency_short_calls": [            { "contact" : "0616180202", "number": 3.0},
+            { "contact" : "0618417696", "number": 2.3333333},
+            { "contact" : "0620903430", "number": 2.25},
+            { "contact" : "Jerome Narcy", "number": 2.0},
+            { "contact" : "Juliette Dernencourt ", "number": 1.5},
+            { "contact" : "0617327738", "number": 1.0},
+            { "contact" : "0633283838", "number": 1.0},
+            { "contact" : "0686965379", "number": 1.0},
+            { "contact" : "Paulette Facon", "number": 1.0}]
+    },
+    "activities_peaks_analysis": {
+        "peaks_timeline": {
+	"peak_1": { 
+		"start": "2011-08-20 20:43:30.0", 
+		"stop": "2011-08-20 21:02:06.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 25,
+			"total_callandsms_out": 0,
+			"total_call": 0,
+			"total_SMS": 25
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:43:45.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"2":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:43:58.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"3":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:03.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"4":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:05.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"5":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:35.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"6":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:36.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"7":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:37.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"8":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:38.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"9":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:38.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"10":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:39.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"11":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:40.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"12":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:40.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"13":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:41.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"14":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:42.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"15":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:43.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"16":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:43.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"17":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:44.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"18":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:45.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"19":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:46.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"20":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:47.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"21":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:48.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"22":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:48.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"23":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:49.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"24":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:50.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"25":{
+			"contact": "Maxime Crepel",
+			"time": "2011-08-20 20:50:51.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "in"
+		}
+		}
+		},
+	"peak_2": { 
+		"start": "2011-10-19 10:07:54.0", 
+		"stop": "2011-10-19 10:22:11.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 2,
+			"total_callandsms_out": 16,
+			"total_call": 0,
+			"total_SMS": 18
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Amelie Gendron",
+			"time": "2011-10-19 10:08:58.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"2":{
+			"contact": "Amelie Gendron",
+			"time": "2011-10-19 10:09:38.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"3":{
+			"contact": "Amelie Garcia Henejaert",
+			"time": "2011-10-19 10:18:54.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Maxime Rethore ",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "Lea ",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Alex Peau",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"7":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"8":{
+			"contact": "Xavier Gendron",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "Amelie Gendron",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"10":{
+			"contact": "Nico Strickler",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "Helene Hamadi Dumont",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Hakim Hamidi",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"13":{
+			"contact": "Clement Thilot",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Rafael Antunes",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"15":{
+			"contact": "06 78 49 38 43",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"16":{
+			"contact": "Suzanne Dernoncourt",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "Aurelie Lefebvre",
+			"time": "2011-10-19 10:18:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"18":{
+			"contact": "Amelie Gendron",
+			"time": "2011-10-19 10:20:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		}
+		}
+		},
+	"peak_3": { 
+		"start": "2011-10-22 11:16:56.0", 
+		"stop": "2011-10-22 11:22:55.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 5,
+			"total_callandsms_out": 6,
+			"total_call": 0,
+			"total_SMS": 11
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2011-10-22 11:16:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"2":{
+			"contact": "Aurelie Lefebvre",
+			"time": "2011-10-22 11:16:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"3":{
+			"contact": "Maxime Rethore ",
+			"time": "2011-10-22 11:16:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Lea ",
+			"time": "2011-10-22 11:16:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "Suzanne Dernoncourt",
+			"time": "2011-10-22 11:16:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Rafael Antunes",
+			"time": "2011-10-22 11:16:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"7":{
+			"contact": "+33669242109",
+			"time": "2011-10-22 11:19:15.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"8":{
+			"contact": "+33630174124",
+			"time": "2011-10-22 11:19:38.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"9":{
+			"contact": "+33684919065",
+			"time": "2011-10-22 11:19:38.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"10":{
+			"contact": "+33684919065",
+			"time": "2011-10-22 11:19:58.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"11":{
+			"contact": "+33616180202",
+			"time": "2011-10-22 11:20:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		}
+		}
+		},
+	"peak_4": { 
+		"start": "2011-11-09 14:43:50.0", 
+		"stop": "2011-11-09 15:27:50.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 4,
+			"total_callandsms_out": 21,
+			"total_call": 0,
+			"total_SMS": 25
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 14:44:07.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"2":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 14:45:34.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"3":{
+			"contact": "Aurelie Lefebvre",
+			"time": "2011-11-09 14:59:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Nico Strickler",
+			"time": "2011-11-09 14:59:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "Xavier Gendron",
+			"time": "2011-11-09 14:59:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Amelie Gendron",
+			"time": "2011-11-09 14:59:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"7":{
+			"contact": "Amelie Garcia Henejaert",
+			"time": "2011-11-09 14:59:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"8":{
+			"contact": "Clement Thilot",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "Andressa Matias Gendron",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"10":{
+			"contact": "Hakim Hamidi",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "Helene Hamadi Dumont",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Rafael Antunes",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"13":{
+			"contact": "06 20 89 22 87",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Suzanne Dernoncourt",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"15":{
+			"contact": "Alex Peau",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"16":{
+			"contact": "Maxime Rethore ",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "Emilie Ravet",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"18":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"19":{
+			"contact": "06 78 49 38 43",
+			"time": "2011-11-09 14:59:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"20":{
+			"contact": "Amelie Gendron",
+			"time": "2011-11-09 15:01:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"21":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 15:01:56.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"22":{
+			"contact": "Pauline Knecht",
+			"time": "2011-11-09 15:03:33.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"23":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 15:06:27.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"24":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 15:12:17.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"25":{
+			"contact": "Maxime Crepel",
+			"time": "2011-11-09 15:13:20.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		}
+		}
+		},
+	"peak_5": { 
+		"start": "2012-01-01 10:59:42.0", 
+		"stop": "2012-01-01 11:05:52.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 1,
+			"total_callandsms_out": 38,
+			"total_call": 0,
+			"total_SMS": 41
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "+33 6 03 68 63 93",
+			"time": "2012-01-01 11:00:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"2":{
+			"contact": "Caroline De Pauw",
+			"time": "2012-01-01 11:00:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"3":{
+			"contact": "06 50 63 26 10",
+			"time": "2012-01-01 11:00:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "+33 6 71 47 69 70",
+			"time": "2012-01-01 11:00:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "Suzanne Dernoncourt",
+			"time": "2012-01-01 11:00:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Myriam Creche",
+			"time": "2012-01-01 11:00:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"7":{
+			"contact": "ktigab@hotmail.com",
+			"time": "2012-01-01 11:01:34.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"8":{
+			"contact": "+33 6 49 28 43 95",
+			"time": "2012-01-01 11:01:34.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "Olivier Ferrain",
+			"time": "2012-01-01 11:01:34.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"10":{
+			"contact": "+33 6 84 73 97 65",
+			"time": "2012-01-01 11:01:34.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "+33 6 62 67 60 17",
+			"time": "2012-01-01 11:01:34.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Xavier Gendron",
+			"time": "2012-01-01 11:02:25.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"13":{
+			"contact": "gregondek@yahoo.fr",
+			"time": "2012-01-01 11:02:25.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Amelie Hennion",
+			"time": "2012-01-01 11:02:25.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"15":{
+			"contact": "Jay ",
+			"time": "2012-01-01 11:02:25.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"16":{
+			"contact": "jenjoanna@msn.com",
+			"time": "2012-01-01 11:02:26.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "Jean Marc Lefebvre",
+			"time": "2012-01-01 11:03:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"18":{
+			"contact": "Aurelie Lefebvre",
+			"time": "2012-01-01 11:03:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"19":{
+			"contact": "Lea ",
+			"time": "2012-01-01 11:03:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"20":{
+			"contact": "06 61 48 11 35",
+			"time": "2012-01-01 11:03:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"21":{
+			"contact": "+33 6 61 11 87 71",
+			"time": "2012-01-01 11:03:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"22":{
+			"contact": "Olivier Lacoste",
+			"time": "2012-01-01 11:03:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"23":{
+			"contact": "Jean Marc Lefebvre",
+			"time": "2012-01-01 11:03:56.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"24":{
+			"contact": "Andressa Matias Gendron",
+			"time": "2012-01-01 11:03:56.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"25":{
+			"contact": "Brigitte Mauroy",
+			"time": "2012-01-01 11:03:56.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"26":{
+			"contact": "Maxime Rethore ",
+			"time": "2012-01-01 11:03:56.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"27":{
+			"contact": "Nenel ",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"28":{
+			"contact": "Manuelle Milhau",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"29":{
+			"contact": "Julie Montois",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"30":{
+			"contact": "+33 3 20 14 93 36",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"31":{
+			"contact": "Nathalie ",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"32":{
+			"contact": "Nico Sauv ",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"33":{
+			"contact": "Alex Peau",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"34":{
+			"contact": "Guillaume Ponce",
+			"time": "2012-01-01 11:04:52.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"35":{
+			"contact": "thomasbelhassen@yahoo.fr",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "pb"
+		},
+		"36":{
+			"contact": "thomasbelhassen@yahoo.fr",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "pb"
+		},
+		"37":{
+			"contact": "Alexandra Thierry",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"38":{
+			"contact": "Typex ",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"39":{
+			"contact": "Sebti ",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"40":{
+			"contact": "Nico Strickler",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"41":{
+			"contact": "Agnetha V",
+			"time": "2012-01-01 11:05:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		}
+		}
+		},
+	"peak_6": { 
+		"start": "2012-04-14 17:47:51.0", 
+		"stop": "2012-04-14 18:19:37.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 13,
+			"total_callandsms_out": 16,
+			"total_call": 0,
+			"total_SMS": 29
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 17:48:43.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"2":{
+			"contact": "Amelie Gendron",
+			"time": "2012-04-14 17:49:19.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"3":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 17:51:48.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Amelie Gendron",
+			"time": "2012-04-14 17:52:51.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "Amelie Gendron",
+			"time": "2012-04-14 17:53:17.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"6":{
+			"contact": "+33613625204",
+			"time": "2012-04-14 17:53:39.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"7":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 17:53:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"8":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 18:01:36.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 18:03:50.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"10":{
+			"contact": "Helene Hamadi Dumont",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "Julie Montois",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Nico Strickler",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"13":{
+			"contact": "Clement Thilot",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"15":{
+			"contact": "Amelie Gendron",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"16":{
+			"contact": "Amelie Garcia Henejaert",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "Rafael Antunes",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"18":{
+			"contact": "Hakim Hamidi",
+			"time": "2012-04-14 18:05:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"19":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 18:05:41.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"20":{
+			"contact": "+33669242109",
+			"time": "2012-04-14 18:06:17.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"21":{
+			"contact": "Amelie Gendron",
+			"time": "2012-04-14 18:06:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"22":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 18:07:19.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"23":{
+			"contact": "Amelie Gendron",
+			"time": "2012-04-14 18:08:02.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"24":{
+			"contact": "+33669242109",
+			"time": "2012-04-14 18:08:16.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"25":{
+			"contact": "+33613028293",
+			"time": "2012-04-14 18:08:24.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"26":{
+			"contact": "+33620422504",
+			"time": "2012-04-14 18:08:38.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"27":{
+			"contact": "+33620422504",
+			"time": "2012-04-14 18:08:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"28":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-04-14 18:10:27.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"29":{
+			"contact": "+33618417696",
+			"time": "2012-04-14 18:12:10.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		}
+		}
+		},
+	"peak_7": { 
+		"start": "2012-05-26 14:40:55.0", 
+		"stop": "2012-05-26 15:08:17.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 11,
+			"total_callandsms_out": 9,
+			"total_call": 0,
+			"total_SMS": 20
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-05-26 14:42:32.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"2":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-05-26 14:43:16.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"3":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:43:35.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-05-26 14:44:25.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"5":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-05-26 14:44:58.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:45:38.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"7":{
+			"contact": "Juliette Dernencourt ",
+			"time": "2012-05-26 14:46:05.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"8":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:46:14.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:46:58.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"10":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:47:16.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:47:42.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"12":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:48:03.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"13":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:48:17.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:49:37.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"15":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 14:50:11.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"16":{
+			"contact": "+33617327738",
+			"time": "2012-05-26 15:00:44.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "+33618417696",
+			"time": "2012-05-26 15:03:41.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"18":{
+			"contact": "+33617327738",
+			"time": "2012-05-26 15:05:14.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"19":{
+			"contact": "+33617327738",
+			"time": "2012-05-26 15:05:35.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"20":{
+			"contact": "+33617327738",
+			"time": "2012-05-26 15:07:13.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		}
+		}
+		},
+	"peak_8": { 
+		"start": "2012-06-02 20:29:15.0", 
+		"stop": "2012-06-02 20:42:42.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 10,
+			"total_callandsms_out": 9,
+			"total_call": 0,
+			"total_SMS": 19
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:29:47.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"2":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:31:14.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"3":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:32:02.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:33:31.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"5":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:33:59.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:34:49.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"7":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:35:20.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"8":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:35:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"9":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:36:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"10":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:36:59.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"11":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:37:41.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:38:15.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"13":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:39:05.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:39:25.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"15":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:39:55.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"16":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:40:13.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:40:13.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"18":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:40:54.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"19":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-02 20:41:36.0",
+			"channel": "MMS",
+			"duration": 0,
+			"direction": "out"
+		}
+		}
+		},
+	"peak_9": { 
+		"start": "2012-06-09 16:45:20.0", 
+		"stop": "2012-06-09 17:04:12.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 1,
+			"total_callandsms_out": 17,
+			"total_call": 0,
+			"total_SMS": 18
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "Andressa Matias Gendron",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"2":{
+			"contact": "Juliette Callot",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"3":{
+			"contact": "Sebti ",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Alex Peau",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "06 78 49 38 43",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Nico Sauv ",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"7":{
+			"contact": "Julien Bensoussan",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"8":{
+			"contact": "Gregory Gondek",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "Amelie Garcia Henejaert",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"10":{
+			"contact": "Agnetha V",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "Olivier Ferrain",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Nenel ",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"13":{
+			"contact": "Nathalie ",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Sidonie ",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"15":{
+			"contact": "Maxime Rethore ",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"16":{
+			"contact": "09 50 66 46 63",
+			"time": "2012-06-09 16:45:21.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "+33618417696",
+			"time": "2012-06-09 16:52:43.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"18":{
+			"contact": "Stephanie Descarpenteries",
+			"time": "2012-06-09 17:03:49.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		}
+		}
+		},
+	"peak_10": { 
+		"start": "2012-06-21 19:58:05.0", 
+		"stop": "2012-06-21 20:27:07.0", 
+		"aggregated_data": 
+		{ 
+			"total_callandsms_in": 6,
+			"total_callandsms_out": 15,
+			"total_call": 0,
+			"total_SMS": 23
+		}, 
+		"events":
+		{
+		"1":{
+			"contact": "06 20 89 22 87",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "pb"
+		},
+		"2":{
+			"contact": "Rafael Antunes",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"3":{
+			"contact": "Helene Hamadi Dumont",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"4":{
+			"contact": "Sebti ",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"5":{
+			"contact": "Julie Montois",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"6":{
+			"contact": "Suzanne Dernoncourt",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"7":{
+			"contact": "Amelie Gendron",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"8":{
+			"contact": "Stephanie Descarpenteries",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"9":{
+			"contact": "Lea ",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"10":{
+			"contact": "Hakim Hamidi",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"11":{
+			"contact": "Xavier Gendron",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"12":{
+			"contact": "Fragel 3 ",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"13":{
+			"contact": "Alex Peau",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"14":{
+			"contact": "Maxime Rethore ",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"15":{
+			"contact": "Aurelie Lefebvre",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "pb"
+		},
+		"16":{
+			"contact": "Clement Thilot",
+			"time": "2012-06-21 19:58:06.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"17":{
+			"contact": "+33686146658",
+			"time": "2012-06-21 20:02:22.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"18":{
+			"contact": "+33686146658",
+			"time": "2012-06-21 20:02:22.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"19":{
+			"contact": "+33666786491",
+			"time": "2012-06-21 20:09:46.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"20":{
+			"contact": "Aure ",
+			"time": "2012-06-21 20:17:38.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "out"
+		},
+		"21":{
+			"contact": "+33669242109",
+			"time": "2012-06-21 20:17:57.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"22":{
+			"contact": "+33686146658",
+			"time": "2012-06-21 20:23:07.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		},
+		"23":{
+			"contact": "+33618417696",
+			"time": "2012-06-21 20:24:23.0",
+			"channel": "SMS",
+			"duration": 0,
+			"direction": "in"
+		}
+		}
+		}
+        }
+    },
+   "general_logs": {
+        "total_phone_book_entries": 137,
+        "communication_smsandcall_density": 1.0,
+        "calls": {
+            "total": 80.0,
+            "in": 29.0,
+            "out": 51.0,
+            "duration_total": 11150,
+            "duration_in": 6042,
+            "duration_out": 5108,
+            "density" : 10.0
+        },
+        "SMS": {
+            "total": 3081,
+            "in": 1602,
+            "out": 1470,
+            "density" : 0.9
+        },
+        "MMS": {
+            "total": 374,
+            "in": 142,
+            "out": 226,
+            "density" : 1.0
+        }
+    },
+    "phone_books": {
+        "contacts": 222,
+        "mobile_phone": 0,
+        "private_phone": 0,
+        "email": 0
+    },
+    "basic_figures": {
+	"log_sms_size": 3081,
+	"log_calls_size": 80,
+	"ratio_inout_global": 1.0269033,
+	"ratio_inout_calls": 0.5686275,
+	"ratio_inout_sms" : 1.089796
+	},
+	"phone_books_data": {
+	"number_of_contacts": 137,
+    	"avg_number_of_fileds_used": 5,
+    	"groups": 0,
+    	"favorites": 10,
+    	"rings": 0,
+       "calendar_use" : 5,
+       "calendar_with_alarm" : 1,
+    	"fileds_available": ["Général","Portable ","E-mail","www ","www ","Anniversaire ","Prénom","Nom","Compagnie","Adresse prolongée","Rue/Avenue","Code postal","Ville","Pays","Date de la dernière modification","Stockage","MD5 hash"]
+	 ,
+    	"applications_available": ["mobilemail","freefleches","icepops","prettyPetSalon","camera","SFRMonCompte","iGmail","AppStore","alfabetoParlanteItFree","MobileSMS","ZahlenMalen","culture2011","mobiletimer","velodispo","babbelEnglish","fables","liberationapp","dominoforiphone","plus7","mobilephone","marabout","mobileipod","touchpetscats0","Preferences","instagram","videos","fr","MobileStore","fid-iphone","rswx","cottoncandy","twinflixlite","NathanParascoMaternelleMS","mobilenotes","mobileslideshow","YouTube","klondike","jedessine","calculator","m6replay","fashion","tripeakssolitaire","VoiceMemos","talkinggina","Messenger","MobileAddressBook","FrInter","gulli","coachforme","mooboxfree","imagier","iphone","popbooth","dora","hkbeautysalon","reminders","iseries","prd","gamecenter","weather","compass","ocean","photomaton","mobilesafari","ABC-petites-lettres-full","YatzyFree","pluzz","appli","fashionistas","PuzzleMe2","kitty","solitairecitylite","Formes-et-Couleurs-Lite","pesoideal","free"]
+	}
+	}
+}
