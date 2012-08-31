@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-    <title class="lang-title"></title>
+    <title data-lang="title"></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,7 +15,40 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+<style>
+circle.active {
+  stroke:red;
+}
+.section.active {
+  font-weight: bold;
+}
 
+.event {
+  margin-bottom: 10px;
+  border-bottom:1px solid #EEE;
+}
+.events {
+  margin-top:20px;
+}
+.timeline {
+    position:fixed; 
+    background:white; 
+    z-index:10; 
+    -webkit-box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, 0.2);        
+    box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+
+}
+
+#nav_buttons {
+  position:fixed;
+  z-index:20;
+  float:right;
+}
+
+/*.contacts .directions .distribution {
+  margin-top:100px;
+}*/
+</style>
 <body>
 
   <img src="sciencespo.png"/>
@@ -37,6 +70,8 @@
               <li><a href="journal_of_calls.html" data-lang="journal" class="after_loaded"></a></li>
               <li class="active"><a href="#" data-lang="peaks_analysis" class="after_loaded"></a></li>
               <li><a href="phone_books.html" data-lang="phone_books" class="after_loaded"></a></li>
+              <li><a href="applications.html" data-lang="applications" class="after_loaded"></a></li>
+              <li><a href="calendar.html" data-lang="calendar" class="after_loaded"></a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   <span data-lang="langue"></span>
@@ -66,10 +101,6 @@
         <div class="tab-content"></div>
       </div>
     </div>
-
-
-
-
 
 <!-- JavaScripts -->
 

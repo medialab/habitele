@@ -86,7 +86,7 @@ margin-top: 20px;
 .rotated {
   -webkit-transform: rotate(-90deg); 
   -moz-transform: rotate(-90deg);
-  width: 14px;
+  width: 1em;
 }
 
 

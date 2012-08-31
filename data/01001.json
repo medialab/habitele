@@ -1885,29 +1885,26 @@
         }
     },
     "phone_books": {
-        "contacts": 222,
-        "mobile_phone": 0,
-        "private_phone": 0,
-        "email": 0
+        "contacts": 222
     },
     "basic_figures": {
-	"log_sms_size": 3081,
-	"log_calls_size": 80,
-	"ratio_inout_global": 1.0269033,
-	"ratio_inout_calls": 0.5686275,
-	"ratio_inout_sms" : 1.089796
+		"log_sms_size": 3081,
+		"log_calls_size": 80,
+		"ratio_inout_global": 1.0269033,
+		"ratio_inout_calls": 0.5686275,
+		"ratio_inout_sms" : 1.089796
 	},
 	"phone_books_data": {
-	"number_of_contacts": 137,
-    	"avg_number_of_fileds_used": 5,
-    	"groups": 0,
-    	"favorites": 10,
-    	"rings": 0,
-       "calendar_use" : 5,
-       "calendar_with_alarm" : 1,
-    	"fileds_available": ["Général","Portable ","E-mail","www ","www ","Anniversaire ","Prénom","Nom","Compagnie","Adresse prolongée","Rue/Avenue","Code postal","Ville","Pays","Date de la dernière modification","Stockage","MD5 hash"]
-	 ,
-    	"applications_available": ["mobilemail","freefleches","icepops","prettyPetSalon","camera","SFRMonCompte","iGmail","AppStore","alfabetoParlanteItFree","MobileSMS","ZahlenMalen","culture2011","mobiletimer","velodispo","babbelEnglish","fables","liberationapp","dominoforiphone","plus7","mobilephone","marabout","mobileipod","touchpetscats0","Preferences","instagram","videos","fr","MobileStore","fid-iphone","rswx","cottoncandy","twinflixlite","NathanParascoMaternelleMS","mobilenotes","mobileslideshow","YouTube","klondike","jedessine","calculator","m6replay","fashion","tripeakssolitaire","VoiceMemos","talkinggina","Messenger","MobileAddressBook","FrInter","gulli","coachforme","mooboxfree","imagier","iphone","popbooth","dora","hkbeautysalon","reminders","iseries","prd","gamecenter","weather","compass","ocean","photomaton","mobilesafari","ABC-petites-lettres-full","YatzyFree","pluzz","appli","fashionistas","PuzzleMe2","kitty","solitairecitylite","Formes-et-Couleurs-Lite","pesoideal","free"]
-	}
+		"number_of_contacts": 137,
+	    	"avg_number_of_fields_used": 5,
+	    	"groups": 0,
+	    	"favorites": 10,
+	    	"rings": 0,
+	       "calendar_use" : 5,
+	       "calendar_with_alarm" : 1,
+	    	"fields_used": ["Général","Portable ","E-mail","www ","www ","Anniversaire ","Prénom","Nom","Compagnie","Adresse prolongée","Rue/Avenue","Code postal","Ville","Pays","Date de la dernière modification","Stockage","MD5 hash"]
+		 ,
+	    	"applications_available": ["mobilemail","freefleches","icepops","prettyPetSalon","camera","SFRMonCompte","iGmail","AppStore","alfabetoParlanteItFree","MobileSMS","ZahlenMalen","culture2011","mobiletimer","velodispo","babbelEnglish","fables","liberationapp","dominoforiphone","plus7","mobilephone","marabout","mobileipod","touchpetscats0","Preferences","instagram","videos","fr","MobileStore","fid-iphone","rswx","cottoncandy","twinflixlite","NathanParascoMaternelleMS","mobilenotes","mobileslideshow","YouTube","klondike","jedessine","calculator","m6replay","fashion","tripeakssolitaire","VoiceMemos","talkinggina","Messenger","MobileAddressBook","FrInter","gulli","coachforme","mooboxfree","imagier","iphone","popbooth","dora","hkbeautysalon","reminders","iseries","prd","gamecenter","weather","compass","ocean","photomaton","mobilesafari","ABC-petites-lettres-full","YatzyFree","pluzz","appli","fashionistas","PuzzleMe2","kitty","solitairecitylite","Formes-et-Couleurs-Lite","pesoideal","free"]
+		}
 	}
 }
