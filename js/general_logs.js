@@ -25,31 +25,31 @@ function dataDisplay(data) {
     
   // Bar Chart 0
 
-  var names, values, aggregatedDataJSON = [];
-  names = ["total", "in", "out"];
-  values = [data.calls.total, data.calls.in, data.calls.out];
-  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_1", '#d9aa59');
+  var names, values, json = [];
+  names = ["duration_total", "duration_in", "duration_out"];
+  values = [data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
+  for (i in names) json.push({name: names[i], value: values[i]});
+  displayTable(json, "loggraph_1", ['#8d3233', '#d9aa59', '#79a0c1']);
 
   // Bar Chart 1
 
-  var names, values, aggregatedDataJSON = [];
-  names = ["duration_total", "duration_in", "duration_out"];
-  values = [data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
-  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_2", '#79a0c1');
+  var names, values, json = [];
+  names = ["total", "in", "out"];
+  values = [data.calls.total, data.calls.in, data.calls.out];
+  for (i in names) json.push({name: names[i], value: values[i]});
+  displayTable(json, "loggraph_2", ['#8d3233', '#d9aa59', '#79a0c1']); 
 
   // Bar Chart 2
 
-  var names, values, aggregatedDataJSON = [];
+  var names, values, json = [];
   names = ["total", "in", "out"];
   values = [data.SMS.total + data.MMS.total, data.SMS.in + data.MMS.in, data.SMS.out + data.MMS.out];
-  for (i in names) aggregatedDataJSON.push({name: names[i], value: values[i]});
-  displayTable(aggregatedDataJSON, "loggraph_3", '#79a0c1');
+  for (i in names) json.push({name: names[i], value: values[i]});
+  displayTable(json, "loggraph_3", ['#8d3233', '#d9aa59', '#79a0c1']);
 
 };
 
-function displayTable(aggregatedDataJSON, vizGraph, fillColor) {
+function displayTable(json, vizGraph, fillColor) {
 
   // Data
 
@@ -62,8 +62,8 @@ function displayTable(aggregatedDataJSON, vizGraph, fillColor) {
   var x = d3.scale.linear().range([0, width]);
   var y = d3.scale.ordinal().rangeRoundBands([0, height], .1);
 
-  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
-  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
+  x.domain([0, d3.max(json, function(d) { return d.value; })]);
+  y.domain(json.map(function(d) { return d.name; }));
 
   var xAxis = d3.svg.axis().scale(x).orient("top").tickSize(-height);
   var yAxis = d3.svg.axis().scale(y).orient("left").tickSize(0);
@@ -77,11 +77,18 @@ function displayTable(aggregatedDataJSON, vizGraph, fillColor) {
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   var bar = svg.selectAll("g.bar")
-      .data(aggregatedDataJSON)
+      .data(json)
     .enter().append("g")
       .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; })
-      .attr('fill', fillColor);
+      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
+
+  console.log($("div#" + vizGraph + ' g.bar')[0]);
+
+  // $("div#" + vizGraph + ' g.bar').first().hide();
+
+  $("div#" + vizGraph + ' g.bar').each(function(i) {
+    $(this).attr('fill', fillColor[i]);
+  });
 
   bar.append("rect")
       .attr("width", function(d) { return x(d.value); })
