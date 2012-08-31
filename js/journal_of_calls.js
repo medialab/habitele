@@ -21,9 +21,10 @@ function tdBehavior() {
 
     direction = $(this).attr('direction');
 
-    if (direction == 'in') color = '#d9aa59'
-    else if (direction == 'out') color = '#79a0c1'
-    else if (direction == 'none') color = '#8d3233'
+    if (direction == 'in') color = '#79a0c1'
+    else if (direction == 'out') color = '#6db36b'
+    else if (direction == 'missed') color = '#8d3233'
+    else if (direction == 'none') color = '#d9aa59'
 
     console.log(direction)
     console.log(color)
@@ -217,7 +218,7 @@ function initViz() {
         $(this).attr({
           "name": data[n].contact,
           "number": data[n].number,
-          'direction': 'none'
+          'direction': 'missed'
         });
         if (d == 00) $(this).attr("max", maxNumbers[8]);
       } else {
