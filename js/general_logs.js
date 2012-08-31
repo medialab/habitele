@@ -29,7 +29,7 @@ function dataDisplay(data) {
   names = ["duration_total", "duration_in", "duration_out"];
   values = [data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
   for (i in names) json.push({name: names[i], value: values[i]});
-  displayTable(json, "loggraph_1", ['#8d3233', '#d9aa59', '#79a0c1']);
+  displayTable(json, "loggraph_1", ['#d9aa59', '#79a0c1', '#6fae6d']);
 
   // Bar Chart 1
 
@@ -37,7 +37,7 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.calls.total, data.calls.in, data.calls.out];
   for (i in names) json.push({name: names[i], value: values[i]});
-  displayTable(json, "loggraph_2", ['#8d3233', '#d9aa59', '#79a0c1']); 
+  displayTable(json, "loggraph_2", ['#d9aa59', '#79a0c1', '#6fae6d']); 
 
   // Bar Chart 2
 
@@ -45,7 +45,7 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.SMS.total + data.MMS.total, data.SMS.in + data.MMS.in, data.SMS.out + data.MMS.out];
   for (i in names) json.push({name: names[i], value: values[i]});
-  displayTable(json, "loggraph_3", ['#8d3233', '#d9aa59', '#79a0c1']);
+  displayTable(json, "loggraph_3", ['#d9aa59', '#79a0c1', '#6fae6d']);
 
 };
 
@@ -81,10 +81,6 @@ function displayTable(json, vizGraph, fillColor) {
     .enter().append("g")
       .attr("class", "bar")
       .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
-
-  console.log($("div#" + vizGraph + ' g.bar')[0]);
-
-  // $("div#" + vizGraph + ' g.bar').first().hide();
 
   $("div#" + vizGraph + ' g.bar').each(function(i) {
     $(this).attr('fill', fillColor[i]);
