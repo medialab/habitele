@@ -1,35 +1,9 @@
-{ 
-	"data" : [
-	{
-		"class" : "lang-title",
-		"value" : "Habitele"
-	},
-	{
-		"class" : "lang-home",
-		"value" : "Load Json File"
-	},
-	{
-		"class" : "lang-activity-timelines",
-		"value" : "2. Timeline"
-	},
-	{
-		"class" : "lang-journal-of-calls",
-		"value" : "3. Calls and SMS"
-	},
-	{
-		"class" : "lang-activities-peaks-analysis",
-		"value" : "4. Peaks Analysis"
-	},
-	{
-		"class" : "lang-general-logs",
-		"value" : "1. General Logs"
-	},
-	{
-		"class" : "lang-phone-books",
-		"value" : "5. Phone Books"
-	},
-	{
-		"class" : "lang-lang",
-		"value" : "Langue"
-	}
-]}
+{
+	"index": "Load Json File",
+	"general_logs": "1. General Logs",
+	"timelines": "2. Timelines",
+	"journal": "3. Calls and SMS",
+	"peaks_analysis": "4. Peaks Analysis",
+	"phone_books": "5. Phone Books",
+	"langue": "Langue"
+}

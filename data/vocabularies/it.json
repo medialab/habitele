@@ -1,35 +1,9 @@
-{ 
-	"data" : [
-	{
-		"class" : "lang-title",
-		"value" : "Habitele"
-	},
-	{
-		"class" : "lang-home",
-		"value" : "Home"
-	},
-	{
-		"class" : "lang-activity-timelines",
-		"value" : "Linee temporali"
-	},
-	{
-		"class" : "lang-journal-of-calls",
-		"value" : "Chiamate"
-	},
-	{
-		"class" : "lang-activities-peaks-analysis",
-		"value" : "Picchi d'Attività"
-	},
-	{
-		"class" : "lang-general-logs",
-		"value" : "Record Generali"
-	},
-	{
-		"class" : "lang-phone-books",
-		"value" : "Rubrica"
-	},
-	{
-		"class" : "lang-lang",
-		"value" : "Lingua"
-	}
-]}
+{
+	"index": "Carica Json File",
+	"general_logs": "1. Log Generali",
+	"timelines": "2. Timeline",
+	"journal": "3. Chiamate e SMS",
+	"peaks_analysis": "4. Analisi dei Picchi",
+	"phone_books": "5. Agenda",
+	"langue": "Lingua"
+}
