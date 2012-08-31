@@ -26,11 +26,11 @@ function initViz() {
 
   // Display
   
-  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale, '#8d3233');
-  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale, '#8d3233');
+  vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale, '#d9aa59');
+  vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale, '#03717e');
-  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, '#8d3233');
-  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, '#8d3233');
+  vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, '#d9aa59');
+  vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#03717e');
 
   // Behaviours
@@ -58,7 +58,7 @@ function vizDisplay(vizMax, vizCollapse, dataStructure, vizScale, color) {
   });
 
   var margin = {top: 10, right: 30, bottom: 30, left: 40},
-      width = $("#collapseOne .accordion-inner").width() - margin.left - margin.right,
+      width = $(".span10").width() - margin.left - margin.right,
       height = 140 - margin.top - margin.bottom;
 
   var x = d3.scale.linear().domain([0, vizScale.length-1]).range([0, width]);
