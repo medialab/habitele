@@ -8,13 +8,15 @@ initViz = function () {
       dataDisplay(i.substr(5));
     }
   }
+
+  setBehaviors();
 }
 
 activate_event = function(peak_number, event_number) {
     $("#svg" + peak_number + " circle").css("stroke", "steelblue")
     $("#peak" + peak_number + "_circle" + event_number).css("stroke", "red")
     $("#events" + peak_number).data("cur", event_number);
-    $("#events" + peak_number + " tr.event").css("font-weight", "normal");
+    $("#events" + peak_number + " tr").css("font-weight", "normal");
     $("#peak" + peak_number + "_event" + event_number).css("font-weight", "bold");
 }
 
@@ -52,6 +54,7 @@ dataDisplay = function (peak) {
   peak = peak.toString();
 
   // creating the tabs
+
   liItems = d3.select("ul.nav-tabs").append("li");
 
   if (peak == 1) liItems.attr("class", "active");
@@ -61,19 +64,14 @@ dataDisplay = function (peak) {
     .attr("data-toggle", "tab")
     .text("Peak " + peak);
 
+  tempValue = ( peak == 1 ) ? "row tab-pane active" : "row tab-pane";
 
   divItem = d3.select(".tab-content").append("div")
-    .attr("id", "tab" + peak);
-
-  tempValue = ( peak == 1 ) ? "row tab-pane active" : "row tab-pane";
-  divItem.attr("class", tempValue);
-
-  divItem.append("div").attr("class", "span11 timeline");
+    .attr("id", "tab" + peak)
+    .attr("class", tempValue)
+    .append("div").attr("class", "span11 timeline");
 
   dataPeak = vizData.visualizations.activities_peaks_analysis.peaks_timeline['peak_' + peak];
-
-
-
 
   dataPeakCount = 0;
   for (key in dataPeak.events) dataPeakCount++;
@@ -95,9 +93,7 @@ dataDisplay = function (peak) {
   var min = d3.min(data, function(d) {return d.x;});
   var max = d3.max(data, function(d) {return d.x;});
 
-  var x = d3.time.scale()
-    .domain([min, max]).range([0, width]);
-
+  var x = d3.time.scale().domain([min, max]).range([0, width]);
   var y = d3.scale.linear().domain([0, 1]).range([height, 0]);
 
   var xAxis = d3.svg.axis().scale(x).orient("bottom");
@@ -130,6 +126,8 @@ dataDisplay = function (peak) {
       .data(data.filter(function(d) { return d.y; }))
     .enter().append("circle")
       .attr("class", "dot")
+      .attr("data-peak", peak)
+      .attr("data-event", function(d, i) { return i; } )
       .attr("id", function(d, i) { return "peak" + peak + "_circle" + i})
       .attr("cx", line.x())
       .attr("cy", line.y())
@@ -152,6 +150,7 @@ dataDisplay = function (peak) {
   for (var i in contacts) {
     if (contacts.hasOwnProperty(i)) tbody.append("tr").append("td").text(contacts[i]);
   }
+
   // 
   // Directions
   //
@@ -232,7 +231,6 @@ dataDisplay = function (peak) {
     // Tables
     //
 
-
     var calls = [];
     var durations = [];
     var durationsAverage = [];
@@ -265,29 +263,28 @@ dataDisplay = function (peak) {
     events.push(dataPeak.events[arg]);
   }
 
-  $next = $("<button>").text("next >>").click((function() { 
-    return function() {
-      next(peak, events.length);
-  } })());
+  // Buttons 
 
-  $prev = $("<button>").text("<< prev").click(function () {
-    prev(peak);
+  $next = $("<button>").text(">>").click(function() { 
+    next(peak, events.length);
+    return null;
   });
 
-  $nav = $("<div>").addClass("span1").attr("id", "nav_buttons")
-  $nav.append($prev);
-  $nav.append($next);
+  $prev = $("<button>").text("<<").click(function () {
+    prev(peak);
+    return null;
+  });
+
+  $nav = $("<div>")
+    .addClass("span1")
+    .attr("id", "nav_buttons")
+    .append($prev)
+    .append($next);
+  
   $("#tab" + peak).append($nav);
 
-    // Put nav and timeline at the same  level
-    // 
-    // 
-    // 
-    // 
-    // 
-    // 
-    // 
-    // 
+
+  // Tables with events
 
   divItem.append("div").attr("id", "events" + peak).attr("class", "span12 events");
 
@@ -296,45 +293,75 @@ dataDisplay = function (peak) {
   $tableEvents.append("<tr><th>time</th><th>channel</th><th>direction</th><th>contact</th><th>duration</th></tr>")
 
   events.forEach(function (event, i) {
-    $event = $("<tr>").attr("id", "peak" + peak + "_event" + i).attr("class", "event");    
 
-    $event.click(function() {
-      activate_event(peak, i)
-    })
-    $("#peak" + peak + "_circle" + i).click(function () {
-      activate_event(peak, i);
-    }).css("cursor", "pointer");
-
-    $contact = $("<td>").text(event.contact);
-    $duration = $("<td>").text(human_readable_duration(event.duration));
+      $contact = $("<td>").text(event.contact);
+     $duration = $("<td>").text(human_readable_duration(event.duration));
     $direction = $("<td>").text(event.direction);
-    $time = $("<td>").text(event.time);
-    $channel = $("<td>").text(event.channel);
+         $time = $("<td>").text(event.time.substr(0,19));
+      $channel = $("<td>").text(event.channel);
     
-    $event.append($time)
-          .append($channel)
-          .append($direction)
-          .append($contact)
-          .append($duration);
+    $event= $("<tr>")
+      .attr("id", "peak" + peak + "_event" + i)
+      .attr("data-peak", peak)
+      .attr("data-event", i)
+      .append($time)
+      .append($channel)
+      .append($direction)
+      .append($contact)
+      .append($duration);
 
     $tableEvents.append($event);
+
   });
+
   $events.append($tableEvents);
 
 
 
 }
 
-vizData = JSON.parse(localStorage["data"]);
-initViz();
+setBehaviors = function() {
+
+  $(document).on("click",".dot", function(event){
+    activate_event($(this).attr('data-peak'), $(this).attr('data-event'));
+  });
+
+  $(document).on("click","table tr", function(event){
+    activate_event($(this).attr('data-peak'), $(this).attr('data-event'));
+  });
+
+  $('tr').each(function() {
+    $(this).css('cursor', 'pointer');
+  });
+
+  $('.dot[data-event=0]').each(function() {
+    activate_event($(this).attr('data-peak'), 0);
+  });
+  
+}
 
 $(window).resize(function() {
   $("ul.nav-tabs").html("");
   $("div.tab-content").html("");
   initViz();
-  activate_event(1, 0);
-  activate_event(2, 0);
 });
 
-activate_event(1, 0);
-activate_event(2, 0)
+
+
+vizData = JSON.parse(localStorage["data"]);
+initViz();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
