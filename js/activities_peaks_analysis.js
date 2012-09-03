@@ -1,6 +1,7 @@
 var dataPeak;
 
 initViz = function () {
+  
   var obj = vizData.visualizations.activities_peaks_analysis.peaks_timeline;
 
   for(var i in obj) {
@@ -36,7 +37,6 @@ prev = function(peak_number) {
     }
 }
 
-
 human_readable_duration = function(duration) {
   seconds = duration % 60;  
   minutes = (duration - seconds) /60  %60;
@@ -52,8 +52,6 @@ human_readable_duration = function(duration) {
 dataDisplay = function (peak) {
 
   peak = peak.toString();
-
-  // creating the tabs
 
   liItems = d3.select("ul.nav-tabs").append("li");
 
@@ -193,10 +191,6 @@ dataDisplay = function (peak) {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // Parse numbers, and sort by value.
-  // aggregatedDataJSON.forEach(function(d) { d.value = +d.value; });
-  // aggregatedDataJSON.sort(function(a, b) { return b.value - a.value; });
-
   x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
   y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
 
@@ -219,44 +213,37 @@ dataDisplay = function (peak) {
       .attr("text-anchor", "end")
       .text(function(d) { return format(d.value); });
 
-  svg.append("g")
-      .attr("class", "x axis")
-      .call(xAxis);
+  svg.append("g").attr("class", "x axis").call(xAxis);
+  svg.append("g").attr("class", "y axis").call(yAxis);
 
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis);
+  // Data
 
-    // 
-    // Tables
-    //
+  var calls = [];
+  var durations = [];
+  var durationsAverage = [];
+  var sms = [];
 
-    var calls = [];
-    var durations = [];
-    var durationsAverage = [];
-    var sms = [];
-
-    for(i in contacts) {
-      if(contacts.hasOwnProperty(i)) {
-        calls.push(0);
-        durations.push(0);
-        sms.push(0);
-      }
+  for(i in contacts) {
+    if(contacts.hasOwnProperty(i)) {
+      calls.push(0);
+      durations.push(0);
+      sms.push(0);
     }
+  }
 
-    for(key in dataPeak.events) {
-        for( i in contacts ) {
-          if( contacts[i] == dataPeak.events[key].contact ) {
-            if ( dataPeak.events[key].channel == "call" ) {
-              calls[i]++;
-              durations[i] += dataPeak.events[key].duration;
-              durationsAverage[i] = durations[i] / calls[i];
-            } else if ( dataPeak.events[key].channel == "sms" ) {
-              sms[i]++;
-            }
+  for(key in dataPeak.events) {
+      for( i in contacts ) {
+        if( contacts[i] == dataPeak.events[key].contact ) {
+          if ( dataPeak.events[key].channel == "call" ) {
+            calls[i]++;
+            durations[i] += dataPeak.events[key].duration;
+            durationsAverage[i] = durations[i] / calls[i];
+          } else if ( dataPeak.events[key].channel == "sms" ) {
+            sms[i]++;
           }
         }
-    }
+      }
+  }
 
   events = []
   for (arg in dataPeak.events) {
@@ -266,25 +253,21 @@ dataDisplay = function (peak) {
   // Buttons 
 
   $next = $("<button>").text(">>").click(function() { 
-    next(peak, events.length);
-    return null;
+    next(peak, events.length); return null;
   });
 
   $prev = $("<button>").text("<<").click(function () {
-    prev(peak);
-    return null;
+    prev(peak); return null;
   });
 
   $nav = $("<div>")
     .addClass("span1")
     .attr("id", "nav_buttons")
-    .append($prev)
-    .append($next);
+    .append($prev.append($next);
   
   $("#tab" + peak).append($nav);
 
-
-  // Tables with events
+  // Tables
 
   $divItem = $("<div>")
     .attr("id", "events" + peak)
@@ -320,9 +303,9 @@ dataDisplay = function (peak) {
 
   $events.append($tableEvents);
 
-
-
 }
+
+
 
 setBehaviors = function() {
 
@@ -344,6 +327,8 @@ setBehaviors = function() {
   
 }
 
+
+
 $(window).resize(function() {
   $("ul.nav-tabs").html("");
   $("div.tab-content").html("");
@@ -354,14 +339,6 @@ $(window).resize(function() {
 
 vizData = JSON.parse(localStorage["data"]);
 initViz();
-
-
-
-
-
-
-
-
 
 
 
