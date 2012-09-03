@@ -268,6 +268,7 @@ dataDisplay = function (peak) {
 
   $nav = $("<div>")
     .addClass("span2")
+    .addClass("btn-group")
     .attr("id", "nav_buttons")
     .css('text-align', 'right')
     .append($prev).append($next);

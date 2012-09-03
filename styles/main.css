@@ -25,16 +25,7 @@ body img {
     shape-rendering: crispEdges;
 }
 
-.axis text {
-    /*font-family: sans-serif;
-    font-size: 11px;*/
-}
-
 /* Bars */
-
-/*.bar rect {
-  fill: #79a0c1;
-}*/
 
 .bar text.value {
   fill: white;
