@@ -286,7 +286,11 @@ dataDisplay = function (peak) {
 
   // Tables with events
 
-  divItem.append("div").attr("id", "events" + peak).attr("class", "span12 events");
+  $divItem = $("<div>")
+    .attr("id", "events" + peak)
+    .attr("class", "span12 events");
+
+  $("#tab" + peak).append($divItem);
 
   $events = $("#events" + peak);
   $tableEvents = $("<table>").addClass("table table-striped table-bordered table-condensed")
@@ -295,7 +299,7 @@ dataDisplay = function (peak) {
   events.forEach(function (event, i) {
 
       $contact = $("<td>").text(event.contact);
-     $duration = $("<td>").text(human_readable_duration(event.duration));
+     $duration = $("<td>").text(event.duration ? human_readable_duration(event.duration) : 'none');
     $direction = $("<td>").text(event.direction);
          $time = $("<td>").text(event.time.substr(0,19));
       $channel = $("<td>").text(event.channel);
