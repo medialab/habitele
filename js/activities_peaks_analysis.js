@@ -67,7 +67,7 @@ dataDisplay = function (peak) {
   divItem = d3.select(".tab-content").append("div")
     .attr("id", "tab" + peak)
     .attr("class", tempValue)
-    .append("div").attr("class", "span11 timeline");
+    .append("div").attr("class", "span10 timeline");
 
   dataPeak = vizData.visualizations.activities_peaks_analysis.peaks_timeline['peak_' + peak];
 
@@ -252,18 +252,25 @@ dataDisplay = function (peak) {
 
   // Buttons 
 
-  $next = $("<button>").text(">>").click(function() { 
+  $next = $("<button>")
+    .addClass('btn')
+    .text(">>")
+    .click(function() { 
     next(peak, events.length); return null;
   });
 
-  $prev = $("<button>").text("<<").click(function () {
+  $prev = $("<button>")
+    .addClass('btn')
+    .text("<<")
+    .click(function () {
     prev(peak); return null;
   });
 
   $nav = $("<div>")
-    .addClass("span1")
+    .addClass("span2")
     .attr("id", "nav_buttons")
-    .append($prev.append($next);
+    .css('text-align', 'right')
+    .append($prev).append($next);
   
   $("#tab" + peak).append($nav);
 
