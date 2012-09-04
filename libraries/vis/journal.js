@@ -26,9 +26,6 @@ function tdBehavior() {
     else if (direction == 'missed') color = '#8d3233'
     else if (direction == 'none') color = '#d9aa59'
 
-    console.log(direction)
-    console.log(color)
-
     // BackgroundChart resize
 
     $($(this).children(0)[0]).css({
@@ -134,12 +131,17 @@ function initViz() {
           else if (d == 50) maxNumbers[2] = data[n].number;
           else if (d == 75) maxNumbers[3] = data[n].number;
         }
-        textChart.html('<a rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
+
+        title = (d == 75) ? human_readable_duration(data[n].number) : data[n].number;
+
+        textChart.html('<a rel="tooltip" title="' + title + '">' + data[n].contact) + '</a>';
+        
         $(this).attr({
           'data-name': data[n].contact,
           'data-number': data[n].number,
           'data-direction': 'in'
         });
+
         if (d == 00) $(this).attr("max", maxNumbers[0]);
         else if (d == 25) $(this).attr("max", maxNumbers[1]);
         else if (d == 50) $(this).attr("max", maxNumbers[2]);
@@ -163,12 +165,17 @@ function initViz() {
           else if (d == 50) maxNumbers[6] = data[n-10].number;
           else if (d == 75) maxNumbers[7] = data[n-10].number;
         }
-        textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
+        
+        title = (d == 75) ? human_readable_duration(data[n-10].number) : data[n-10].number;
+
+        textChart.html('<a href="#" rel="tooltip" title="' + title + '">' + data[n-10].contact) + '</a>';
+        
         $(this).attr({
           'data-name': data[n-10].contact,
           'data-number': data[n-10].number,
           'data-direction': 'out'
         });
+
         if (d == 00) $(this).attr("max", maxNumbers[4]);
         if (d == 25) $(this).attr("max", maxNumbers[5]);
         if (d == 50) $(this).attr("max", maxNumbers[6]);
