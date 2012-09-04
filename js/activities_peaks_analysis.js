@@ -84,7 +84,7 @@ dataDisplay = function (peak) {
     return {x: format.parse(dataPeak.events[d+1].time.substr(0,19)), y: 1};
   });
 
-  var margin = {top: 10, right: 20, bottom: 20, left: 20},
+  var margin = {top: 15, right: 20, bottom: 20, left: 20},
       width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
       height = 60 - margin.top - margin.bottom;
 
