@@ -1,5 +1,6 @@
 {
-	"index": "Load Data",
+	"index": "Open file",
+    "index_subtitle": "Select the file you want to be displayed and start the interview",
 	"general_logs_title": "1. Logs",
 	"timelines_title": "2. Timelines",
 	"journal_title": "3. Calls and SMS",
