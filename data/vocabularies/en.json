@@ -26,5 +26,9 @@
 
     "duration":"Duration",
     "in":"IN",
-    "out":"OUT" 
+    "out":"OUT",
+
+    "calendar_use": "Calendar Use",
+    "calendar_with_alarm": "Calendar with allarm",
+    "calendar_with_recurrence": "Calendar with recurrence"
 }
