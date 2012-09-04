@@ -5,7 +5,7 @@
   "description": "Data visualizations from mobile data from Habitele project.",
   "browser_action": {
     "default_icon": "styles/sciencespo.png",
-    "default_popup": "close.html"
+    "default_popup": "libraries/chrome/close.html"
   },
   "permissions": [
     "http://api.flickr.com/",
