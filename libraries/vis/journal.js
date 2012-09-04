@@ -19,7 +19,7 @@ function tdBehavior() {
 
   $('#table_1 td, #table_2 td').filter(':odd').each(function(index) {
 
-    direction = $(this).attr('direction');
+    direction = $(this).attr('data-direction');
 
     if (direction == 'in') color = '#79a0c1'
     else if (direction == 'out') color = '#6db36b'
@@ -49,7 +49,7 @@ function tdBehavior() {
       "height": $(this).height() + 8,
       "margin": "-4px 0 0 -5px",
       "opacity": ".15",
-      "width": ($(this).width() + 10) * $(this).attr('number') / $(this).attr('max'),
+      "width": ($(this).width() + 10) * $(this).attr('data-number') / $(this).attr('max'),
       "z-index": "-1"
     });
 
@@ -74,14 +74,14 @@ function tdBehavior() {
     $(this).mouseenter(function() {
       if ($($(this).children(0)[2]).text()) {
         active($(this));
-        $('[name="' + $(this).attr('name') + '"]').each(function() {
+        $('[data-name="' + $(this).attr('data-name') + '"]').each(function() {
           active($(this));
         });
         $($(this).children(0)[2]).children().tooltip('show');
       }
     }).mouseleave(function() {
       inactive($(this));
-      $('[name="' + $(this).attr('name') + '"]').each(function() {
+      $('[data-name="' + $(this).attr('data-name') + '"]').each(function() {
         inactive($(this));
       });
       $($(this).children(0)[2]).children().tooltip('hide');
@@ -136,9 +136,9 @@ function initViz() {
         }
         textChart.html('<a rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
         $(this).attr({
-          "name": data[n].contact,
-          "number": data[n].number,
-          'direction': 'in'
+          'data-name': data[n].contact,
+          'data-number': data[n].number,
+          'data-direction': 'in'
         });
         if (d == 00) $(this).attr("max", maxNumbers[0]);
         else if (d == 25) $(this).attr("max", maxNumbers[1]);
@@ -165,9 +165,9 @@ function initViz() {
         }
         textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
         $(this).attr({
-          "name": data[n-10].contact,
-          "number": data[n-10].number,
-          'direction': 'out'
+          'data-name': data[n-10].contact,
+          'data-number': data[n-10].number,
+          'data-direction': 'out'
         });
         if (d == 00) $(this).attr("max", maxNumbers[4]);
         if (d == 25) $(this).attr("max", maxNumbers[5]);
@@ -216,9 +216,9 @@ function initViz() {
         }
         textChart.html('<a href="#" rel="tooltip" title="' + data[n].number + '">' + data[n].contact) + '</a>';
         $(this).attr({
-          "name": data[n].contact,
-          "number": data[n].number,
-          'direction': 'missed'
+          'data-name': data[n].contact,
+          'data-number': data[n].number,
+          'data-direction': 'missed'
         });
         if (d == 00) $(this).attr("max", maxNumbers[8]);
       } else {
@@ -236,9 +236,9 @@ function initViz() {
         }
         textChart.html('<a href="#" rel="tooltip" title="' + data[n-10].number + '">' + data[n-10].contact) + '</a>';
         $(this).attr({
-          "name": data[n-10].contact,
-          "number": data[n-10].number,
-          'direction': 'none'
+          'data-name': data[n-10].contact,
+          'data-number': data[n-10].number,
+          'data-direction': 'none'
         });
         if (d == 00) $(this).attr("max", maxNumbers[9]);
       } else {
