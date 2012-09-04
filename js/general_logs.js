@@ -17,6 +17,20 @@ function initViz() {
 
 
 
+function human_readable_duration(duration) {
+  seconds = duration % 60;  
+  minutes = (duration - seconds) /60  %60;
+  hours = (duration - minutes * 60 - seconds) / 3600; 
+
+  str_seconds = seconds ? seconds + " seconds" : "";
+  str_minutes = minutes ? minutes + " minutes" : "";
+  str_hours = hours ? hours + " hours" : "";
+
+  return str_hours + " " + str_minutes + " " + str_seconds; 
+}
+
+
+
 function dataDisplay(data) {
 
   // List data
@@ -28,8 +42,8 @@ function dataDisplay(data) {
   var names, values, json = [];
   names = ["duration_total", "duration_in", "duration_out"];
   values = [data.calls.duration_total, data.calls.duration_in, data.calls.duration_out];
-  for (i in names) json.push({name: names[i], value: values[i]});
-  displayTable(json, "loggraph_1", ['#d9aa59', '#79a0c1', '#6fae6d']);
+  for (i in names) json.push({name: names[i], value: values[i], timeValue: human_readable_duration(values[i])});
+  displayTable(json, "loggraph_1", ['#d9aa59', '#79a0c1', '#6fae6d'], "time");
 
   // Bar Chart 1
 
@@ -37,7 +51,7 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.calls.total, data.calls.in, data.calls.out];
   for (i in names) json.push({name: names[i], value: values[i]});
-  displayTable(json, "loggraph_2", ['#d9aa59', '#79a0c1', '#6fae6d']); 
+  displayTable(json, "loggraph_2", ['#d9aa59', '#79a0c1', '#6fae6d'], "number"); 
 
   // Bar Chart 2
 
@@ -45,11 +59,11 @@ function dataDisplay(data) {
   names = ["total", "in", "out"];
   values = [data.SMS.total + data.MMS.total, data.SMS.in + data.MMS.in, data.SMS.out + data.MMS.out];
   for (i in names) json.push({name: names[i], value: values[i]});
-  displayTable(json, "loggraph_3", ['#d9aa59', '#79a0c1', '#6fae6d']);
+  displayTable(json, "loggraph_3", ['#d9aa59', '#79a0c1', '#6fae6d'], "number");
 
 };
 
-function displayTable(json, vizGraph, fillColor) {
+function displayTable(json, vizGraph, fillColor, dataFormat) {
 
   // Data
 
@@ -97,7 +111,9 @@ function displayTable(json, vizGraph, fillColor) {
       .attr("dx", -3)
       .attr("dy", ".35em")
       .attr("text-anchor", "end")
-      .text(function(d) { return format(d.value); });
+      .text(function(d) {
+        return (dataFormat == "time") ? d.timeValue : format(d.value)
+      });
 
   svg.append("g")
       .attr("class", "x axis bar")
