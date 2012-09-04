@@ -18,7 +18,7 @@ function handleFileSelect(evt) {
                           return function(e) {
                               localStorage["data"] = e.target.result
                               
-                 $(".after_loaded").show(1500);
+                 $(".after_loaded").show();
                  $(".before_loaded").hide();
                   vizData = JSON.parse(localStorage["data"]);  
                  
