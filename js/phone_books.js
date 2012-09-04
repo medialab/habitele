@@ -13,12 +13,12 @@ function initViz() {
 
 function dataDisplay(data) {
 
-  // data = dataPeak.aggregated_data;
-  console.log(data)
-
   names = [];
   values = [];
   var json = [];
+
+  names.push('Average Number of fields used');
+  values.push(vizData.visualizations.phone_books_data.avg_number_of_fileds_used);
 
   for (var i in data) {
       names.push(i);
@@ -31,7 +31,7 @@ function dataDisplay(data) {
 
   console.log(json)
 
-  var margin = {top: 30, right: 10, bottom: 10, left: 100},
+  var margin = {top: 30, right: 10, bottom: 10, left: 250},
     width = $("div#container").width() - margin.right - margin.left,
     height = 600 - margin.top - margin.bottom;
 
@@ -56,7 +56,7 @@ function dataDisplay(data) {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  x.domain([-3, d3.max(json, function(d) { return d.value; })]);
+  x.domain([-5, d3.max(json, function(d) { return d.value; })]);
   y.domain(json.map(function(d) { return d.name; }));
 
   var bar = svg.selectAll("g.bar")
