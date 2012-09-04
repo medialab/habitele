@@ -23,22 +23,6 @@ function dataDisplay(data) {
 
   $('#total_phone_book_entries').text(data.total_phone_book_entries);
 
-  counter = 0;
-  for (i in vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour) counter += vizData.visualizations.activity_timelines.calls_working_typical_day_by_24hour[i];
-  $('#average_calls_working_day').text(counter);
-
-  counter = 0;
-  for (i in vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour) counter += vizData.visualizations.activity_timelines.calls_weekend_typical_day_by_24hour[i];
-  $('#average_calls_weekend_day').text(counter);
-
-counter = 0;
-  for (i in vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour) counter += vizData.visualizations.activity_timelines.SMS_working_typical_day_by_24hour[i];
-  $('#average_smsandmms_working_day').text(counter);
-
-  counter = 0;
-  for (i in vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour) counter += vizData.visualizations.activity_timelines.SMS_weekend_typical_day_by_24hour[i];
-  $('#average_smsandmms_weekend_day').text(counter);
-
 
   // Bar Chart 0
 
