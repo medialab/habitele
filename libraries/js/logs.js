@@ -17,20 +17,6 @@ function initViz() {
 
 
 
-function human_readable_duration(duration) {
-  seconds = duration % 60;  
-  minutes = (duration - seconds) /60  %60;
-  hours = (duration - minutes * 60 - seconds) / 3600; 
-
-  str_seconds = seconds ? seconds + " seconds" : "";
-  str_minutes = minutes ? minutes + " minutes" : "";
-  str_hours = hours ? hours + " hours" : "";
-
-  return str_hours + " " + str_minutes + " " + str_seconds; 
-}
-
-
-
 function dataDisplay(data) {
 
   // List data
