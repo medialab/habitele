@@ -13,14 +13,17 @@ function eliminateDuplicates(arr) {
   return out;
 }
 
+
+
 function human_readable_duration(duration) {
   seconds = duration % 60;  
   minutes = (duration - seconds) /60  %60;
   hours = (duration - minutes * 60 - seconds) / 3600; 
 
-  str_seconds = seconds ? seconds + " seconds" : "";
-  str_minutes = minutes ? minutes + " minutes" : "";
-  str_hours = hours ? hours + " hours" : "";
+  return hours.toString() + ":" + addZero(minutes.toString()) + ":" + addZero(seconds.toString());
+}
 
-  return str_hours + " " + str_minutes + " " + str_seconds; 
+function addZero(num)
+{
+  return (num.length < 2) ? "0" + num : num;
 }
