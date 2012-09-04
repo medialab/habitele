@@ -16,8 +16,8 @@
     "number_of_contacts_in_journal_activity": "Total contacts in journal activity",
     
     "calls":"Calls",
-    "missed_calls":"Missed calls",
-    "short_calls":"Short calls",
+    "missed_calls":"Missed",
+    "short_calls":"Short",
 
     "average_working_day":"Average number for a working day",
     "average_weekend_day":"Average number for a weekend day",
