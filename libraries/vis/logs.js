@@ -22,6 +22,7 @@ function dataDisplay(data) {
   // List data
 
   $('#total_phone_book_entries').text(data.total_phone_book_entries);
+  $('#number_of_contacts_in_journal_activity').text(vizData.visualizations.phone_books.contacts);
 
 
   // Bar Chart 0
