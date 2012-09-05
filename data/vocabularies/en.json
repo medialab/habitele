@@ -14,6 +14,12 @@
     "phone_books": "Phone Books",
     "number_of_contacts": "Number of contacts",
     "number_of_contacts_in_journal_activity": "Total contacts in journal activity",
+    "duration_total": "Total duration",
+    "duration_in": "Incoming duration",
+    "duration_out": "Outcoming duration",
+    "total": "Total",
+    "in": "Incoming",
+    "out": "Outcoming",
     
     "calls":"Calls",
     "missed_calls":"Missed",
@@ -27,8 +33,6 @@
     "mms":"MMS",
 
     "duration":"Duration",
-    "in":"IN",
-    "out":"OUT",
 
     "calendar_use": "Number of events",
     "calendar_with_alarm": "Events with alarms",

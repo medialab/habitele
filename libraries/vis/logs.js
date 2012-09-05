@@ -3,6 +3,7 @@ initViz();
 
 $(window).resize(function() {
   initViz();
+  setCookie(document.cookie.split("=")[1]);
 });
 
 
@@ -88,6 +89,10 @@ function displayTable(json, vizGraph, fillColor, dataFormat) {
     $(this).attr('fill', fillColor[i]);
   });
 
+  $("div#" + vizGraph + ' text').each(function(i) {
+    $(this).attr("data-lang", "data-lang")
+  });
+
   bar.append("rect")
       .attr("width", function(d) { return x(d.value); })
       .attr("height", y.rangeBand());
@@ -110,5 +115,9 @@ function displayTable(json, vizGraph, fillColor, dataFormat) {
   svg.append("g")
       .attr("class", "y axis bar")
       .call(yAxis);
+
+  $("div#loggraph_1 text[y=0]").each(function(i) {
+    $(this).attr('data-lang', json[i].name)
+  })
 
 }
