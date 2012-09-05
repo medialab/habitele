@@ -18,12 +18,15 @@ function initViz() {
 
 function dataDisplay(data) {
 
-  for (var i in data) {
+	columns = 4;
 
-  	if (i%4 === 0) $('tbody').append('<tr>');
-  	$('tbody tr').last().append('<td>');
-  	$('tbody td').last().attr('width', '25%').text(data[i]);
+	loop = data.length - data.length%columns;
+	loop = (data.length%columns == 0) ? loop : loop + columns;
 
-  }
+	for (i=0; i < loop; i++) {
+		if (i%columns === 0) $('tbody').append('<tr>');
+		$('tbody tr').last().append('<td>');
+		$('tbody td').last().attr('width', '25%').text(data[i]);
+	}
 
 };
