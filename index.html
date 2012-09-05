@@ -31,7 +31,7 @@
           <a class="brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#" data-lang="index" class="after_loaded"></a></li>
+              <li class="active"><a href="#" data-lang="index"></a></li>
               <li><a href="logs.html" data-lang="general_logs_title" class="after_loaded"></a></li>
               <li><a href="timelines.html" data-lang="timelines_title" class="after_loaded"></a></li>
               <li><a href="journal.html" data-lang="journal_title" class="after_loaded"></a></li>
@@ -63,14 +63,19 @@
     </header>
 
     <div class="container">
-        <div class="before_loaded">
-          <h3>
-            Please open a file
-            </h3>
-          <input type="file" id="files" name="files[]" multiple />
-            <output id="list"></output>
+        <div class="row">
+          <div class="span8 offset2">
+            
+            <div class="hero-unit">
+              <input type="file" id="files" name="files[]" />
+              <div class='after_loaded'>
+                <h2>Data has been load succesfully</h2>
+                <h3><a href="logs.html">Click here to start interview</a></h3>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="after_loaded label label-success">Success ! You can now see the visualisations by clicking on the links at the top.</div>
     </div>
 
 
@@ -83,7 +88,7 @@
 <script src="libraries/d3.v2.js"></script>
 <script src="libraries/common.js"></script>
 <script src="libraries/js/vocabulary.js"></script>
-<script src="libraries/js/loadData.js"></script>
+<!-- <script src="libraries/js/loadData.js"></script> -->
 <script src="libraries/vis/index.js"></script>
 
 
