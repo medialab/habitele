@@ -30,7 +30,7 @@
     "in":"IN",
     "out":"OUT",
 
-    "calendar_use": "Calendar Use",
-    "calendar_with_alarm": "Calendar with allarm",
-    "calendar_with_recurrence": "Calendar with recurrence"
+    "calendar_use": "Number of events",
+    "calendar_with_alarm": "Events with alarms",
+    "calendar_with_recurrence": "Events with recurrence"
 }
