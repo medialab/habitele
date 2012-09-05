@@ -2,6 +2,7 @@ vizData = JSON.parse(localStorage["data"]);
 initViz();
 
 $(window).resize(function() {
+  $('tbody').text('');
   initViz();
 });
 
@@ -18,8 +19,11 @@ function initViz() {
 function dataDisplay(data) {
 
   for (var i in data) {
-      $('tbody').append('<tr>').append('<td>');
-      $('tbody td').last().text(data[i]);
+
+  	if (i%4 === 0) $('tbody').append('<tr>');
+  	$('tbody tr').last().append('<td>');
+  	$('tbody td').last().attr('width', '25%').text(data[i]);
+
   }
 
 };
