@@ -15,10 +15,8 @@ function dataDisplay(data) {
 
   names = [];
   values = [];
-  var json = [];
-
-  names.push('Average Number of fields used');
-  values.push(vizData.visualizations.phone_books_data.avg_number_of_fileds_used);
+  json = [];
+  jsonTemp = [];
 
   for (var i in data) {
       names.push(i);
@@ -26,10 +24,17 @@ function dataDisplay(data) {
   }
 
   for (var i in names) {
-      json.push({name: names[i], value: values[i]});
+      jsonTemp.push({name: names[i], value: values[i]});
   }
 
-  console.log(json)
+  jsonTemp.sort(function(a,b) { return parseFloat(b.value) - parseFloat(a.value) } );
+
+  json.push({
+    name: 'Average Number of fields used',
+    value: vizData.visualizations.phone_books_data.avg_number_of_fileds_used
+  });
+
+  json = json.concat(jsonTemp);
 
   var margin = {top: 30, right: 10, bottom: 10, left: 250},
     width = $("div#container").width() - margin.right - margin.left,
