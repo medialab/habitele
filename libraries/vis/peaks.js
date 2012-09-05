@@ -182,14 +182,14 @@ function dataDisplay(peak) {
 
   $next = $("<button>")
     .addClass('btn')
-    .text(">>")
+    .html("next&nbsp;>>")
     .click(function() { 
     next(peak, events.length); return null;
   });
 
   $prev = $("<button>")
     .addClass('btn')
-    .text("<<")
+    .html("<<&nbsp;prev")
     .click(function () {
     prev(peak); return null;
   });
