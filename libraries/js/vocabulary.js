@@ -5,9 +5,6 @@ function setCookie(requestedLang)
 	requestedLang = (requestedLang) ? requestedLang.substr(0, 2) : "";
 	currentLang = (document.cookie.split("=")[1]) ? document.cookie.split("=")[1] : "";
 
-	// console.log("requestedLang " + requestedLang)
-	// console.log("currentLang " + currentLang)
-
 	if ( requestedLang == "" && currentLang == "" ) {
 		// console.log("First use, nothing exists")
 		lang = "en"; // Default
