@@ -28,7 +28,7 @@ function setCookie(requestedLang)
 function loadLanguage(lang) {
 	d3.json("data/vocabularies/" + lang + ".json", function(json) {
 		for(key in json) {
-			$("[data-lang=" + key + "]").text(json[key]);
+			$("[data-lang=" + key + "]").html(json[key]);
 		}
 	});
 }
