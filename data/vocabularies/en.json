@@ -32,10 +32,8 @@
     "average_working_day":"Average number for a working day",
     "average_weekend_day":"Average number for a weekend day",
     
-    
     "missed_calls":"Missed",
     "short_calls":"Short",
-
     
     "calls":"Calls",
     "sms_and_mms":"SMS and MMS",
@@ -54,7 +52,14 @@
     "saturday": "Saturday",
     "sunday": "Sunday",
 
+    "time": "Time",
+    "channel": "Channel",
+    "direction": "Direction",
+    "contact": "Contact",
     "duration":"Duration",
+
+    "next": "Next >>",
+    "prev": "<< Prev",
 
     "calendar_use": "Number of events",
     "calendar_with_alarm": "Events with alarms",

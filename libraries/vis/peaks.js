@@ -182,14 +182,14 @@ function dataDisplay(peak) {
 
   $next = $("<button>")
     .addClass('btn')
-    .html("next&nbsp;>>")
+    .attr('data-lang', 'next')
     .click(function() { 
     next(peak, events.length); return null;
   });
 
   $prev = $("<button>")
     .addClass('btn')
-    .html("<<&nbsp;prev")
+    .attr('data-lang', 'prev')
     .click(function () {
     prev(peak); return null;
   });
@@ -213,7 +213,7 @@ function dataDisplay(peak) {
 
   $events = $("#events" + peak);
   $tableEvents = $("<table>").addClass("table table-striped table-bordered table-condensed")
-  $tableEvents.append("<tr><th>time</th><th>channel</th><th>direction</th><th>contact</th><th>duration</th></tr>")
+  $tableEvents.append("<tr><th data-lang='time'></th><th data-lang='channel'></th><th data-lang='direction'></th><th data-lang='contact'></th><th data-lang='duration'></th></tr>")
 
   events.forEach(function (event, i) {
 
