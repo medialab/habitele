@@ -1,6 +1,7 @@
 vizData = JSON.parse(localStorage["data"]);
 initViz();
 
+
 $(window).resize(function() {
   initViz();
   setCookie(document.cookie.split("=")[1]);
@@ -13,7 +14,6 @@ function initViz() {
   $('[id^="loggraph_"]').html("");
 
   dataDisplay(vizData.visualizations.general_logs);
-
 }
 
 
