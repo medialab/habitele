@@ -32,15 +32,27 @@
     "average_working_day":"Average number for a working day",
     "average_weekend_day":"Average number for a weekend day",
     
-    "calls":"Calls",
+    
     "missed_calls":"Missed",
     "short_calls":"Short",
 
     
-    
+    "calls":"Calls",
     "sms_and_mms":"SMS and MMS",
     "sms":"SMS",
     "mms":"MMS",
+
+    "typical_day_of_work": "Typical day of work",
+    "typical_day_of_weekend": "Typical day of weekend",
+    "typical_week": "Typical week",
+
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
 
     "duration":"Duration",
 
