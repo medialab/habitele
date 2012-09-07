@@ -61,8 +61,8 @@
     "contact": "Contact",
     "duration":"Duration",
 
-    "next": "Next >>",
-    "prev": "<< Prev",
+    "next": "Next",
+    "prev": "Previous",
 
     "calendar_use": "Number of events",
     "calendar_with_alarm": "Events with alarms",
