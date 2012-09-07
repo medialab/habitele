@@ -78,6 +78,7 @@ margin-top: 20px;
   -webkit-transform: rotate(-90deg); 
   -moz-transform: rotate(-90deg);
   width: 1em;
+  white-space:nowrap;
 }
 
 
