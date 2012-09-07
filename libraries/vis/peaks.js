@@ -9,7 +9,7 @@ initViz = function () {
       dataDisplay(i.substr(5));
     }
   }
-
+  setCookie(document.cookie.split("=")[1]);
   setBehaviors();
 }
 
