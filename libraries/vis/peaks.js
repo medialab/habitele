@@ -23,10 +23,11 @@ function activate_event(peak_number, event_number) {
 
 function next(peak_number, event_length) {
     cur = $("#events" + peak_number).data("cur");
-    if (cur+1 <= event_length) {
+    if (cur+2 < $('#tab' + peak_number + ' tr').length) {
       $("#events" + peak_number).data("cur", cur + 1);
       activate_event(peak_number, cur + 1);
     }
+    console.log(peak_number, event_length, cur)
 }
 
 function prev(peak_number) {
@@ -35,6 +36,7 @@ function prev(peak_number) {
       $("#events" + peak_number).data("cur", cur - 1);
       activate_event(peak_number, cur - 1);
     }
+    console.log(peak_number, 'x', cur)
 }
 
 function dataDisplay(peak) {
