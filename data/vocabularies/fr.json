@@ -10,7 +10,7 @@
     "peaks_title":"5. Pics",
 	"peaks_subtitle":"",
     "phonebook_title":"6. Répertoire",
-	"phonebook_subtitle":"",
+	"phonebook_subtitle":"Liste des champs de répertoires utilisés",
     "applications_title":"7. Applications",
 	"applications_subtitle":"",
     "calendar_title":"8. Calendrier",
@@ -64,7 +64,7 @@
     "next":"suivant",
     "prev":"précédent",
 
-    "average_number_of_fields_used": "Average Number of Fields Used",
+    "average_number_of_fields_used": "Nombre moyen de champs utilisés",
 
     "calendar_use":"Nombre d’événements",
     "calendar_with_alarm":"Evénements avec alarme",
