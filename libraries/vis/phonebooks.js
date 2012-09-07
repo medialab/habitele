@@ -4,7 +4,6 @@ initViz();
 function initViz() {
 
   var obj = vizData.visualizations.phone_books;
-  
   dataDisplay(obj);
 
 }
@@ -36,7 +35,7 @@ function dataDisplay(data) {
 
   json = json.concat(jsonTemp);
 
-  var margin = {top: 30, right: 10, bottom: 10, left: 250},
+  var margin = {top: 0, right: 10, bottom: 10, left: 250},
     width = $("div#container").width() - margin.right - margin.left,
     height = 600 - margin.top - margin.bottom;
 
@@ -44,11 +43,6 @@ function dataDisplay(data) {
 
   var x = d3.scale.linear().range([0, width]);
   var y = d3.scale.ordinal().rangeRoundBands([0, height], .1);
-
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("top")
-      .tickSize(-height);
 
   var yAxis = d3.svg.axis()
       .scale(y)
@@ -72,7 +66,8 @@ function dataDisplay(data) {
 
   bar.append("rect")
       .attr("width", function(d) { return x(d.value); })
-      .attr("height", y.rangeBand());
+      .attr("height", y.rangeBand())
+      .attr("fill", '#03717e');
 
   bar.append("text")
       .attr("class", "value")
@@ -84,15 +79,10 @@ function dataDisplay(data) {
       .text(function(d) { return format(d.value); });
 
   svg.append("g")
-      .attr("class", "x axis bar")
-      .call(xAxis);
-
-  svg.append("g")
       .attr("class", "y axis bar")
       .call(yAxis);
 
-  $('g.bar rect').each(function(i) {
-    $(this).attr('fill', '#03717e');
-  });
+  $('.bar').first().attr('transform', 'translate(0,0)');
+  $('.y.axis.bar').children().first().attr('transform', 'translate(0,14.5)');
 
 };
