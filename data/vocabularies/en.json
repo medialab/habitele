@@ -40,6 +40,8 @@
     "sms":"SMS",
     "mms":"MMS",
 
+    "none":"none",
+
     "typical_day_of_work": "Typical day of work",
     "typical_day_of_weekend": "Typical day of weekend",
     "typical_week": "Typical week",

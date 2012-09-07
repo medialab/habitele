@@ -218,10 +218,10 @@ function dataDisplay(peak) {
   events.forEach(function (event, i) {
 
       $contact = $("<td>").text(event.contact);
-     $duration = $("<td>").text(event.duration ? human_readable_duration(event.duration) : 'none');
-    $direction = $("<td>").text(event.direction);
+     $duration = $("<td>").attr('data-lang', event.duration ? human_readable_duration(event.duration) : 'none');
+    $direction = $("<td>").attr('data-lang', event.direction.toLowerCase());
          $time = $("<td>").text(event.time.substr(0,19));
-      $channel = $("<td>").text(event.channel);
+      $channel = $("<td>").attr('data-lang', event.channel.toLowerCase());
     
     $event= $("<tr>")
       .attr("id", "peak" + peak + "_event" + i)
@@ -269,6 +269,7 @@ $(window).resize(function() {
   $("ul.nav-tabs").html("");
   $("div.tab-content").html("");
   initViz();
+  setCookie(document.cookie.split("=")[1]);
 });
 
 
