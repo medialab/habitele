@@ -56,7 +56,7 @@ function displayTable(json, vizGraph, fillColor, dataFormat) {
 
   // Data
 
-  var margin = {top: 10, right: 10, bottom: 10, left: 100},
+  var margin = {top: 10, right: 10, bottom: 10, left: 150},
     width = $("div.span8").width() - margin.right - margin.left,
     height = 120 - margin.top - margin.bottom;
 
@@ -116,7 +116,7 @@ function displayTable(json, vizGraph, fillColor, dataFormat) {
       .attr("class", "y axis bar")
       .call(yAxis);
 
-  $("div#loggraph_1 text[y=0]").each(function(i) {
+  $("div#" + vizGraph + " text[y=0]").each(function(i) {
     $(this).attr('data-lang', json[i].name)
   })
 
