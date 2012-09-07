@@ -1,4 +1,69 @@
 {
-	"": "",
-	"": ""
+	"index_title":"Ouvrir le fichier"
+    "index_subtitle":"Sélectionner le fichier que vous voulez visualiser et commencez l'entretien"
+    "logs_title":"Journal"
+	"logs_subtitle":""
+    "timelines_title":"Chronologie"
+	"timelines_subtitle":""
+	"journal_title":"Appels et SMS"
+    "journal_subtitle":"Top 10 des contacts"
+    "peaks_title":"Pics"
+	"peaks_subtitle":""
+    "phonebook_title":"Répertoire"
+	"phonebook_subtitle":""
+    "applications_title":"Applications"
+	"applications_subtitle":""
+    "calendar_title":"Calendrier"
+	"calendar_subtitle":""
+	"langue":"Langue"
+
+    "data_loaded_succesfully":"Le chargement est réussi"
+    "start_interview":"Cliquer ici pour commencer l'entretien"
+
+    "phone_books":"Répertoire"
+    "number_of_contacts":"nombre de contacts"
+    "number_of_contacts_in_journal_activity":"nombre de contacts dans le journal d'activité"
+    "duration_total":"Durée totale"
+    "duration_in":"Durée appels entrants"
+    "duration_out":"Durée appels sortants"
+    "total":"Total"
+    "in":"Entrant"
+    "out":"Sortant"
+    "average_working_day":"Nombre moyen pour un jour de travail"
+    "average_weekend_day":"Nombre moyen pour un jour de week-end"
+
+    "missed_calls":"Manqués"
+    "short_calls":"Evénements récurrents"
+
+    "calls":"Appels"
+    "sms_and_mms":"SMS et MMS"
+    "sms":"SMS"
+    "mms":"MMS"
+
+    "none":"aucun"
+
+    "typical_day_of_work":"Jour de travail type"
+    "typical_day_of_weekend":"Jour de week-end type"
+    "typical_week":"Semaine type"
+
+    "monday":"lundi"
+    "tuesday":"mardi"
+    "wednesday":"mercredi"
+    "thursday":"jeudi"
+    "friday":"vendredi"
+    "saturday":"samedi"
+    "sunday":"dimanche"
+
+    "time":"Temps"
+    "channel":"Modes de communication"
+    "direction":"Direction"
+    "contact":"Contact"
+    "duration":"Durée"
+
+    "next":"suivant"
+    "prev":"précédent"
+
+    "calendar_use":"Nombre d’événements"
+    "calendar_with_alarm":"Evénements avec alarme"
+    "calendar_with_recurrence":"Evénements récurrents"
 }
