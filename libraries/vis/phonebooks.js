@@ -29,7 +29,7 @@ function dataDisplay(data) {
   jsonTemp.sort(function(a,b) { return parseFloat(b.value) - parseFloat(a.value) } );
 
   json.push({
-    name: 'Average Number of fields used',
+    name: 'average_number_of_fields_used',
     value: vizData.visualizations.phone_books_data.avg_number_of_fileds_used
   });
 
@@ -84,5 +84,6 @@ function dataDisplay(data) {
 
   $('.bar').first().attr('transform', 'translate(0,0)');
   $('.y.axis.bar').children().first().attr('transform', 'translate(0,14.5)');
+  $('.y.axis.bar').children().first().children().last().attr('data-lang', 'average_number_of_fields_used')
 
 };

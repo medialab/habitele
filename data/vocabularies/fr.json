@@ -64,6 +64,8 @@
     "next":"suivant",
     "prev":"précédent",
 
+    "average_number_of_fields_used": "Average Number of Fields Used",
+
     "calendar_use":"Nombre d’événements",
     "calendar_with_alarm":"Evénements avec alarme",
     "calendar_with_recurrence":"Evénements récurrents"
