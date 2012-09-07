@@ -14,8 +14,8 @@ initViz = function () {
 }
 
 function activate_event(peak_number, event_number) {
-    $("#svg" + peak_number + " circle").css("stroke", "steelblue")
-    $("#peak" + peak_number + "_circle" + event_number).css("stroke", "red")
+    $("#svg" + peak_number + " rect").css("fill", "steelblue")
+    $("#peak" + peak_number + "_rect" + event_number).css("fill", "red")
     $("#events" + peak_number).data("cur", event_number);
     $("#events" + peak_number + " tr").css("font-weight", "normal");
     $("#peak" + peak_number + "_event" + event_number).css("font-weight", "bold");
@@ -66,60 +66,68 @@ function dataDisplay(peak) {
   // Timeline
   //
 
-  var format = d3.time.format("%Y-%m-%d %H:%M:%S");
+  var format, counter, data, minX, maxX, maxY, margin, xScale, yScale, xAxis, svg;
 
-  var data = d3.range(dataPeakCount).map(function(d) {
-    return {x: format.parse(dataPeak.events[d+1].time.substr(0,19)), y: 1};
+  format = d3.time.format("%Y-%m-%d %H:%M:%S");
+  counter = 1;
+
+  data = d3.range(dataPeakCount).map(function(d) {
+    var timePrev = (dataPeak.events[d]) ? dataPeak.events[d].time.substr(0,19) : null;
+    var timeCurrent = dataPeak.events[d+1].time.substr(0,19);
+    timePrev == timeCurrent  ? counter++ : counter = 1;
+    return {
+      x: format.parse(dataPeak.events[d+1].time.substr(0,19)),
+      y: counter
+    };
   });
 
-  var margin = {top: 15, right: 20, bottom: 20, left: 20},
+  minX = d3.min(data, function(d) {return d.x;});
+  maxX = d3.max(data, function(d) {return d.x;});
+  maxY = d3.max(data, function(d) {return d.y;});
+
+  margin = {top: 20, right: 20, bottom: 20, left: 20},
       width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
-      height = 60 - margin.top - margin.bottom;
+      height = maxY *12 +40 - margin.top - margin.bottom;
 
-  var min = d3.min(data, function(d) {return d.x;});
-  var max = d3.max(data, function(d) {return d.x;});
+  xScale = d3.time.scale()
+    .domain([minX, maxX])
+    .range([0, width]);
 
-  var x = d3.time.scale().domain([min, max]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 1]).range([height, 0]);
+  yScale = d3.scale.linear()
+    .domain([0, maxY])
+    .range([height, 0]);
 
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
+  xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom");
 
-  var line = d3.svg.line()
-    .x(function(d) { return x(d.x); })
-    .y(function(d) { return y(d.y); });
-
-  var svg = d3.select("#tab" + peak + " .timeline").append("svg")
+  svg = d3.select("#tab" + peak + " .timeline").append("svg")
       .datum(data)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .attr("id", "svg" + peak)
     .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line)
-      .attr('stroke-width', '.5px')
-    .attr('stroke', 'steelblue');;
-
   svg.selectAll(".dot")
       .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
+    .enter().append("rect")
       .attr("class", "dot")
       .attr("data-peak", peak)
       .attr("data-event", function(d, i) { return i; } )
-      .attr("id", function(d, i) { return "peak" + peak + "_circle" + i})
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3)
-      .attr("href", function (d, i) { return i })
-      .attr("fill", 'white');
+      .attr("id", function(d, i) {return "peak" + peak + "_rect" + i})
+      .attr("x", function(d) { return xScale(d.x); })
+      .attr("y", function(d) { return yScale(d.y); })
+      .attr("width", 10)
+      .attr("height", 10)
+      .attr("stroke-width", 1)
+      .attr("stroke", "white")
+      .attr("href", function (d, i) { return i });
 
   // 
   // Contacts
