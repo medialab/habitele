@@ -14,20 +14,26 @@ initViz = function () {
 }
 
 function activate_event(peak_number, event_number) {
-    $("#svg" + peak_number + " rect").css("fill", "steelblue")
-    $("#peak" + peak_number + "_rect" + event_number).css("fill", "red")
+
+    console.log($("#svg" + peak_number + " rect").attr('data-direction'))
+
+    $("#svg" + peak_number + " rect").css("fill", "#d9aa59");
+    $("#svg" + peak_number + " rect[data-direction=in]").css("fill", "#79a0c1");
+    $("#svg" + peak_number + " rect[data-direction=out]").css("fill", "#6db36b");
+    
+    $("#peak" + peak_number + "_rect" + event_number).css("fill", "#666")
+    
     $("#events" + peak_number).data("cur", event_number);
     $("#events" + peak_number + " tr").css("font-weight", "normal");
     $("#peak" + peak_number + "_event" + event_number).css("font-weight", "bold");
 }
 
-function next(peak_number, event_length) {
+function next(peak_number) {
     cur = $("#events" + peak_number).data("cur");
     if (cur+2 < $('#tab' + peak_number + ' tr').length) {
       $("#events" + peak_number).data("cur", cur + 1);
       activate_event(peak_number, cur + 1);
     }
-    console.log(peak_number, event_length, cur)
 }
 
 function prev(peak_number) {
@@ -36,7 +42,6 @@ function prev(peak_number) {
       $("#events" + peak_number).data("cur", cur - 1);
       activate_event(peak_number, cur - 1);
     }
-    console.log(peak_number, 'x', cur)
 }
 
 function dataDisplay(peak) {
@@ -77,9 +82,13 @@ function dataDisplay(peak) {
     var timePrev = (dataPeak.events[d]) ? dataPeak.events[d].time.substr(0,19) : null;
     var timeCurrent = dataPeak.events[d+1].time.substr(0,19);
     timePrev == timeCurrent  ? counter++ : counter = 1;
+
+    console.log()
+
     return {
       x: format.parse(dataPeak.events[d+1].time.substr(0,19)),
-      y: counter
+      y: counter,
+      direction: dataPeak.events[d+1].direction
     };
   });
 
@@ -87,9 +96,9 @@ function dataDisplay(peak) {
   maxX = d3.max(data, function(d) {return d.x;});
   maxY = d3.max(data, function(d) {return d.y;});
 
-  margin = {top: 20, right: 20, bottom: 20, left: 20},
-      width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
-      height = maxY *12 +40 - margin.top - margin.bottom;
+  margin = {top: 20, right: 20, bottom: 20, left: 20};
+  width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right;
+  height = maxY *12 +40 - margin.top - margin.bottom;
 
   xScale = d3.time.scale()
     .domain([minX, maxX])
@@ -123,8 +132,9 @@ function dataDisplay(peak) {
       .attr("data-peak", peak)
       .attr("data-event", function(d, i) { return i; } )
       .attr("id", function(d, i) {return "peak" + peak + "_rect" + i})
-      .attr("x", function(d) { return xScale(d.x); })
+      .attr("x", function(d) { return xScale(d.x) - 5; })
       .attr("y", function(d) { return yScale(d.y); })
+      .attr("data-direction", function(d) { return d.direction; })
       .attr("width", 10)
       .attr("height", 10)
       .attr("stroke-width", 1)
@@ -194,7 +204,7 @@ function dataDisplay(peak) {
     .addClass('btn')
     .attr('data-lang', 'next')
     .click(function() { 
-    next(peak, events.length); return null;
+    next(peak); return null;
   });
 
   $prev = $("<button>")
