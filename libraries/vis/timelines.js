@@ -29,9 +29,30 @@ function initViz() {
   vizDisplay(d3.max([max1, max2]), "graph_1", "calls_working_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(d3.max([max1, max2]), "graph_2", "calls_weekend_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(max3, "graph_3", "calls_monday_to_sunday", weekScale, '#03717e');
+
+  $('#graph_3 .x text').each(function(i) {
+    if (i==0) $(this).attr('data-lang', 'monday');
+    if (i==1) $(this).attr('data-lang', 'tuesday');
+    if (i==2) $(this).attr('data-lang', 'wednesday');
+    if (i==3) $(this).attr('data-lang', 'thursday');
+    if (i==4) $(this).attr('data-lang', 'friday');
+    if (i==5) $(this).attr('data-lang', 'saturday');
+    if (i==6) $(this).attr('data-lang', 'sunday');
+  });
+
   vizDisplay(d3.max([max4, max5]), "graph_4", "SMS_working_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#03717e');
+
+  $('#graph_6 .x text').each(function(i) {
+    if (i==0) $(this).attr('data-lang', 'monday');
+    if (i==1) $(this).attr('data-lang', 'tuesday');
+    if (i==2) $(this).attr('data-lang', 'wednesday');
+    if (i==3) $(this).attr('data-lang', 'thursday');
+    if (i==4) $(this).attr('data-lang', 'friday');
+    if (i==5) $(this).attr('data-lang', 'saturday');
+    if (i==6) $(this).attr('data-lang', 'sunday');
+  });
 
   // Behaviours
 
