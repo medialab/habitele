@@ -1,0 +1,1 @@
+vizData = JSON.parse(localStorage["data"]);

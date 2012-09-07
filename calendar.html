@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-    <title data-lang="title"></title>
+    <title>Habitele</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -15,43 +15,10 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-<style>
-circle.active {
-  stroke:red;
-}
-.section.active {
-  font-weight: bold;
-}
 
-.event {
-  margin-bottom: 10px;
-  border-bottom:1px solid #EEE;
-}
-.events {
-  margin-top:20px;
-}
-.timeline {
-    /*position:fixed; */
-    /*background:white; */
-    /*z-index:10; */
-    /*-webkit-box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, 0.2);        
-    box-shadow:  2px 2px 2px 2px rgba(0, 0, 0, 0.2);*/
-
-}
-
-#nav_buttons {
-  /*position:fixed;
-  z-index:20;*/
-  
-}
-
-/*.contacts .directions .distribution {
-  margin-top:100px;
-}*/
-</style>
 <body>
 
-  <img src="sciencespo.png"/>
+  <img src="styles/sciencespo.png"/>
 
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -65,13 +32,13 @@ circle.active {
           <div class="nav-collapse">
             <ul class="nav">
               <li><a href="index.html" data-lang="index_title" class="after_loaded"></a></li>
-              <li><a href="general_logs.html" data-lang="general_logs_title" class="after_loaded"></a></li>
-              <li><a href="activity_timelines.html" data-lang="timelines_title" class="after_loaded"></a></li>
-              <li><a href="journal_of_calls.html" data-lang="journal_title" class="after_loaded"></a></li>
-              <li class="active"><a href="#" data-lang="peaks_analysis_title" class="after_loaded"></a></li>
-              <li><a href="phone_books.html" data-lang="phone_books_title" class="after_loaded"></a></li>
+              <li><a href="logs.html" data-lang="logs_title" class="after_loaded"></a></li>
+              <li><a href="timelines.html" data-lang="timelines_title" class="after_loaded"></a></li>
+              <li><a href="journal.html" data-lang="journal_title" class="after_loaded"></a></li>
+              <li><a href="peaks.html" data-lang="peaks_title" class="after_loaded"></a></li>
+              <li><a href="phonebook.html" data-lang="phonebook_title" class="after_loaded"></a></li>
               <li><a href="applications.html" data-lang="applications_title" class="after_loaded"></a></li>
-              <li><a href="calendar.html" data-lang="calendar_title" class="after_loaded"></a></li>
+              <li class="active"><a href="calendar.html" data-lang="calendar_title" class="after_loaded"></a></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                   <span data-lang="langue"></span>
@@ -79,7 +46,10 @@ circle.active {
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#" onclick="setCookie('en');">English</a></li>
-                  <li><a href="#" onclick="setCookie('it');">Italiano</a></li>
+                  <li><a href="#" onclick="setCookie('fr');">French</a></li>
+                  <li><a href="#" onclick="setCookie('ko');">Korean</a></li>
+                  <li><a href="#" onclick="setCookie('hi');">Marathi</a></li>
+                  <li><a href="#" onclick="setCookie('pt');">Portuguese</a></li>
                 </ul>
               </li>
             </ul>
@@ -90,17 +60,36 @@ circle.active {
 
     <header>
       <div class="container">
-        <h1 data-lang="peaks_analysis_title"></h1>
-        <p class="lead">&nbsp;</p>
+        <h1 data-lang="calendar_title"></h1>
+        <p class="lead" data-lang="calendar_subtitle"></p>
       </div>
     </header>
 
-    <div class="container">
-      <div class="tabbable">
-        <ul class="nav nav-tabs"></ul>
-        <div class="tab-content"></div>
+    <div id="container" class="container">
+      <div class="row">
+        <div class="span8 offset2">
+          <table class="table table-bordered table-condensed table-striped">
+            <tbody>
+              <tr>
+                <td data-lang='calendar_use'></td>
+                <td id='calendar_use'></td>
+              </tr>
+              <tr>
+                <td data-lang='calendar_with_alarm'></td>
+                <td id='calendar_with_alarm'></td>
+              </tr>
+              <tr>
+                <td data-lang='calendar_with_recurrence'></td>
+                <td id='calendar_with_recurrence'></td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
+
+
+
+
 
 <!-- JavaScripts -->
 
@@ -108,9 +97,8 @@ circle.active {
 <script src="libraries/bootstrap/js/bootstrap.js"></script>
 <script src="libraries/d3.v2.js"></script>
 <script src="libraries/common.js"></script>
-<script src="libraries/vocabularies.js"></script>
-<script src="libraries/loadData.js"></script>
-<script src="js/activities_peaks_analysis.js"></script>
-
+<script src="libraries/js/vocabulary.js"></script>
+<script src="libraries/js/loadData.js"></script>
+<script src="libraries/vis/calendar.js"></script>
 
 

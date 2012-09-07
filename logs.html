@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
-    <title class="lang-title"></title>
+    <title>Habitele</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -18,7 +18,7 @@
 
 <body>
 
-  <img src="sciencespo.png"/>
+  <img src="styles/sciencespo.png"/>
 
   <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
@@ -31,12 +31,12 @@
           <a class="brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><a href="index.html" data-lang="index" class="after_loaded"></a></li>
-              <li class="active"><a href="#" data-lang="general_logs_title" class="after_loaded"></a></li>
-              <li><a href="activity_timelines.html" data-lang="timelines_title" class="after_loaded"></a></li>
-              <li><a href="journal_of_calls.html" data-lang="journal_title" class="after_loaded"></a></li>
-              <li><a href="activities_peaks_analysis.html" data-lang="peaks_analysis_title" class="after_loaded"></a></li>
-              <li><a href="phone_books.html" data-lang="phone_books_title" class="after_loaded"></a></li>
+              <li><a href="index.html" data-lang="index_title" class="after_loaded"></a></li>
+              <li class="active"><a href="#" data-lang="logs_title" class="after_loaded"></a></li>
+              <li><a href="timelines.html" data-lang="timelines_title" class="after_loaded"></a></li>
+              <li><a href="journal.html" data-lang="journal_title" class="after_loaded"></a></li>
+              <li><a href="peaks.html" data-lang="peaks_title" class="after_loaded"></a></li>
+              <li><a href="phonebook.html" data-lang="phonebook_title" class="after_loaded"></a></li>
               <li><a href="applications.html" data-lang="applications_title" class="after_loaded"></a></li>
               <li><a href="calendar.html" data-lang="calendar_title" class="after_loaded"></a></li>
               <li class="dropdown">
@@ -46,7 +46,10 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li><a href="#" onclick="setCookie('en');">English</a></li>
-                  <li><a href="#" onclick="setCookie('it');">Italiano</a></li>
+                  <li><a href="#" onclick="setCookie('fr');">French</a></li>
+                  <li><a href="#" onclick="setCookie('ko');">Korean</a></li>
+                  <li><a href="#" onclick="setCookie('hi');">Marathi</a></li>
+                  <li><a href="#" onclick="setCookie('pt');">Portuguese</a></li>
                 </ul>
               </li>
             </ul>
@@ -57,8 +60,8 @@
 
     <header>
       <div class="container">
-        <h1 data-lang="general_logs"></h1>
-        <p class="lead">&nbsp;</p>
+        <h1 data-lang="logs_title"></h1>
+        <p class="lead" data-lang="logs_subtitle"></p>
       </div>
     </header>
 
@@ -72,12 +75,12 @@
             <table class="table table-bordered table-condensed table-striped">
             <tbody>
               <tr>
-                <td data-lang="number_of_contacts"> </td>
+                <td data-lang="number_of_contacts"></td>
                 <td id="total_phone_book_entries"></td>
               </tr>
               <tr>
-                <td data-lang="number_of_contacts_in_journal_activity">Total contacts in journal activity</td>
-                <td>xx</td>
+                <td data-lang="number_of_contacts_in_journal_activity"></td>
+                <td id='number_of_contacts_in_journal_activity'></td>
               </tr>
             </tbody>
           </table>
@@ -90,12 +93,12 @@
             <table class="table table-bordered table-condensed table-striped">
             <tbody>
               <tr>
-                <td data-lang="average_working_day">Average number for a working day</td>
-                <td>xx</td>
+                <td data-lang="average_working_day"></td>
+                <td id='average_calls_working_day'></td>
               </tr>
               <tr>
                 <td data-lang="average_weekend_day"></td>
-                <td>xx</td>
+                <td id='average_calls_weekend_day'></td>
               </tr>
             </tbody>
           </table>
@@ -110,11 +113,11 @@
             <tbody>
               <tr>
                 <td data-lang="average_working_day"></td>
-                <td>xx</td>
+                <td id='average_smsandmms_working_day'></td>
               </tr>
               <tr>
-                <td data-lan="average_weekend_day"></td>
-                <td>xx</td>
+                <td data-lang="average_weekend_day"></td>
+                <td id='average_smsandmms_weekend_day'></td>
               </tr>
             </tbody>
           </table>
@@ -134,8 +137,8 @@
 <script src="libraries/bootstrap/js/bootstrap.js"></script>
 <script src="libraries/d3.v2.js"></script>
 <script src="libraries/common.js"></script>
-<script src="libraries/vocabularies.js"></script>
-<script src="libraries/loadData.js"></script>
-<script src="js/general_logs.js"></script>
+<script src="libraries/js/vocabulary.js"></script>
+<script src="libraries/js/loadData.js"></script>
+<script src="libraries/vis/logs.js"></script>
 
 

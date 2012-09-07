@@ -13,43 +13,33 @@ initViz = function () {
   setBehaviors();
 }
 
-activate_event = function(peak_number, event_number) {
-    $("#svg" + peak_number + " circle").css("stroke", "steelblue")
-    $("#peak" + peak_number + "_circle" + event_number).css("stroke", "red")
+function activate_event(peak_number, event_number) {
+    $("#svg" + peak_number + " rect").css("fill", "steelblue")
+    $("#peak" + peak_number + "_rect" + event_number).css("fill", "red")
     $("#events" + peak_number).data("cur", event_number);
     $("#events" + peak_number + " tr").css("font-weight", "normal");
     $("#peak" + peak_number + "_event" + event_number).css("font-weight", "bold");
 }
 
-next = function(peak_number, event_length) {
+function next(peak_number, event_length) {
     cur = $("#events" + peak_number).data("cur");
-    if (cur+1 <= event_length) {
+    if (cur+2 < $('#tab' + peak_number + ' tr').length) {
       $("#events" + peak_number).data("cur", cur + 1);
       activate_event(peak_number, cur + 1);
     }
+    console.log(peak_number, event_length, cur)
 }
 
-prev = function(peak_number) {
+function prev(peak_number) {
     cur = $("#events" + peak_number).data("cur");
     if (cur-1 >= 0) {
       $("#events" + peak_number).data("cur", cur - 1);
       activate_event(peak_number, cur - 1);
     }
+    console.log(peak_number, 'x', cur)
 }
 
-human_readable_duration = function(duration) {
-  seconds = duration % 60;  
-  minutes = (duration - seconds) /60  %60;
-  hours = (duration - minutes * 60 - seconds) / 3600; 
-
-  str_seconds = seconds ? seconds + " seconds" : "";
-  str_minutes = minutes ? minutes + " minutes" : "";
-  str_hours = hours ? hours + " hours" : "";
-
-  return str_hours + " " + str_minutes + " " + str_seconds; 
-}
-
-dataDisplay = function (peak) {
+function dataDisplay(peak) {
 
   peak = peak.toString();
 
@@ -78,60 +68,68 @@ dataDisplay = function (peak) {
   // Timeline
   //
 
-  var format = d3.time.format("%Y-%m-%d %H:%M:%S");
+  var format, counter, data, minX, maxX, maxY, margin, xScale, yScale, xAxis, svg;
 
-  var data = d3.range(dataPeakCount).map(function(d) {
-    return {x: format.parse(dataPeak.events[d+1].time.substr(0,19)), y: 1};
+  format = d3.time.format("%Y-%m-%d %H:%M:%S");
+  counter = 1;
+
+  data = d3.range(dataPeakCount).map(function(d) {
+    var timePrev = (dataPeak.events[d]) ? dataPeak.events[d].time.substr(0,19) : null;
+    var timeCurrent = dataPeak.events[d+1].time.substr(0,19);
+    timePrev == timeCurrent  ? counter++ : counter = 1;
+    return {
+      x: format.parse(dataPeak.events[d+1].time.substr(0,19)),
+      y: counter
+    };
   });
 
-  var margin = {top: 10, right: 20, bottom: 20, left: 20},
+  minX = d3.min(data, function(d) {return d.x;});
+  maxX = d3.max(data, function(d) {return d.x;});
+  maxY = d3.max(data, function(d) {return d.y;});
+
+  margin = {top: 20, right: 20, bottom: 20, left: 20},
       width = $("#tab" + peak + " .timeline").width() - margin.left - margin.right,
-      height = 60 - margin.top - margin.bottom;
+      height = maxY *12 +40 - margin.top - margin.bottom;
 
-  var min = d3.min(data, function(d) {return d.x;});
-  var max = d3.max(data, function(d) {return d.x;});
+  xScale = d3.time.scale()
+    .domain([minX, maxX])
+    .range([0, width]);
 
-  var x = d3.time.scale().domain([min, max]).range([0, width]);
-  var y = d3.scale.linear().domain([0, 1]).range([height, 0]);
+  yScale = d3.scale.linear()
+    .domain([0, maxY])
+    .range([height, 0]);
 
-  var xAxis = d3.svg.axis().scale(x).orient("bottom");
-  var yAxis = d3.svg.axis().scale(y).orient("left");
+  xAxis = d3.svg.axis()
+    .scale(xScale)
+    .orient("bottom");
 
-  var line = d3.svg.line()
-    .x(function(d) { return x(d.x); })
-    .y(function(d) { return y(d.y); });
-
-  var svg = d3.select("#tab" + peak + " .timeline").append("svg")
+  svg = d3.select("#tab" + peak + " .timeline").append("svg")
       .datum(data)
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .attr("id", "svg" + peak)
     .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-  svg.append("path")
-      .attr("class", "line")
-      .attr("d", line)
-      .attr('stroke-width', '.5px')
-    .attr('stroke', 'steelblue');;
-
   svg.selectAll(".dot")
       .data(data.filter(function(d) { return d.y; }))
-    .enter().append("circle")
+    .enter().append("rect")
       .attr("class", "dot")
       .attr("data-peak", peak)
       .attr("data-event", function(d, i) { return i; } )
-      .attr("id", function(d, i) { return "peak" + peak + "_circle" + i})
-      .attr("cx", line.x())
-      .attr("cy", line.y())
-      .attr("r", 3)
-      .attr("href", function (d, i) { return i })
-      .attr("fill", 'white');
+      .attr("id", function(d, i) {return "peak" + peak + "_rect" + i})
+      .attr("x", function(d) { return xScale(d.x); })
+      .attr("y", function(d) { return yScale(d.y); })
+      .attr("width", 10)
+      .attr("height", 10)
+      .attr("stroke-width", 1)
+      .attr("stroke", "white")
+      .attr("href", function (d, i) { return i });
 
   // 
   // Contacts
@@ -140,14 +138,6 @@ dataDisplay = function (peak) {
   var contacts = [];
   for (key in dataPeak.events) contacts.push(dataPeak.events[key].contact);
   contacts = eliminateDuplicates(contacts);
-
-  tbody = d3.select("#tab" + peak + " .contacts").append("table")
-    .attr("class", "table table-condensed table-bordered table-striped")
-    .append("tbody");
-
-  for (var i in contacts) {
-    if (contacts.hasOwnProperty(i)) tbody.append("tr").append("td").text(contacts[i]);
-  }
 
   // 
   // Directions
@@ -161,62 +151,10 @@ dataDisplay = function (peak) {
   var aggregatedDataJSON = [];
   for (var i in directionsNames) aggregatedDataJSON.push({name: directionsNames[i], value: directionsValues[i]});
 
+  
   // 
-
-  var margin = {top: 30, right: 10, bottom: 10, left: 100},
-    width = $("div#tab" + peak + " .directions").width() - margin.right - margin.left,
-    height = 120 - margin.top - margin.bottom;
-
-  var format = d3.format(",.0f");
-
-  var x = d3.scale.linear()
-      .range([0, width]);
-
-  var y = d3.scale.ordinal()
-      .rangeRoundBands([0, height], .1);
-
-  var xAxis = d3.svg.axis()
-      .scale(x)
-      .orient("top")
-      .tickSize(-height);
-
-  var yAxis = d3.svg.axis()
-      .scale(y)
-      .orient("left")
-      .tickSize(0);
-
-  var svg = d3.select("div#tab" + peak + " .directions").append("svg")
-      .attr("width", width + margin.right + margin.left)
-      .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
-  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
-
-  var bar = svg.selectAll("g.bar")
-      .data(aggregatedDataJSON)
-    .enter().append("g")
-      .attr("class", "bar")
-      .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
-
-  bar.append("rect")
-      .attr("width", function(d) { return x(d.value); })
-      .attr("height", y.rangeBand());
-
-  bar.append("text")
-      .attr("class", "value")
-      .attr("x", function(d) { return x(d.value); })
-      .attr("y", y.rangeBand() / 2)
-      .attr("dx", -3)
-      .attr("dy", ".35em")
-      .attr("text-anchor", "end")
-      .text(function(d) { return format(d.value); });
-
-  svg.append("g").attr("class", "x axis").call(xAxis);
-  svg.append("g").attr("class", "y axis").call(yAxis);
-
-  // Data
+  // Define events
+  //
 
   var calls = [];
   var durations = [];
@@ -254,20 +192,21 @@ dataDisplay = function (peak) {
 
   $next = $("<button>")
     .addClass('btn')
-    .text(">>")
+    .attr('data-lang', 'next')
     .click(function() { 
     next(peak, events.length); return null;
   });
 
   $prev = $("<button>")
     .addClass('btn')
-    .text("<<")
+    .attr('data-lang', 'prev')
     .click(function () {
     prev(peak); return null;
   });
 
   $nav = $("<div>")
     .addClass("span2")
+    .addClass("btn-group")
     .attr("id", "nav_buttons")
     .css('text-align', 'right')
     .append($prev).append($next);
@@ -284,15 +223,15 @@ dataDisplay = function (peak) {
 
   $events = $("#events" + peak);
   $tableEvents = $("<table>").addClass("table table-striped table-bordered table-condensed")
-  $tableEvents.append("<tr><th>time</th><th>channel</th><th>direction</th><th>contact</th><th>duration</th></tr>")
+  $tableEvents.append("<tr><th data-lang='time'></th><th data-lang='channel'></th><th data-lang='direction'></th><th data-lang='contact'></th><th data-lang='duration'></th></tr>")
 
   events.forEach(function (event, i) {
 
       $contact = $("<td>").text(event.contact);
-     $duration = $("<td>").text(event.duration ? human_readable_duration(event.duration) : 'none');
-    $direction = $("<td>").text(event.direction);
+     $duration = $("<td>").attr('data-lang', event.duration ? human_readable_duration(event.duration) : 'none');
+    $direction = $("<td>").attr('data-lang', event.direction.toLowerCase());
          $time = $("<td>").text(event.time.substr(0,19));
-      $channel = $("<td>").text(event.channel);
+      $channel = $("<td>").attr('data-lang', event.channel.toLowerCase());
     
     $event= $("<tr>")
       .attr("id", "peak" + peak + "_event" + i)
@@ -340,6 +279,7 @@ $(window).resize(function() {
   $("ul.nav-tabs").html("");
   $("div.tab-content").html("");
   initViz();
+  setCookie(document.cookie.split("=")[1]);
 });
 
 

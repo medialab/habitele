@@ -1,30 +1,70 @@
 {
-	"index": "Load Json File",
-	"general_logs_title": "1. General Logs",
-	"timelines_title": "2. Timelines",
+	"index_title": "Open file",
+    "index_subtitle": "Select the file you want to be displayed and start the interview",
+    "logs_title": "1. Logs",
+	"logs_subtitle": "subtitle",
+    "timelines_title": "2. Timelines",
+	"timelines_subtitle": "subtitle",
 	"journal_title": "3. Calls and SMS",
-	"peaks_analysis_title": "4. Peaks Analysis",
-	"phone_books_title": "5. Phone Books",
-	"applications_title": "6. Applications",
-	"calendar_title": "7. Calendar",
-	"langue": "Langue",
+    "journal_subtitle": "Top tens of contacts",
+    "peaks_title": "4. Peaks",
+	"peaks_subtitle": "subtitle",
+    "phonebook_title": "5. Phone Book",
+	"phonebook_subtitle": "subtitle",
+    "applications_title": "6. Applications",
+	"applications_subtitle": "subtitle",
+    "calendar_title": "7. Calendar",
+	"calendar_subtitle": "subtitle",
+	"langue": "Language",
+    "credits": "Credits",
+
+    "data_loaded_succesfully": "Data has been load succesfully",
+    "start_interview": "Click here to start interview",
     
     "phone_books": "Phone Books",
     "number_of_contacts": "Number of contacts",
     "number_of_contacts_in_journal_activity": "Total contacts in journal activity",
-    
-    "calls":"Calls",
-    "missed_calls":"Missed calls",
-    "short_calls":"Short calls",
-
+    "duration_total": "Total duration",
+    "duration_in": "Incoming duration",
+    "duration_out": "Outcoming duration",
+    "total": "Total",
+    "in": "Incoming",
+    "out": "Outcoming",
     "average_working_day":"Average number for a working day",
     "average_weekend_day":"Average number for a weekend day",
     
+    "missed_calls":"Missed",
+    "short_calls":"Short",
+    
+    "calls":"Calls",
     "sms_and_mms":"SMS and MMS",
     "sms":"SMS",
     "mms":"MMS",
 
+    "none":"none",
+
+    "typical_day_of_work": "Typical day of work",
+    "typical_day_of_weekend": "Typical day of weekend",
+    "typical_week": "Typical week",
+
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday",
+    "friday": "Friday",
+    "saturday": "Saturday",
+    "sunday": "Sunday",
+
+    "time": "Time",
+    "channel": "Channel",
+    "direction": "Direction",
+    "contact": "Contact",
     "duration":"Duration",
-    "in":"IN",
-    "out":"OUT" 
+
+    "next": "Next >>",
+    "prev": "<< Prev",
+
+    "calendar_use": "Number of events",
+    "calendar_with_alarm": "Events with alarms",
+    "calendar_with_recurrence": "Events with recurrence"
 }

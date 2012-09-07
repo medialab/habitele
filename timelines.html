@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+    <title>Habitele</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="libraries/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="libraries/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="styles/main.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<body>
+
+  <img src="styles/sciencespo.png"/>
+
+  <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="index.html" data-lang="index_title" class="after_loaded"></a></li>
+              <li><a href="logs.html" data-lang="logs_title" class="after_loaded"></a></li>
+              <li class="active"><a href="#" data-lang="timelines_title" class="after_loaded"></a></li>
+              <li><a href="journal.html" data-lang="journal_title" class="after_loaded"></a></li>
+              <li><a href="peaks.html" data-lang="peaks_title" class="after_loaded"></a></li>
+              <li><a href="phonebook.html" data-lang="phonebook_title" class="after_loaded"></a></li>
+              <li><a href="applications.html" data-lang="applications_title" class="after_loaded"></a></li>
+              <li><a href="calendar.html" data-lang="calendar_title" class="after_loaded"></a></li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <span data-lang="langue"></span>
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" onclick="setCookie('en');">English</a></li>
+                  <li><a href="#" onclick="setCookie('fr');">French</a></li>
+                  <li><a href="#" onclick="setCookie('ko');">Korean</a></li>
+                  <li><a href="#" onclick="setCookie('hi');">Marathi</a></li>
+                  <li><a href="#" onclick="setCookie('pt');">Portuguese</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="container">
+        <h1 data-lang="timelines_title"></h1>
+        <p class="lead" data-lang="timelines_subtitle"></p>
+      </div>
+    </header>
+
+    <div style="display:none;">
+      <ul id="week">
+        <li data-lang='monday'></li>
+        <li data-lang='tuesday'></li>
+        <li data-lang='wednesday'></li>
+        <li data-lang='thursday'></li>
+        <li data-lang='friday'></li>
+        <li data-lang='saturday'></li>
+        <li data-lang='sunday'></li>
+      </ul>
+
+      <ul id="hours">
+        <li data-lang='1'>1</li>
+        <li data-lang='2'>2</li>
+        <li data-lang='3'>3</li>
+        <li data-lang='4'>4</li>
+        <li data-lang='5'>5</li>
+        <li data-lang='6'>6</li>
+        <li data-lang='7'>7</li>
+        <li data-lang='8'>8</li>
+        <li data-lang='9'>9</li>
+        <li data-lang='10'>10</li>
+        <li data-lang='11'>11</li>
+        <li data-lang='12'>12</li>
+        <li data-lang='13'>13</li>
+        <li data-lang='14'>14</li>
+        <li data-lang='15'>15</li>
+        <li data-lang='16'>16</li>
+        <li data-lang='17'>17</li>
+        <li data-lang='18'>18</li>
+        <li data-lang='19'>19</li>
+        <li data-lang='20'>20</li>
+        <li data-lang='21'>21</li>
+        <li data-lang='22'>22</li>
+        <li data-lang='23'>23</li>
+        <li data-lang='24'>24</li>
+      </ul>
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="span10 offset1">
+
+          <div id="collapseOne" style="height: auto; ">
+              <div class="bar_title">
+                <h2 data-lang='calls'></h2>
+              </div>
+              <div class="graph_title_1">
+                <h4 data-lang='typical_day_of_work'></h4>
+              </div>
+              <div id="graph_1"></div>
+              <div class="graph_title_2">
+                <h4 data-lang='typical_day_of_weekend'></h4>
+              </div>
+              <div id="graph_2"></div>
+              <div class="graph_title_3">
+                <h4 data-lang='typical_week'></h4>
+              </div>
+              <div id="graph_3"></div>
+          </div>
+          
+          <p class="lead">&nbsp;</p>
+
+          <div id="collapseTwo" style="height: 0px;">
+              <div class="bar_title">
+                <h2 data-lang='sms'></h2>
+              </div>
+              <div class="graph_title_4">
+                <h4 data-lang='typical_day_of_work'></h4>
+              </div>
+              <div id="graph_4"></div>
+              <div class="graph_title_5">
+                <h4 data-lang='typical_day_of_weekend'></h4>
+              </div>
+              <div id="graph_5"></div>
+              <div class="graph_title_6">
+                <h4 data-lang='typical_week'></h4>
+              </div>
+              <div id="graph_6"></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+<!-- JavaScripts -->
+
+<script src="libraries/jquery-1.7.2.js"></script>
+<script src="libraries/bootstrap/js/bootstrap.js"></script>
+<script src="libraries/d3.v2.js"></script>
+<script src="libraries/common.js"></script>
+<script src="libraries/js/vocabulary.js"></script>
+<script src="libraries/js/loadData.js"></script>
+<script src="libraries/vis/timelines.js"></script>
+
+
+
+
+

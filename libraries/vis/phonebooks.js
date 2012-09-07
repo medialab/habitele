@@ -13,34 +13,37 @@ function initViz() {
 
 function dataDisplay(data) {
 
-  // data = dataPeak.aggregated_data;
-  console.log(data)
+  names = [];
+  values = [];
+  json = [];
+  jsonTemp = [];
 
-  var names = ["contacts", "emails", "mobile_phones", "private_phones"];
-  var values = [data.contacts, data.email, data.mobile_phone, data.private_phone];
-
-  console.log(names)
-  console.log(values)
-
-  var aggregatedDataJSON = []; //declare array
-
-  for (var i in names) {
-      aggregatedDataJSON.push({name: names[i], value: values[i]});
+  for (var i in data) {
+      names.push(i);
+      values.push(data[i]);
   }
 
-  console.log(aggregatedDataJSON)
+  for (var i in names) {
+      jsonTemp.push({name: names[i], value: values[i]});
+  }
 
-  var margin = {top: 30, right: 10, bottom: 10, left: 100},
-    width = 900 - margin.right - margin.left,
-    height = 300 - margin.top - margin.bottom;
+  jsonTemp.sort(function(a,b) { return parseFloat(b.value) - parseFloat(a.value) } );
+
+  json.push({
+    name: 'Average Number of fields used',
+    value: vizData.visualizations.phone_books_data.avg_number_of_fileds_used
+  });
+
+  json = json.concat(jsonTemp);
+
+  var margin = {top: 30, right: 10, bottom: 10, left: 250},
+    width = $("div#container").width() - margin.right - margin.left,
+    height = 600 - margin.top - margin.bottom;
 
   var format = d3.format(",.0f");
 
-  var x = d3.scale.linear()
-      .range([0, width]);
-
-  var y = d3.scale.ordinal()
-      .rangeRoundBands([0, height], .1);
+  var x = d3.scale.linear().range([0, width]);
+  var y = d3.scale.ordinal().rangeRoundBands([0, height], .1);
 
   var xAxis = d3.svg.axis()
       .scale(x)
@@ -58,16 +61,11 @@ function dataDisplay(data) {
     .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  // Parse numbers, and sort by value.
-  // aggregatedDataJSON.forEach(function(d) { d.value = +d.value; });
-  // aggregatedDataJSON.sort(function(a, b) { return b.value - a.value; });
-
-  // Set the scale domain.
-  x.domain([0, d3.max(aggregatedDataJSON, function(d) { return d.value; })]);
-  y.domain(aggregatedDataJSON.map(function(d) { return d.name; }));
+  x.domain([-5, d3.max(json, function(d) { return d.value; })]);
+  y.domain(json.map(function(d) { return d.name; }));
 
   var bar = svg.selectAll("g.bar")
-      .data(aggregatedDataJSON)
+      .data(json)
     .enter().append("g")
       .attr("class", "bar")
       .attr("transform", function(d) { return "translate(0," + y(d.name) + ")"; });
@@ -86,11 +84,15 @@ function dataDisplay(data) {
       .text(function(d) { return format(d.value); });
 
   svg.append("g")
-      .attr("class", "x axis")
+      .attr("class", "x axis bar")
       .call(xAxis);
 
   svg.append("g")
-      .attr("class", "y axis")
+      .attr("class", "y axis bar")
       .call(yAxis);
+
+  $('g.bar rect').each(function(i) {
+    $(this).attr('fill', '#03717e');
+  });
 
 };

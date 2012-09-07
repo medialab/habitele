@@ -31,12 +31,12 @@
           <a class="brand" href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="#" data-lang="index_title"></a></li>
+              <li><a href="index.html" data-lang="index_title" class="after_loaded"></a></li>
               <li><a href="logs.html" data-lang="logs_title" class="after_loaded"></a></li>
               <li><a href="timelines.html" data-lang="timelines_title" class="after_loaded"></a></li>
               <li><a href="journal.html" data-lang="journal_title" class="after_loaded"></a></li>
               <li><a href="peaks.html" data-lang="peaks_title" class="after_loaded"></a></li>
-              <li><a href="phonebook.html" data-lang="phonebook_title" class="after_loaded"></a></li>
+              <li class="active"><a href="#" data-lang="phonebook_title" class="after_loaded"></a></li>
               <li><a href="applications.html" data-lang="applications_title" class="after_loaded"></a></li>
               <li><a href="calendar.html" data-lang="calendar_title" class="after_loaded"></a></li>
               <li class="dropdown">
@@ -52,7 +52,6 @@
                   <li><a href="#" onclick="setCookie('pt');">Portuguese</a></li>
                 </ul>
               </li>
-              <li><a href="credits.html" data-lang="credits" class="after_loaded"></a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -61,26 +60,18 @@
 
     <header>
       <div class="container">
-        <h1 data-lang='index_title'></h1>
-        <p class="lead" data-lang='index_subtitle'></p>
+        <h1 data-lang="phonebook_title"></h1>
+        <p class="lead" data-lang="phonebook_subtitle"></p>
       </div>
     </header>
 
     <div class="container">
-        <div class="row">
-          <div class="span8 offset2">
-            
-            <div class="hero-unit">
-              <input type="file" id="files" name="files[]" />
-              <div class='after_loaded'>
-                <h2 data-lang='data_loaded_succesfully'></h2>
-                <h3><a href="logs.html" data-lang='start_interview'></a></h3>
-              </div>
-            </div>
-
-          </div>
+      <div class="row">
+        <div class="span8 offset2" id="container">
         </div>
+      </div>
     </div>
+
 
 
 
@@ -92,7 +83,11 @@
 <script src="libraries/d3.v2.js"></script>
 <script src="libraries/common.js"></script>
 <script src="libraries/js/vocabulary.js"></script>
-<!-- <script src="libraries/js/loadData.js"></script> -->
-<script src="libraries/vis/index.js"></script>
+<script src="libraries/js/loadData.js"></script>
+<script src="libraries/vis/phonebooks.js"></script>
+
+
+
+
 
 
