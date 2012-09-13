@@ -25,6 +25,11 @@ function dataDisplay(data) {
   $('#total_phone_book_entries').text(data.total_phone_book_entries);
   $('#number_of_contacts_in_journal_activity').text(vizData.visualizations.phone_books.contacts);
 
+  $('#average_calls_working_day').text(vizData.visualizations.activity_timelines.calls_average_number_working_day);
+  $('#average_calls_weekend_day').text(vizData.visualizations.activity_timelines.calls_average_number_weekend);
+  $('#average_smsandmms_working_day').text(vizData.visualizations.activity_timelines.SMS_average_number_working_day);
+  $('#average_smsandmms_weekend_day').text(vizData.visualizations.activity_timelines.SMS_average_number_weekend);
+
 
   // Bar Chart 0
 
