@@ -26,10 +26,10 @@
     "number_of_contacts_in_journal_activity": "Total contacts in journal activity",
     "duration_total": "Total duration",
     "duration_in": "Incoming duration",
-    "duration_out": "Outcoming duration",
+    "duration_out": "Outgoing duration",
     "total": "Total",
     "in": "Incoming",
-    "out": "Outcoming",
+    "out": "Outgoing",
     "average_working_day":"Average number for a working day",
     "average_weekend_day":"Average number for a weekend day",
     
