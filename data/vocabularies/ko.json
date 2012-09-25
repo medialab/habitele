@@ -1,4 +1,72 @@
 {
-	"": "",
-	"": ""
+    "index_title": "파일을 여세요.",
+    "index_subtitle": "보여주고자 하는 파일을 열고 인터뷰를 시작하세요.",
+    "logs_title": "로그",
+    "logs_subtitle": "",
+    "timelines_title": "타임라인",
+    "timelines_subtitle": "",
+    "journal_title": "전화와 문자메시지",
+    "journal_subtitle": "주요 연락자 10명",
+    "peaks_title": "최다 사용",
+    "peaks_subtitle": "",
+    "phonebook_title": "전화번호부",
+    "phonebook_subtitle": "전화번호부의 그룹 수",
+    "applications_title": "애플리케이션",
+    "applications_subtitle": "",
+    "calendar_title": "달력",
+    "calendar_subtitle": "",
+    "langue": "언어",
+    "credits": "크레딧",
+
+    "data_loaded_succesfully": "데이터가 성공적으로 전송 되었습니다.",
+    "start_interview": "인터뷰를 시작하려면 이곳을 눌러주세요.",
+    
+    "phone_books": "전화번호부",
+    "number_of_contacts": "연락처 수",
+    "number_of_contacts_in_journal_activity": "총 저널 구독 수",
+    "duration_total": "총 시간",
+    "duration_in": "수신 시간",
+    "duration_out": "발신 시간",
+    "total": "전체",
+    "in": "수신",
+    "out": "발신",
+    "average_working_day":"평균 근로일 수",
+    "average_weekend_day":"평균 휴일 수",
+    
+    "missed_calls":"부재",
+    "short_calls":"짧은",
+    
+    "calls":"전화",
+    "sms_and_mms":"문자메시지와 멀티미디어메시지",
+    "sms":"문자메시지",
+    "mms":"멀티미디어메시지",
+
+    "none":"없음",
+
+    "typical_day_of_work": "근로일",
+    "typical_day_of_weekend": "주말",
+    "typical_week": "전형적인 주",
+
+    "monday": "월요일",
+    "tuesday": "화요일",
+    "wednesday": "수요일",
+    "thursday": "목요일",
+    "friday": "금요일",
+    "saturday": "토요일",
+    "sunday": "일요일",
+
+    "time": "시간",
+    "channel": "채널",
+    "direction": "방향",
+    "contact": "연락",
+    "duration":"기간",
+
+    "next": "다음",
+    "prev": "이전",
+
+    "average_number_of_fields_used": "평균 그룹 사용 수 ",
+
+    "calendar_use": "이벤트 숫자",
+    "calendar_with_alarm": "알람기능이 설정된 이벤트",
+    "calendar_with_recurrence": "반복되는 이벤트"
 }

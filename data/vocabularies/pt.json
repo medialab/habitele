@@ -1,4 +1,72 @@
 {
-	"": "",
-	"": ""
+    "index_title": "Abrir Arquivo",
+    "index_subtitle": "Selecione o arquivo que deseja ser exibido e começe a entrevista",
+    "logs_title": "Registros",
+    "logs_subtitle": "",
+    "timelines_title": "Linha do Tempo",
+    "timelines_subtitle": "",
+    "journal_title": "Chamadas e SMS",
+    "journal_subtitle": "Ranking dos 10 contatos",
+    "peaks_title": "Picos",
+    "peaks_subtitle": "",
+    "phonebook_title": "Agenda Telefônica",
+    "phonebook_subtitle": "Lista dos campos da agenda telefônica usados",
+    "applications_title": "Aplicativos",
+    "applications_subtitle": "",
+    "calendar_title": "Caledário",
+    "calendar_subtitle": "",
+    "langue": "Idioma",
+    "credits": "Créditos",
+
+    "data_loaded_succesfully": "Dados carregados com sucesso",
+    "start_interview": "Clique aqui para iniciar a entrevista",
+    
+    "phone_books": "Angendas Telefônicas",
+    "number_of_contacts": "Número de Contatos",
+    "number_of_contacts_in_journal_activity": "Número de contatos nas atividades periódicas",
+    "duration_total": "Duração Total",
+    "duration_in": "Duração de Chamadas Recebidas",
+    "duration_out": "Duração de Chamadas Realizadas",
+    "total": "Total",
+    "in": "Recebidas",
+    "out": "Realizadas",
+    "average_working_day":"Número médio para um dia da semana",
+    "average_weekend_day":"Número médio para um dia no final de semana",
+    
+    "missed_calls":"Perdida",
+    "short_calls":"Pequeno / Curto",
+    
+    "calls":"Chamadas ",
+    "sms_and_mms":"SMS e MMS",
+    "sms":"SMS",
+    "mms":"MMS",
+
+    "none":"Nenhum",
+
+    "typical_day_of_work": "Dia típico de trabalho",
+    "typical_day_of_weekend": "Dia típico de final de semana",
+    "typical_week": "Semana típica",
+
+    "monday": "Segunda-Feira",
+    "tuesday": "Terça-Feira",
+    "wednesday": "Quarta-Feira",
+    "thursday": "Quinta-Feira",
+    "friday": "Sexta-Feira",
+    "saturday": "Sábado",
+    "sunday": "Domingo",
+
+    "time": "Tempo",
+    "channel": "Canal",
+    "direction": "Direção",
+    "contact": "Contato",
+    "duration":"Duração",
+
+    "next": "Próximo",
+    "prev": "Anterior",
+
+    "average_number_of_fields_used": "Número médio de campos usados",
+
+    "calendar_use": "Número de Eventos",
+    "calendar_with_alarm": "Eventos com Alarme",
+    "calendar_with_recurrence": "Eventos com recorrência"
 }
