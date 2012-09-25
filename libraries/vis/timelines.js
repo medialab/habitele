@@ -3,6 +3,7 @@ initViz();
 
 $(window).resize(function() {
   initViz();
+  setCookie(document.cookie.split("=")[1]);
 });
 
 
@@ -12,14 +13,7 @@ function initViz() {
   // Reset & scales
   
   $('[id^="graph_"]').html("");
- // weekScale = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  weekScale = [$(this).attr('data-lang', 'monday'),
-               $(this).attr('data-lang', 'tuesday'),
-               $(this).attr('data-lang', 'wednesday'),
-               $(this).attr('data-lang', 'thursday'),
-               $(this).attr('data-lang', 'friday'),
-               $(this).attr('data-lang', 'saturday'),
-               $(this).attr('data-lang', 'sunday')];
+  weekScale = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   dayScale = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24" ];
 
   // Computing max for y axis
@@ -51,7 +45,7 @@ function initViz() {
   vizDisplay(d3.max([max4, max5]), "graph_5", "SMS_weekend_typical_day_by_24hour", dayScale, '#d9aa59');
   vizDisplay(max6, "graph_6", "SMS_monday_to_sunday", weekScale, '#03717e');
 
-/**  $('#graph_6 .x text').each(function(i) {
+  $('#graph_6 .x text').each(function(i) {
     if (i==0) $(this).attr('data-lang', 'monday');
     if (i==1) $(this).attr('data-lang', 'tuesday');
     if (i==2) $(this).attr('data-lang', 'wednesday');
@@ -59,7 +53,7 @@ function initViz() {
     if (i==4) $(this).attr('data-lang', 'friday');
     if (i==5) $(this).attr('data-lang', 'saturday');
     if (i==6) $(this).attr('data-lang', 'sunday');
-  });**/
+  });
 
   // Behaviours
 
@@ -71,6 +65,8 @@ function initViz() {
   });
 
   $("[rel=tooltip]").tooltip();
+
+  setCookie(document.cookie.split("=")[1]);
 
   
 }
