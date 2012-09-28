@@ -6,6 +6,10 @@ $('ul.dropdown-menu a').on("click", function(event){
 	return null
 });
 
+$('div.navbar').on('resize', function() {
+	console.log($('div.navbar').height())
+});
+
 
 
 setLang();
@@ -29,16 +33,16 @@ function setLang(requestedLang)
 	if ( requestedLang == null ) {
 
 		if (currentLang == null) {
-			console.log('Set English')
+			// console.log('Set English')
 			localStorage['lang'] = 'en';
 			loadLanguage('en');
 		} else {
-			console.log('Set current language')
+			// console.log('Set current language')
 			loadLanguage(currentLang);
 		}
 		
 	} else {
-		console.log('Set requested language')
+		// console.log('Set requested language')
 		localStorage['lang'] = requestedLang;
 		loadLanguage(requestedLang);
 	}

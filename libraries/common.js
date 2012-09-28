@@ -23,6 +23,8 @@ function human_readable_duration(duration) {
   return hours.toString() + ":" + addZero(minutes.toString()) + ":" + addZero(seconds.toString());
 }
 
+
+
 function addZero(num)
 {
   return (num.length < 2) ? "0" + num : num;

@@ -6,13 +6,7 @@ $(function() {
 
   function handleFileSelect(evt) {
     
-    // if ($("#stored_files").text() === "None") $("#stored_files").text("");
-    
     var files = evt.target.files; // FileList object
-
-    // files is a FileList of File objects. List some properties.
-
-    // var output = [];
 
     for (var i = 0, f; f = files[i]; i++) {
      
@@ -35,9 +29,6 @@ $(function() {
        
     }
     
-    // document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
-
-
   }
 
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
