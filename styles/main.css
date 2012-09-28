@@ -8,11 +8,7 @@ body {
 }
 
 body img {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 9999;
-  width: 60px;
+  width: 40px;
 }
 
 /* Axis */
