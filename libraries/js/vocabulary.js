@@ -1,24 +1,46 @@
-setCookie(document.cookie.split("=")[1]);
+// Language menu behaviors
 
-function setCookie(requestedLang)
+$('ul.dropdown-menu a').on("click", function(event){
+	setLang($(this).attr('data-lang'));
+	$('li.dropdown').removeClass('open');
+	return null
+});
+
+
+
+setLang();
+
+function setLang(requestedLang)
 {
-	requestedLang = (requestedLang) ? requestedLang.substr(0, 2) : "";
-	currentLang = (document.cookie.split("=")[1]) ? document.cookie.split("=")[1] : "";
 
-	if ( requestedLang == "" && currentLang == "" ) {
-		// console.log("First use, nothing exists")
-		lang = "en"; // Default
-		document.cookie = "lang=" + lang;
-		loadLanguage(lang);
-	} else if ( requestedLang == currentLang ) {
-		// console.log("Second use, requestedLang and currentLang are the same")
-		lang = currentLang; // Reused
-		loadLanguage(lang);
-	} else if ( requestedLang != currentLang ) {
-		// console.log("Third case, requestedLang and currentLang are different, user wants to change language")
-		lang = requestedLang;
-		document.cookie = "lang=" + lang;
-		window.location.reload();
+	currentLang = localStorage["lang"];
+
+	// Reset variable in case of error
+
+	if ((currentLang != 'en') &&
+		(currentLang != 'fr') &&
+		(currentLang != 'ko') &&
+		(currentLang != 'mr') &&
+		(currentLang != 'pt')) {
+			localStorage.removeItem('lang');
+			currentLang = localStorage["lang"];
+	}
+
+	if ( requestedLang == null ) {
+
+		if (currentLang == null) {
+			console.log('Set English')
+			localStorage['lang'] = 'en';
+			loadLanguage('en');
+		} else {
+			console.log('Set current language')
+			loadLanguage(currentLang);
+		}
+		
+	} else {
+		console.log('Set requested language')
+		localStorage['lang'] = requestedLang;
+		loadLanguage(requestedLang);
 	}
 
 	return false;

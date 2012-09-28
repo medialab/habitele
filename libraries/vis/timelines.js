@@ -1,9 +1,10 @@
 vizData = JSON.parse(localStorage["data"]);
 initViz();
+setLang();
 
 $(window).resize(function() {
   initViz();
-  setCookie(document.cookie.split("=")[1]);
+  setLang();
 });
 
 
@@ -65,9 +66,6 @@ function initViz() {
   });
 
   $("[rel=tooltip]").tooltip();
-
-  setCookie(document.cookie.split("=")[1]);
-
   
 }
 

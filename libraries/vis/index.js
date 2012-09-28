@@ -2,7 +2,6 @@ $(function() {
 
   if ( !localStorage["data"] ) {
     $(".after_loaded").hide();
-
   }
 
   function handleFileSelect(evt) {
@@ -21,8 +20,6 @@ $(function() {
 
         reader.onload = (function(file) { 
           
-          console.log('jo')
-
           return function(e) {
             
             localStorage["data"] = e.target.result

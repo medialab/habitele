@@ -1,5 +1,15 @@
 vizData = JSON.parse(localStorage["data"]);
 initViz();
+setLang();
+
+
+
+$(window).resize(function() {
+  initViz();
+  setLang();
+});
+
+
 
 function initViz() {
 
@@ -85,6 +95,5 @@ function dataDisplay(data) {
   $('.bar').first().attr('transform', 'translate(0,0)');
   $('.y.axis.bar').children().first().attr('transform', 'translate(0,14.5)');
   $('.y.axis.bar').children().first().children().last().attr('data-lang', 'average_number_of_fields_used')
-  setCookie(document.cookie.split("=")[1]);
 
 };

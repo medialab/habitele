@@ -9,7 +9,6 @@ initViz = function () {
       dataDisplay(i.substr(5));
     }
   }
-  setCookie(document.cookie.split("=")[1]);
   setBehaviors();
 }
 
@@ -289,13 +288,14 @@ $(window).resize(function() {
   $("ul.nav-tabs").html("");
   $("div.tab-content").html("");
   initViz();
-  setCookie(document.cookie.split("=")[1]);
+  setLang();
 });
 
 
 
 vizData = JSON.parse(localStorage["data"]);
 initViz();
+setLang();
 
 
 
