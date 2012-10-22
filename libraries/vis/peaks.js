@@ -236,8 +236,14 @@ function dataDisplay(peak) {
 
   events.forEach(function (event, i) {
 
-      $contact = $("<td>").text(event.contact);
-     $duration = $("<td>").attr('data-lang', event.duration ? human_readable_duration(event.duration) : 'none');
+    $contact = $("<td>").text(event.contact);
+
+    if (event.channel.toLowerCase() == 'call') {
+      $duration = $("<td>").text(human_readable_duration(event.duration));
+    } else {
+      $duration = $("<td>").attr('data-lang', 'none');
+    }
+
     $direction = $("<td>").attr('data-lang', event.direction.toLowerCase());
          $time = $("<td>").text(event.time.substr(0,19));
       $channel = $("<td>").attr('data-lang', event.channel.toLowerCase());
