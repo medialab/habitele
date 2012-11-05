@@ -36,6 +36,8 @@
     "missed_calls":"Manqués",
     "short_calls":"De courte durée",
 
+    "call":"Appel",
+    "missed_call":"Manqué",
     "calls":"Appels",
     "sms_and_mms":"SMS et MMS",
     "sms":"SMS",

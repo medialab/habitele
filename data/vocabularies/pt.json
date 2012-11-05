@@ -36,6 +36,8 @@
     "missed_calls":"Perdida",
     "short_calls":"Pequeno / Curto",
     
+    "call":"Chamada",
+    "missed_call":"Perdida",
     "calls":"Chamadas ",
     "sms_and_mms":"SMS e MMS",
     "sms":"SMS",

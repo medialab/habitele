@@ -36,6 +36,8 @@
     "missed_calls":"부재",
     "short_calls":"짧은",
     
+    "call":"전화",
+    "missed_call":"부재중 전화",
     "calls":"전화",
     "sms_and_mms":"문자메시지와 멀티미디어메시지",
     "sms":"문자메시지",
